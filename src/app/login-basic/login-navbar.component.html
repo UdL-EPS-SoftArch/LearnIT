@@ -1,0 +1,21 @@
+<li class="nav-item" *ngIf="isLoggedIn()" id="currentUser">
+  <a class="nav-link" *ngIf="isRole('Player')" [routerLink]="[getCurrentUser().uri]">
+    <span class="fa fa-user-circle-o"></span> {{getCurrentUser().id}}</a>
+</li>
+
+<li class="nav-item" *ngIf="isLoggedIn()">
+  <a class="nav-link" href="#" (click)="logout($event)">
+    <span class="fa fa-sign-out"></span> Logout</a>
+</li>
+
+<li class="nav-item" *ngIf="!isLoggedIn()">
+  <a class="nav-link" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{ exact: true }"
+     [routerLink]="['/login']">
+    <span class="fa fa-sign-in"></span> Login</a>
+</li>
+
+<li class="nav-item" *ngIf="!isLoggedIn()">
+  <a class="nav-link" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{ exact: true }"
+     [routerLink]="['/register']">
+    <span class="fa fa-user-plus"></span> Register</a>
+</li>
