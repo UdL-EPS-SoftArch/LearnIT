@@ -1,20 +1,20 @@
-<div class="card mb-1" *ngFor="let player of players">
+<div class="card mb-1" *ngFor="let student of students">
   <div class="card-block row m-1 col-12">
     <div class="card-body row align-items-center">
       <div class="col-6 mt-1">
         <h6 class="card-subtitle text-muted">Username</h6>
-        <a class="card-text" [routerLink]="['/players', player.id]">{{player.id}}</a>
+        <a class="card-text" [routerLink]="['/students', student.id]">{{student.id}}</a>
       </div>
       <div class="col-6 mt-1">
         <h6 class="card-subtitle text-muted">E-mail</h6>
-        <p class="card-text">{{player.email}}</p>
+        <p class="card-text">{{student.email}}</p>
       </div>
     </div>
   </div>
 </div>
 
 <ngb-pagination class="d-flex justify-content-center"
-                [(page)]="page" [pageSize]="pageSize" [collectionSize]="totalPlayers"
+                [(page)]="page" [pageSize]="pageSize" [collectionSize]="totalStudents"
                 (pageChange)="changePage()"></ngb-pagination>
 
 

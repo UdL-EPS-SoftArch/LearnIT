@@ -4,43 +4,43 @@
     <!-- Username read only -->
     <div class="form-group">
       <label class="control-label" for="username">Username</label>
-      <input id="username" name="username" type="text" class="form-control" readonly [ngModel]="player.id">
+      <input id="username" name="username" type="text" class="form-control" readonly [ngModel]="student.id">
     </div>
 
     <!-- E-Mail input -->
     <div class="form-group" [class.was-validated]="email.dirty || email.touched">
       <label class="control-label" for="email">E-Mail*</label>
       <input id="email" name="email" type="email" class="form-control" required
-             [(ngModel)]="player.email" #email="ngModel">
+             [(ngModel)]="student.email" #email="ngModel">
       <div class="invalid-feedback">An e-mail is required</div>
     </div>
 
     <!-- Change password checkbox -->
-    <div *ngIf="!player.passwordReset" class="form-group">
+    <div *ngIf="!student.passwordReset" class="form-group">
       <label class="control-label" for="password">Change password?</label>
       <input id="isPasswordReset" name="isPasswordReset" type="checkbox" class="form-control"
-             [(ngModel)]="player.passwordReset">
+             [(ngModel)]="student.passwordReset">
     </div>
 
     <!-- Password input -->
-    <div *ngIf="player.passwordReset" class="form-group" [class.was-validated]="password.dirty || password.touched">
+    <div *ngIf="student.passwordReset" class="form-group" [class.was-validated]="password.dirty || password.touched">
       <label class="control-label" for="password">Password</label>
       <input id="password" name="password" type="password" class="form-control" required minlength="8" maxlength="256"
-             [(ngModel)]="player.password" #password="ngModel">
+             [(ngModel)]="student.password" #password="ngModel">
       <div class="invalid-feedback">A password longer than 8 characters is required</div>
     </div>
 
     <!-- Role read only -->
-    <div *ngIf="player.getRoles().length > 0" class="form-group">
+    <div *ngIf="student.getRoles().length > 0" class="form-group">
       <label class="control-label" for="role">Role</label>
-      <input id="role" name="role" type="text" class="form-control" readonly [ngModel]="player.getRoles().join(', ')">
+      <input id="role" name="role" type="text" class="form-control" readonly [ngModel]="student.getRoles().join(', ')">
     </div>
 
     <!-- Button -->
     <div class="form-group">
       <button id="submit" type="submit" class="btn m-1 btn-success pull-right"
               [disabled]="!form.form.valid">Submit</button>
-      <button id="userDetail" type="button" [routerLink]="['/players/'+getCurrentUserName()]"
+      <button id="userDetail" type="button" [routerLink]="['/students/'+getCurrentUserName()]"
               class="btn m-1 btn-outline-primary pull-right">Back</button>
     </div>
 
