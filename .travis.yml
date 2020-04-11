@@ -42,8 +42,8 @@ after_success:
       docker tag $REPO:$TRAVIS_COMMIT $REPO:$TAG;
       docker push $REPO;
       echo "$HEROKU_TOKEN" | docker login --username=_ --password-stdin registry.heroku.com;
-      docker tag $REPO:$TRAVIS_COMMIT registry.heroku.com/learnit/web;
-      docker push registry.heroku.com/learnit/web;
+      docker tag $REPO:$TRAVIS_COMMIT registry.heroku.com/learnit-client/web;
+      docker push registry.heroku.com/learnit-client/web;
       wget -qO- https://toolbelt.heroku.com/install.sh | sh;
-      heroku container:release web --app learnit;
+      heroku container:release web --app learnit-client;
     fi
