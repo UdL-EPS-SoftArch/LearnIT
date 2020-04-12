@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  API: 'https://learnit-client-api.herokuapp.com'
+  API: 'https://learnit-api.herokuapp.com'
 };
