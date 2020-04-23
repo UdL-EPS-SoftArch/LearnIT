@@ -24,6 +24,11 @@ import { StudentEditComponent } from './student/student-edit/student-edit.compon
 import { StudentDetailComponent } from './student/student-detail/student-detail.component';
 import { StudentDeleteComponent } from './student/student-delete/student-delete.component';
 import {StudentService} from './student/student.service';
+import {QuestionService} from './question/question.service';
+import {NewQuestionComponent} from './question/question-add/question-add.component';
+import {BrowserAnimationsModule, NoopAnimationsModule} from '@angular/platform-browser/animations';
+import {ToastrModule} from 'ngx-toastr';
+import {QuestionListComponent} from './question/question-list/question-list.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +41,9 @@ import {StudentService} from './student/student.service';
     StudentListComponent,
     StudentEditComponent,
     StudentDetailComponent,
-    StudentDeleteComponent
+    StudentDeleteComponent,
+    NewQuestionComponent,
+    QuestionListComponent
   ],
   imports: [
     BrowserModule,
@@ -51,12 +58,15 @@ import {StudentService} from './student/student.service';
     ErrorHandlerModule,
     NgbModule,
     ReactiveFormsModule,
+    ToastrModule.forRoot(),
+    NoopAnimationsModule,
+    BrowserAnimationsModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: HttpErrorInterceptor, multi: true },
     { provide: 'ExternalConfigurationService', useClass: ExternalConfigurationService },
-    AuthenticationBasicService, LoggedInGuard, StudentService
+    AuthenticationBasicService, LoggedInGuard, StudentService, QuestionService
   ],
   bootstrap: [AppComponent]
 })

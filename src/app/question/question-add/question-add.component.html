@@ -1,0 +1,45 @@
+<h2 align="center">Ajouter une nouvelle recette</h2>
+
+<div class="jumbotron">
+  <h4 class="display-4">New Question</h4>
+  <p class="lead">Please, provide your question</p>
+
+  <form id="user-form" (ngSubmit)="onSubmit()" #form="ngForm">
+    <fieldset>
+      <div id="formulaire">
+
+        <!-- text input -->
+        <div class="form-group" [class.was-validated]="statement.dirty || statement.touched">
+          <label class="control-label" for="statement">Statement*</label>
+          <textarea id="statement" name="statement" type="text" class="form-control" rows=3 required
+                    [(ngModel)]="question.statement" #statement="ngModel"></textarea>
+          <div class="invalid-feedback"></div>
+        </div>
+
+        <!-- name input -->
+        <div class="form-group" [class.was-validated]="answer.dirty || answer.touched">
+          <label class="control-label" for="answer">Answer*</label>
+          <input id="answer" name="answer" type="text" class="form-control" required
+                 [(ngModel)]="question.answer" #answer="ngModel">
+          <div class="invalid-feedback"></div>
+        </div>
+
+
+        <!-- Button -->
+        <div class="form-group">
+          <button id="submit" type="submit" class="btn m-1 btn-success pull-right" [disabled]="!form.form.valid">Submit</button>
+        </div>
+      </div>
+    </fieldset>
+  </form>
+
+</div>
+
+<!--Footer-->
+<footer class="modal-footer">
+  <div class="container">
+    <div class="text-center">
+      <small>Footer...</small>
+    </div>
+  </div>
+</footer>
