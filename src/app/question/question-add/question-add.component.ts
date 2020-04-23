@@ -6,7 +6,6 @@ import {Location} from '@angular/common';
 import {Router} from '@angular/router';
 import {QuestionService} from '../question.service';
 import {Question} from '../question';
-import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -17,7 +16,6 @@ import { ToastrService } from 'ngx-toastr';
 export class NewQuestionComponent implements OnInit {
 
   public question: Question;
-  public ingredientNb = 1;
 
   constructor(private router: Router,
               private NewQuestionService: QuestionService) {
@@ -25,7 +23,6 @@ export class NewQuestionComponent implements OnInit {
 
   ngOnInit(): void {
     this.question = new Question();
-    this.ingredientNb++;
   }
 
   onSubmit(): void {
