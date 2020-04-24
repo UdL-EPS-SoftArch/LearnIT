@@ -4,7 +4,9 @@ export class Question extends Resource {
   statement: string;
   uri: string;
   answer: string;
-  id: any;
+  id: any
+  question: any;
+  _links: any;
   topicId: any;
   levelId: any;
 

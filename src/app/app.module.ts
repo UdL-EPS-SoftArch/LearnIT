@@ -29,6 +29,9 @@ import {NewQuestionComponent} from './question/question-add/question-add.compone
 import {BrowserAnimationsModule, NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {ToastrModule} from 'ngx-toastr';
 import {QuestionListComponent} from './question/question-list/question-list.component';
+import {QuestionDeleteComponent} from './question/question-delete/question-delete.component';
+import {QuestionDetailComponent} from './question/question-detail/question-detail.component';
+import {QuestionEditComponent} from './question/question-edit/question-edit.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +46,10 @@ import {QuestionListComponent} from './question/question-list/question-list.comp
     StudentDetailComponent,
     StudentDeleteComponent,
     NewQuestionComponent,
-    QuestionListComponent
+    QuestionListComponent,
+    QuestionDeleteComponent,
+    QuestionDetailComponent,
+    QuestionEditComponent
   ],
   imports: [
     BrowserModule,

@@ -3,7 +3,7 @@
     <div class="card-body row align-items-center">
       <div class="col-6 mt-1">
         <h6 class="card-subtitle text-muted">Statement</h6>
-        <a class="card-text" [routerLink]="['/recipes', question.id]">{{question.statement}}</a>
+        <a class="card-text" [routerLink]="['/questions', question._links.self.href.split('/')[4]]">{{question.statement}}</a>
       </div>
       <div class="col-6 mt-1">
         <h6 class="card-subtitle text-muted">Answer</h6>

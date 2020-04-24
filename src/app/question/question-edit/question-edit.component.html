@@ -1,0 +1,36 @@
+<form id="user-form" (ngSubmit)="onSubmit()" #form="ngForm">
+  <fieldset>
+
+    <!-- Username read only -->
+    <div class="form-group">
+      <label class="control-label" for="username">ID</label>
+      <input id="username" name="username" type="text" class="form-control" readonly [ngModel]="question._links.self.href.split('/')[4]">
+    </div>
+
+    <!-- Change statement -->
+    <div class="form-group" [class.was-validated]="statement.dirty || statement.touched">
+      <label class="control-label" for="statement">Statement</label>
+      <input id="statement" name="statement" type="statement" class="form-control" required
+             [(ngModel)]="question.statement" #statement="ngModel">
+      <div class="invalid-feedback">An e-mail is required</div>
+    </div>
+
+    <!-- Change answer -->
+    <div class="form-group" [class.was-validated]="answer.dirty || answer.touched">
+      <label class="control-label" for="answer">Answer</label>
+      <input id="answer" name="answer" type="answer" class="form-control" required
+             [(ngModel)]="question.answer" #answer="ngModel">
+      <div class="invalid-feedback">An e-mail is required</div>
+    </div>
+
+
+    <!-- Button -->
+    <div class="form-group">
+      <button id="submit" type="submit" class="btn m-1 btn-success pull-right"
+              [disabled]="!form.form.valid">Submit</button>
+      <button id="userDetail" type="button" [routerLink]="['/questions', question._links.self.href.split('/')[4]]"
+              class="btn m-1 btn-outline-primary pull-right">Back</button>
+    </div>
+
+  </fieldset>
+</form>
