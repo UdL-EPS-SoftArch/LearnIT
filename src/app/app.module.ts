@@ -32,6 +32,8 @@ import {QuestionListComponent} from './question/question-list/question-list.comp
 import {QuestionDeleteComponent} from './question/question-delete/question-delete.component';
 import {QuestionDetailComponent} from './question/question-detail/question-detail.component';
 import {QuestionEditComponent} from './question/question-edit/question-edit.component';
+import {LevelService} from './level/level.service';
+import {TopicService} from './topic/topic.service';
 
 @NgModule({
   declarations: [
@@ -72,7 +74,7 @@ import {QuestionEditComponent} from './question/question-edit/question-edit.comp
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: HttpErrorInterceptor, multi: true },
     { provide: 'ExternalConfigurationService', useClass: ExternalConfigurationService },
-    AuthenticationBasicService, LoggedInGuard, StudentService, QuestionService
+    AuthenticationBasicService, LoggedInGuard, StudentService, QuestionService, LevelService, TopicService
   ],
   bootstrap: [AppComponent]
 })
