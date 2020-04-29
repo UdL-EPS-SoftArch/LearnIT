@@ -1,10 +1,33 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<div class="card mb-4">
+  <div class="card-block">
+    <h4 class="card-title col-md-12 p-3">Question numéro {{question._links.self.href.split('/')[4]}}</h4>
+    <div class="card-body row m-1">
+      <div class="col-md-4 p-3">
+        <h6 class="card-subtitle text-muted">Id</h6>
+        <p class="card-text">{{question._links.self.href.split('/')[4]}}</p>
+      </div>
+      <div class="col-md-4 p-3">
+        <h6 class="card-subtitle text-muted">Question</h6>
+        <p class="card-text">{{question.statement}}</p>
+      </div>
+      <div class="col-md-4 p-3">
+        <h6 class="card-subtitle text-muted">Answer</h6>
+        <p class="card-text">{{question.answer}}</p>
+      </div>
+    </div>
 
-</body>
-</html>
+
+
+    <div class="card-footer text-right">
+      <button id="listBtn" type="button" [routerLink]="['/questions']"
+              class="btn m-1 btn-outline-primary">Recipes List
+      </button>
+      <button id="editBtn" type="button"  [routerLink]="['edit']"
+              class="btn m-1 btn-outline-success">Edit
+      </button>
+      <button id="deleteBtn" type="button"  [routerLink]="['delete']"
+              class="btn m-1 btn-outline-danger">Delete
+      </button>
+    </div>
+  </div>
+</div>
