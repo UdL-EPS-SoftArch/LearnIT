@@ -1,7 +1,37 @@
 
+<style>
+  ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+}
+  ul li {
+  background: #eee;
+  padding: 1em;
+  margin-right: 10px;
+  width: 30%;
+  height: 200px;
+  margin-bottom: 1em;
+  display: flex;
+  flex-direction: column;
+}
+  ul li p {
+  margin: 0;
+}
+  ul li p.name {
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+  ul li p.description {
+  font-size: 0.9rem;
+  flex-grow: 1;
+}
+</style>
+
 <body>
 <h1>Levels</h1>
-
 <ul *ngIf="levels">
   <li *ngFor ="let level of levels; let i = index">
     <p class="name"> Level {{i+1}}: {{ level.name }}</p>
