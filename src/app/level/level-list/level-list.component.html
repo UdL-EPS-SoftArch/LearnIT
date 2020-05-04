@@ -1,0 +1,12 @@
+
+<body>
+<h1>Levels</h1>
+
+<ul *ngIf="levels">
+  <li *ngFor ="let level of levels; let i = index">
+    <p class="name"> Level {{i+1}}: {{ level.name }}</p>
+    <p class="description">{{ level.description }}</p>
+    <a class="site">site</a>
+  </li>
+</ul>
+</body>

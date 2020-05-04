@@ -33,6 +33,7 @@ import {QuestionDeleteComponent} from './question/question-delete/question-delet
 import {QuestionDetailComponent} from './question/question-detail/question-detail.component';
 import {QuestionEditComponent} from './question/question-edit/question-edit.component';
 import {LevelService} from './level/level.service';
+import {LevelListComponent} from './level/level-list/level-list.component';
 import {TopicService} from './topic/topic.service';
 
 @NgModule({
@@ -51,7 +52,8 @@ import {TopicService} from './topic/topic.service';
     QuestionListComponent,
     QuestionDeleteComponent,
     QuestionDetailComponent,
-    QuestionEditComponent
+    QuestionEditComponent,
+    LevelListComponent
   ],
   imports: [
     BrowserModule,
