@@ -14,6 +14,7 @@ import {QuestionDeleteComponent} from './question/question-delete/question-delet
 import {QuestionDetailComponent} from './question/question-detail/question-detail.component';
 import {QuestionEditComponent} from './question/question-edit/question-edit.component';
 import {LevelListComponent} from './level/level-list/level-list.component';
+import {TopicListComponent} from './topic/topic-list/topic-list.component';
 
 const routes: Routes = [
   { path: 'register', component: StudentRegisterComponent},
@@ -29,7 +30,8 @@ const routes: Routes = [
   { path: 'about', component: AboutComponent },
   { path: '404', component: NotFoundComponent},
   { path: '', redirectTo: 'about', pathMatch: 'full' },
-  { path: 'levels', component: LevelListComponent, canActivate: [LoggedInGuard],}
+  { path: 'levels', component: LevelListComponent, canActivate: [LoggedInGuard],},
+  { path: 'topics', component: TopicListComponent, canActivate: [LoggedInGuard],}
 ];
 
 @NgModule({
