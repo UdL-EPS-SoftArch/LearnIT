@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Level} from '../level';
-import {LevelService} from "../level.service";
-import {Router} from "@angular/router";
+import {LevelService} from '../level.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-level-list',
