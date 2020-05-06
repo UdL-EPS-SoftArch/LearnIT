@@ -15,6 +15,7 @@ import {QuestionDetailComponent} from './question/question-detail/question-detai
 import {QuestionEditComponent} from './question/question-edit/question-edit.component';
 import {LevelListComponent} from './level/level-list/level-list.component';
 import {TopicListComponent} from './topic/topic-list/topic-list.component';
+import {LevelDetailComponent} from './level/level-detail/level-detail.component';
 
 const routes: Routes = [
   { path: 'register', component: StudentRegisterComponent},
@@ -31,11 +32,12 @@ const routes: Routes = [
   { path: '404', component: NotFoundComponent},
   { path: '', redirectTo: 'about', pathMatch: 'full' },
   { path: 'levels', component: LevelListComponent, canActivate: [LoggedInGuard],},
+  { path: 'level/:id', component: LevelDetailComponent, canActivate: [LoggedInGuard] },
   { path: 'topics', component: TopicListComponent, canActivate: [LoggedInGuard],}
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes), RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

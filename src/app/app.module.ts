@@ -34,6 +34,7 @@ import {QuestionDetailComponent} from './question/question-detail/question-detai
 import {QuestionEditComponent} from './question/question-edit/question-edit.component';
 import {LevelService} from './level/level.service';
 import {LevelListComponent} from './level/level-list/level-list.component';
+import {LevelDetailComponent} from './level/level-detail/level-detail.component';
 import {TopicService} from './topic/topic.service';
 import {TopicListComponent} from './topic/topic-list/topic-list.component';
 
@@ -55,6 +56,7 @@ import {TopicListComponent} from './topic/topic-list/topic-list.component';
     QuestionDetailComponent,
     QuestionEditComponent,
     LevelListComponent,
+    LevelDetailComponent,
     TopicListComponent
   ],
   imports: [
