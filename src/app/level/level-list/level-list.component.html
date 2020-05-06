@@ -43,9 +43,10 @@
 <body>
 <h1>Levels</h1>
 <ul *ngIf="levels" class="my-div">
-  <li *ngFor ="let level of levels; let i = index">
-    <a href="#" class="fill-div"> Level {{i+1}}: {{ level.name }}</a>
+  <li *ngFor ="let level of levels; let i = index" [class.selected]="level === selectedLevel" (click)="onSelect(level)">
+    <a [routerLink]="['/level', level.uri]" class="fill-div"> Level {{i+1}}: {{ level.name }}</a>
     <p class="description">{{ level.description }}</p>
   </li>
 </ul>
+<app-level-detail [level]="selectedLevel"></app-level-detail>
 </body>

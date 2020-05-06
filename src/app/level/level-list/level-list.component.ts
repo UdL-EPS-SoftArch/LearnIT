@@ -12,6 +12,7 @@ export class LevelListComponent implements OnInit {
 
   public levels: Level[] = [];
   public totalRecipes = 0;
+  selectedLevel: Level;
 
   constructor(public router: Router, private levelService: LevelService) {
   }
@@ -25,7 +26,9 @@ export class LevelListComponent implements OnInit {
       });
   }
 
-
+  onSelect(level: Level): void {
+    this.selectedLevel = level;
+  }
 }
 
 
