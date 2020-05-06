@@ -1,0 +1,76 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Courses
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-searchbar
+    showCancelButton="focus"
+    placeholder="Search Me"
+    autocomplete="off"
+    autocorrect="off"
+  ></ion-searchbar>
+  <ion-list lines="full">
+    <ion-list-header>
+      <ion-label>List Header</ion-label>
+    </ion-list-header>
+    <ion-item>
+      <ion-card>
+        <img src="assets/mountain.jpg" />
+        <ion-card-header>
+          <ion-card-subtitle>Topic</ion-card-subtitle>
+          <ion-card-title>Java Course</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <p>
+            Here’s a small text description for the card component. Nothing
+            more, nothing less.
+          </p>
+        </ion-card-content>
+        <ion-card-footer>
+          <ion-button fill="clear">
+            <ion-icon slot="icon-only" name="star"></ion-icon>
+          </ion-button>
+          <ion-button fill="clear">
+            <ion-icon slot="icon-only" name="star"></ion-icon>
+          </ion-button>
+          <ion-button fill="clear">
+            <ion-icon slot="icon-only" name="star"></ion-icon>
+          </ion-button>
+        </ion-card-footer>
+      </ion-card>
+    </ion-item>
+    <ion-item>
+      <ion-card>
+        <img src="/assets/mountain.jpg" />
+        <ion-card-header>
+          <ion-card-subtitle>Topic</ion-card-subtitle>
+          <ion-card-title>Python Course</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <p>
+            Here’s a small text description for the card component. Nothing
+            more, nothing less.
+          </p>
+        </ion-card-content>
+        <ion-card-footer>
+          <ion-button fill="clear">
+            <ion-icon slot="icon-only" name="star"></ion-icon>
+          </ion-button>
+          <ion-button fill="clear">
+            <ion-icon slot="icon-only" name="star"></ion-icon>
+          </ion-button>
+          <ion-button fill="clear">
+            <ion-icon slot="icon-only" name="star"></ion-icon>
+          </ion-button>
+        </ion-card-footer>
+      </ion-card>
+    </ion-item>
+  </ion-list>
+  <ion-button color="primary" fill="solid" size="small" class="ion-padding">
+    Load More
+  </ion-button>
+</ion-content>
