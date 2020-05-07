@@ -1,7 +1,7 @@
 import { Resource } from '@lagoshny/ngx-hal-client';
 
 export class Topic extends Resource {
-  topicId: any;
+  id: any;
   name: string;
   description: string;
   questions: any;

@@ -12,7 +12,12 @@ import {NewQuestionComponent} from './question/question-add/question-add.compone
 import {QuestionListComponent} from './question/question-list/question-list.component';
 import {QuestionDeleteComponent} from './question/question-delete/question-delete.component';
 import {QuestionDetailComponent} from './question/question-detail/question-detail.component';
-import {QuestionEditComponent} from './question/question-edit/question-edit.component';
+import {QuestionEditComponent} from "./question/question-edit/question-edit.component"
+import {NewTheoryComponent} from './theory/theory-add/theory-add.component';
+import {TheoryListComponent} from './theory/theory-list/theory-list.component';
+import {TheoryDetailComponent} from './theory/theory-detail/theory-detail.component';
+import {TheoryDeleteComponent} from './theory/theory-delete/theory-delete.component';
+import {TheoryEditComponent} from "./theory/theory-edit/theory-edit.component"
 
 const routes: Routes = [
   { path: 'register', component: StudentRegisterComponent},
@@ -25,6 +30,11 @@ const routes: Routes = [
   { path: 'questions/:id', component: QuestionDetailComponent, canActivate: [LoggedInGuard] },
   { path: 'questions/:id/edit', component: QuestionEditComponent, canActivate: [LoggedInGuard] },
   { path: 'newQuestion', component: NewQuestionComponent, canActivate: [LoggedInGuard] },
+  { path: 'newTheory', component: NewTheoryComponent, canActivate: [LoggedInGuard] },
+  { path: 'theories', component: TheoryListComponent, canActivate: [LoggedInGuard] },
+  { path: 'theories/:id', component: TheoryDetailComponent, canActivate: [LoggedInGuard] },
+  { path: 'theories/:id/delete', component: TheoryDeleteComponent, canActivate: [LoggedInGuard] },
+  { path: 'theories/:id/edit', component: TheoryEditComponent, canActivate: [LoggedInGuard] },
   { path: 'about', component: AboutComponent },
   { path: '404', component: NotFoundComponent},
   { path: '', redirectTo: 'about', pathMatch: 'full' },

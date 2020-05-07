@@ -1,0 +1,61 @@
+<form id="user-form" (ngSubmit)="onSubmit()" #form="ngForm">
+  <fieldset>
+
+    <!-- Theory ID read only -->
+    <div class="form-group">
+      <label class="control-label" for="theoryid">ID</label>
+      <input id="theoryid" name="theoryid" type="text" class="form-control" readonly [ngModel]="theory._links.self.href.split('/')[4]">
+    </div>
+
+    <!-- Change name -->
+    <div class="form-group" [class.was-validated]="name.dirty || name.touched">
+      <label class="control-label" for="name">Statement</label>
+      <input id="name" name="name" type="text" class="form-control" required
+             [(ngModel)]="theory.name" #name="ngModel">
+      <div class="invalid-feedback">An e-mail is required</div>
+    </div>
+
+    <!-- Change text -->
+    <div class="form-group" [class.was-validated]="text.dirty || text.touched">
+      <label class="control-label" for="text">Answer</label>
+      <textarea id="text" name="text" type="text" class="form-control"
+                [(ngModel)]="theory.text" #text="ngModel"></textarea>
+      <div class="invalid-feedback">An e-mail is required</div>
+    </div>
+    <!-- Change url -->
+    <div class="form-group" [class.was-validated]="contentLink.dirty || contentLink.touched">
+      <label class="control-label" for="contentLink">Content Link</label>
+      <input id="contentLink" name="contentLink" type="text" class="form-control"
+             [(ngModel)]="theory.contentLink" #contentLink="ngModel">
+      <div class="invalid-feedback">An e-mail is required</div>
+    </div>
+
+    <!-- Change level -->
+    <div class="form-group" [class.was-validated]="level.dirty || level.touched" >
+      <label class="control-label" for="level">Level</label>
+      <select id="level" name="level" type="text" class="form-control"
+              [(ngModel)]="theory.level" #level="ngModel">
+        <option *ngFor="let level of levels" [value]="level.uri" >{{level.name}}</option>
+      </select>
+      <div class="invalid-feedback"></div>
+    </div>
+    <!-- Change topic -->
+    <div class="form-group" [class.was-validated]="topic.dirty || topic.touched">
+      <label class="control-label" for="topic">In the topic:</label>
+      <select id="topic" name="topic" type="text" class="form-control"
+              [(ngModel)]="theory.topic" #topic="ngModel">
+        <option *ngFor="let topic of topics" [value]="topic.uri" >{{topic.name}}</option>
+      </select>
+      <div class="invalid-feedback"></div>
+    </div>
+
+    <!-- Button -->
+    <div class="form-group">
+      <button id="submit" type="submit" class="btn m-1 btn-success pull-right"
+              [disabled]="!form.form.valid">Submit</button>
+      <button id="theoryDetail" type="button" [routerLink]="['/theories', theory._links.self.href.split('/')[4]]"
+              class="btn m-1 btn-outline-primary pull-right">Back</button>
+    </div>
+
+  </fieldset>
+</form>

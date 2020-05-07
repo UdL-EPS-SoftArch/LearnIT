@@ -4,6 +4,8 @@ import {ActivatedRoute} from '@angular/router';
 import {AuthenticationBasicService} from '../../login-basic/authentication-basic.service';
 import {User} from '../../login-basic/user';
 import {QuestionService} from '../question.service';
+import {Level} from '../../level/level';
+import {Topic} from '../../topic/topic';
 
 @Component({
   selector: 'app-question-detail',
@@ -22,6 +24,8 @@ export class QuestionDetailComponent implements OnInit {
     this.questionService.get(id).subscribe(
       question => {
         this.question = question;
+        this.question.getRelation(Level,'levelId').subscribe(level=>this.question.levelId=level);
+        this.question.getRelation(Topic,'topicId').subscribe(topic=>this.question.topicId=topic);
       });
   }
 
