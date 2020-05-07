@@ -32,7 +32,7 @@ const routes: Routes = [
   { path: '404', component: NotFoundComponent},
   { path: '', redirectTo: 'about', pathMatch: 'full' },
   { path: 'levels', component: LevelListComponent, canActivate: [LoggedInGuard],},
-  { path: 'level/:id', component: LevelDetailComponent, canActivate: [LoggedInGuard] },
+  { path: 'levels/:id', component: LevelDetailComponent, canActivate: [LoggedInGuard] },
   { path: 'topics', component: TopicListComponent, canActivate: [LoggedInGuard],}
 ];
 
