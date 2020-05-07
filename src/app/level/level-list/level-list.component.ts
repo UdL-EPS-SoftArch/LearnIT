@@ -1,34 +1,36 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {Level} from '../level';
 import {LevelService} from '../level.service';
-import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-level-list',
-  templateUrl: './level-list.component.html'
+  templateUrl: './level-list.component.html',
+  styleUrls: ['./level-list.component.css']
 })
 
 export class LevelListComponent implements OnInit {
 
-  public levels: Level[] = [];
-  public totalRecipes = 0;
+  @Input()
+  levels: Level [] = [];
+  @Input()
+  routerLink: string | any[];
   selectedLevel: Level;
+  selectedId: number;
+  totalRecipes = 0;
+  id: any;
 
-  constructor(public router: Router, private levelService: LevelService) {
+  constructor(private levelService: LevelService) {
   }
-
   ngOnInit() {
-    this.levelService.getAll().subscribe(
-      (levels: Level[]) => {
-        this.levels = levels;
-        this.totalRecipes = this.levelService.totalElement();
-        console.log(this.levels)
-      });
+    this.levelService.getAll().subscribe((levels: Level[]) => {
+      this.levels = levels;
+      this.totalRecipes = this.levelService.totalElement();
+      console.log(this.levels);
+    })
   }
 
-  onSelect(level: Level): void {
+  onSelect(level) {
+    this.selectedId = level.levelId;
     this.selectedLevel = level;
   }
 }
-
-
