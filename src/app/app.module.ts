@@ -35,10 +35,10 @@ import {QuestionEditComponent} from './question/question-edit/question-edit.comp
 import {LevelService} from './level/level.service';
 import {TopicService} from './topic/topic.service';
 import {TheoryService} from './theory/theory.service';
-import {NewTheoryComponent} from "./theory/theory-add/theory-add.component";
-import {TheoryListComponent} from "./theory/theory-list/theory-list.component";
-import {TheoryDetailComponent} from "./theory/theory-detail/theory-detail.component";
-import {TheoryDeleteComponent} from "./theory/theory-delete/theory-delete.component";
+import {NewTheoryComponent} from './theory/theory-add/theory-add.component';
+import {TheoryListComponent} from './theory/theory-list/theory-list.component';
+import {TheoryDetailComponent} from './theory/theory-detail/theory-detail.component';
+import {TheoryDeleteComponent} from './theory/theory-delete/theory-delete.component';
 import {TheoryEditComponent} from './theory/theory-edit/theory-edit.component';
 
 

@@ -12,12 +12,12 @@ import {NewQuestionComponent} from './question/question-add/question-add.compone
 import {QuestionListComponent} from './question/question-list/question-list.component';
 import {QuestionDeleteComponent} from './question/question-delete/question-delete.component';
 import {QuestionDetailComponent} from './question/question-detail/question-detail.component';
-import {QuestionEditComponent} from "./question/question-edit/question-edit.component"
+import {QuestionEditComponent} from './question/question-edit/question-edit.component'
 import {NewTheoryComponent} from './theory/theory-add/theory-add.component';
 import {TheoryListComponent} from './theory/theory-list/theory-list.component';
 import {TheoryDetailComponent} from './theory/theory-detail/theory-detail.component';
 import {TheoryDeleteComponent} from './theory/theory-delete/theory-delete.component';
-import {TheoryEditComponent} from "./theory/theory-edit/theory-edit.component"
+import {TheoryEditComponent} from './theory/theory-edit/theory-edit.component'
 
 const routes: Routes = [
   { path: 'register', component: StudentRegisterComponent},

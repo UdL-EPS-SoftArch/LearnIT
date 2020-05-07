@@ -6,7 +6,7 @@ import {User} from '../../login-basic/user';
 import {TheoryService} from '../theory.service';
 import {Level} from '../../level/level';
 import {Topic} from '../../topic/topic';
-import {DomSanitizer} from "@angular/platform-browser"; [DomSanitizer]
+import {DomSanitizer} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-theory-detail',
