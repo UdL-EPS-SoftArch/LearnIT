@@ -1,52 +1,9 @@
-
-<style>
-  ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-wrap: wrap;
-}
-
-  a.fill-div {
-    display: block;
-    height: 50%;
-    width: 100%;
-    text-decoration: none;
-  }
-
-  ul li {
-  background: #eee;
-  padding: 1em;
-  margin-right: 10px;
-  width: 30%;
-  height: 210px;
-  margin-bottom: 1em;
-  display: flex;
-  flex-direction: column;
-  border-radius: 25px;
-  font-size: 23px;
-}
-  ul li p {
-  margin: 0;
-}
-  ul li p.name {
-  font-weight: bold;
-  font-size: 1.2rem;
-}
-  ul li p.description {
-  font-size: 0.9rem;
-  flex-grow: 1;
-}
-</style>
-
 <body>
 <h1>Levels</h1>
 <ul *ngIf="levels" class="my-div">
-  <li *ngFor ="let level of levels; let i = index" [class.selected]="level === selectedLevel" (click)="onSelect(level)">
-    <a [routerLink]="['/level', level.uri]" class="fill-div"> Level {{i+1}}: {{ level.name }}</a>
+  <li *ngFor ="let level of levels; let i = index" [class.selected]="level.levelId === selectedId" (click)="onSelect(level)">
+    <a [routerLink]="['/levels', i+1] " class="fill-div"> Level {{i+1}}: {{ level.name }}</a>
     <p class="description">{{ level.description }}</p>
   </li>
 </ul>
-<app-level-detail [level]="selectedLevel"></app-level-detail>
 </body>
