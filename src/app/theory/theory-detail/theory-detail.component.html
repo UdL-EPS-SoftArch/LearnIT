@@ -20,10 +20,22 @@
       </div>
       <div class="col-md-4 p-3">
         <h6 class="card-subtitle text-muted">Text</h6>
-        <p class="card-text">{{theory.text}}</p>
+        <p class="card-text">{{theory.text}} </p>
       </div>
       <div class="col-md-4 p-3">
-        <iframe [src]="theory.contentLink" height="200" width="300"></iframe>
+        <youtube-player
+          *ngIf="theory.contentLink.split('/')[2]=='www.youtube.com'"
+          videoId="{{theory.contentLink.split('=')[1]}}"
+          suggestedQuality="highres"
+          [height]="250"
+          [width]="500"
+          [startSeconds]="'4'"
+          [endSeconds]="8">
+        </youtube-player>
+
+      </div>
+      <div class="col-md-4 p-3">
+        <iframe *ngIf="theory.contentLink.split('/')[2]!='www.youtube.com'"></iframe>
       </div>
 
 

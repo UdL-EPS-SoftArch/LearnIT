@@ -40,6 +40,7 @@ import {TheoryListComponent} from './theory/theory-list/theory-list.component';
 import {TheoryDetailComponent} from './theory/theory-detail/theory-detail.component';
 import {TheoryDeleteComponent} from './theory/theory-delete/theory-delete.component';
 import {TheoryEditComponent} from './theory/theory-edit/theory-edit.component';
+import {YouTubePlayerModule} from '@angular/youtube-player';
 
 
 
@@ -81,7 +82,8 @@ import {TheoryEditComponent} from './theory/theory-edit/theory-edit.component';
     ReactiveFormsModule,
     ToastrModule.forRoot(),
     NoopAnimationsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    YouTubePlayerModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },

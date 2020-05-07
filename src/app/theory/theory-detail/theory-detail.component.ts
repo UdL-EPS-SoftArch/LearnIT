@@ -13,6 +13,7 @@ import {DomSanitizer} from '@angular/platform-browser';
   templateUrl: './theory-detail.component.html'
 })
 export class TheoryDetailComponent implements OnInit {
+
   public theory: Theory = new Theory();
   safeurl;
   constructor(private route: ActivatedRoute,
