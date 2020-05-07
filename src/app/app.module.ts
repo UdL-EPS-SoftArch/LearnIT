@@ -34,6 +34,9 @@ import {QuestionDetailComponent} from './question/question-detail/question-detai
 import {QuestionEditComponent} from './question/question-edit/question-edit.component';
 import {LevelService} from './level/level.service';
 import {TopicService} from './topic/topic.service';
+import {FinalLevelExamService} from './FinalLevelExam/FinalLevelExam.service';
+import {FinalLevelExamListComponent} from './FinalLevelExam/FinalLevelExam-list/FinalLevelExam-list.component';
+
 
 @NgModule({
   declarations: [
@@ -51,7 +54,8 @@ import {TopicService} from './topic/topic.service';
     QuestionListComponent,
     QuestionDeleteComponent,
     QuestionDetailComponent,
-    QuestionEditComponent
+    QuestionEditComponent,
+    FinalLevelExamListComponent
   ],
   imports: [
     BrowserModule,

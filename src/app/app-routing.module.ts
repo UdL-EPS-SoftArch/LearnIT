@@ -13,6 +13,7 @@ import {QuestionListComponent} from './question/question-list/question-list.comp
 import {QuestionDeleteComponent} from './question/question-delete/question-delete.component';
 import {QuestionDetailComponent} from './question/question-detail/question-detail.component';
 import {QuestionEditComponent} from './question/question-edit/question-edit.component';
+import {FinalLevelExamListComponent} from './FinalLevelExam/FinalLevelExam-list/FinalLevelExam-list.component';
 
 const routes: Routes = [
   { path: 'register', component: StudentRegisterComponent},
@@ -28,6 +29,7 @@ const routes: Routes = [
   { path: 'about', component: AboutComponent },
   { path: '404', component: NotFoundComponent},
   { path: '', redirectTo: 'about', pathMatch: 'full' },
+  { path: 'FinalLevelExam', component: FinalLevelExamListComponent, canActivate: [LoggedInGuard],},
 ];
 
 @NgModule({

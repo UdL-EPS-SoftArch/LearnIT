@@ -7,7 +7,7 @@ import {Observable} from 'rxjs';
 export class FinalLevelExamService extends RestService<FinalLevelExam>{
 
   constructor(injector: Injector) {
-    super(FinalLevelExam, 'FinalLevelExam', injector);
+    super(FinalLevelExam, 'FinalLevelExams', injector);
   }
 
   public findById(id: number): Observable<FinalLevelExam[]> {
