@@ -3,6 +3,7 @@ import {Component, OnInit, Input} from '@angular/core';
 import {LevelService} from '../level.service';
 import {Level} from '../level';
 import {Topic} from '../../topic/topic';
+import {TopicService} from '../../topic/topic.service';
 
 @Component(
   {
@@ -14,18 +15,25 @@ import {Topic} from '../../topic/topic';
 
 export class LevelDetailComponent implements OnInit {
 
-  @Input() level: Level;
+  @Input()
+  level: Level;
   topics: Topic[] = [];
   public totalRecipes = 0;
-  constructor(private route: ActivatedRoute, private router: Router, private levelService: LevelService){}
+  constructor(private route: ActivatedRoute, private router: Router, private levelService: LevelService,
+              private topicService: TopicService){}
 
   ngOnInit() {
-    this.levelService.get(this.route.snapshot.paramMap.get('id')).subscribe(
-      (level: Level) => {
+    const id = this.route.snapshot.paramMap.get('id');
+    this.levelService.get(id).subscribe(
+      level => {
         this.level = level;
-        this.totalRecipes = this.levelService.totalElement();
-        console.log(this.level);
-        this.topics = level.topics;
+        this.topics = this.level.topics;
+      });
+    this.topicService.getAll().subscribe(
+      (topics: Topic[]) => {
+        this.topics = topics;
+        this.totalRecipes = this.topicService.totalElement();
+        console.log(this.topics)
       });
   }
 }

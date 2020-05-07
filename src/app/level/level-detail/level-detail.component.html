@@ -1,8 +1,8 @@
-<h2>TOPIC</h2>
-<h3>{{ level.name }}</h3>
-<ul *ngIf="topics">
-  <li *ngFor="let topic of topics; let i = index">
-    <p class="name">Topic {{i}}: {{ topic.name }}</p>
-    <p class="description">{{ topic.description }}</p>
+<h2>TOPICS</h2>
+<ul *ngIf="level">
+  Level {{level.name}}
+  <li *ngFor ="let topic of topics; let i = index">
+      <p class="name">{{ topic.name }}</p>
+      <p class="description">{{ topic.description }}</p>
   </li>
 </ul>
