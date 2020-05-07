@@ -1,5 +1,14 @@
-
 <style>
+  li:before {
+    background:url(..) no-repeat -10px -10px;
+    width: 10px;
+    height: 10px;
+    display:block;
+    position:absolute;
+    content: " ";
+    top:10px;
+    left:10px;
+  }
   ul {
     list-style-type: none;
     margin: 0;
@@ -7,16 +16,18 @@
     display: flex;
     flex-wrap: wrap;
   }
+
   ul li {
     background: #eee;
     padding: 1em;
     margin-right: 10px;
     width: 30%;
-    height: 200px;
+    height: 210px;
     margin-bottom: 1em;
     display: flex;
     flex-direction: column;
     border-radius: 25px;
+    font-size: 23px;
   }
   ul li p {
     margin: 0;
@@ -31,13 +42,13 @@
   }
 </style>
 
+<html>
 <body>
-<h1>Levels</h1>
-<ul *ngIf="topics">
+<ul *ngIf="topics" class="my-div">
   <li *ngFor ="let topic of topics; let i = index">
-    <p class="name"> Level {{i+1}}: {{ topic.name }}</p>
+    <p class="name">{{ topic.name }}</p>
     <p class="description">{{ topic.description }}</p>
-    <a class="site">site</a>
   </li>
 </ul>
 </body>
+</html>

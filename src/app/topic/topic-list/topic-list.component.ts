@@ -1,13 +1,12 @@
 import {Component, OnInit} from '@angular/core';
 import {Topic} from '../topic';
-import {TopicService} from "../topic.service";
-import {Router} from "@angular/router";
+import {TopicService} from '../topic.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-topic-list',
   templateUrl: './topic-list.component.html'
 })
-
 export class TopicListComponent implements OnInit {
 
   public topics: Topic[] = [];
