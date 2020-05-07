@@ -1,8 +1,5 @@
-<h2>TOPICS</h2>
-<ul *ngIf="level">
-  Level {{level.name}}
-  <li *ngFor ="let topic of topics; let i = index">
-      <p class="name">{{ topic.name }}</p>
-      <p class="description">{{ topic.description }}</p>
-  </li>
-</ul>
+<div class="imglist">
+  <ol *ngFor="let topic of topics; let i = index" [class.selected]="topic.topicId === selectedId" (click)="onSelect(topic)">
+    <li><a [routerLink]="['/levels', level.levelId, '/questions', i+1]"><p>{{topic.name}}:</p> {{topic.description}}</a></li>
+  </ol>
+</div>

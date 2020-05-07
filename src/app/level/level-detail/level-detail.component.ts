@@ -17,7 +17,11 @@ export class LevelDetailComponent implements OnInit {
 
   @Input()
   level: Level;
+  @Input()
+  routerLink: string | any[];
   topics: Topic[] = [];
+  selectedTopic: Topic;
+  selectedId: number;
   public totalRecipes = 0;
   constructor(private route: ActivatedRoute, private router: Router, private levelService: LevelService,
               private topicService: TopicService){}
@@ -29,11 +33,16 @@ export class LevelDetailComponent implements OnInit {
         this.level = level;
         this.topics = this.level.topics;
       });
-    this.topicService.getAll().subscribe(
+    this.topicService.findByLevel('levels/' + id).subscribe(
       (topics: Topic[]) => {
         this.topics = topics;
         this.totalRecipes = this.topicService.totalElement();
         console.log(this.topics)
       });
+  }
+
+  onSelect(topic) {
+    this.selectedId = topic.topicId;
+    this.selectedTopic = topic;
   }
 }
