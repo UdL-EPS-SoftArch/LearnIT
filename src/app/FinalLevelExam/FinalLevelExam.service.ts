@@ -16,4 +16,3 @@ export class FinalLevelExamService extends RestService<FinalLevelExam>{
   }
 }
 
-
