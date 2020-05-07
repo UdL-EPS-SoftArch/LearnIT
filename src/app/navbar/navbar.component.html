@@ -25,7 +25,7 @@
            aria-haspopup="true" aria-expanded="false" ngbDropdownToggle >Theory</a>
         <div class="dropdown-menu" aria-labelledby="theoryDropdown" ngbDropdownMenu>
           <a class="dropdown-item" [routerLinkActive]="'theory'"  [routerLinkActiveOptions]="{ exact: true }"
-             [routerLink]="['/newTheory']"><span class="fa fa-user" *ngIf="authenticationService.isRole('TEACHER')"></span> New theory</a>
+             [routerLink]="['/newTheory']"><span class="fa fa-user" ></span> New theory</a>
           <a class="dropdown-item" [routerLinkActive]="'theory'"  [routerLinkActiveOptions]="{ exact: true }"
              [routerLink]="['/theories']"><span class="fa fa-user"></span> Theory list</a>
         </div>
