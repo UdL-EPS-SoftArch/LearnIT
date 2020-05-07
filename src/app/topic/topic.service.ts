@@ -14,4 +14,9 @@ export class TopicService extends RestService<Topic>{
     const options: any = {params: [{key: 'text', value: text}]};
     return this.search('findByNameContaining', options);
   }
+
+  public findByLevel(uri: string): Observable<Topic[]> {
+    const options: any = {params: [{key: 'level', value: uri}]};
+    return this.search('findByLevel', options);
+  }
 }
