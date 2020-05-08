@@ -1,5 +1,5 @@
 
-import { Exam } from './exam/exam';
+import { Exam } from '../exam/exam';
 
 export class FinalLevelExam extends Exam {
 
