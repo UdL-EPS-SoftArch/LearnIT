@@ -3,11 +3,12 @@ import { Exam } from '../exam/exam';
 
 export class FinalLevelExam extends Exam {
 
-  id: any;
+  //id: any;
+ // name:string;
   //contentLink: string;
   //name: string;
-  uri: string;
-  _links: any;
+  //uri: string;
+  //_links: any;
   mark: any;
   level: any;
   topic:string;
