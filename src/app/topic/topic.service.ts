@@ -20,3 +20,4 @@ export class TopicService extends RestService<Topic>{
     return this.search('findByLevel', options);
   }
 }
+

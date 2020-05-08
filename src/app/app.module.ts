@@ -36,6 +36,15 @@ import {LevelService} from './level/level.service';
 import {LevelListComponent} from './level/level-list/level-list.component';
 import {LevelDetailComponent} from './level/level-detail/level-detail.component';
 import {TopicService} from './topic/topic.service';
+import {TheoryService} from './theory/theory.service';
+import {NewTheoryComponent} from './theory/theory-add/theory-add.component';
+import {TheoryListComponent} from './theory/theory-list/theory-list.component';
+import {TheoryDetailComponent} from './theory/theory-detail/theory-detail.component';
+import {TheoryDeleteComponent} from './theory/theory-delete/theory-delete.component';
+import {TheoryEditComponent} from './theory/theory-edit/theory-edit.component';
+import {YouTubePlayerModule} from '@angular/youtube-player';
+
+
 
 @NgModule({
   declarations: [
@@ -56,6 +65,12 @@ import {TopicService} from './topic/topic.service';
     QuestionEditComponent,
     LevelListComponent,
     LevelDetailComponent
+    QuestionEditComponent,
+    NewTheoryComponent,
+    TheoryListComponent,
+    TheoryDetailComponent,
+    TheoryDeleteComponent,
+    TheoryEditComponent
   ],
   imports: [
     BrowserModule,
@@ -72,13 +87,14 @@ import {TopicService} from './topic/topic.service';
     ReactiveFormsModule,
     ToastrModule.forRoot(),
     NoopAnimationsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    YouTubePlayerModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: HttpErrorInterceptor, multi: true },
     { provide: 'ExternalConfigurationService', useClass: ExternalConfigurationService },
-    AuthenticationBasicService, LoggedInGuard, StudentService, QuestionService, LevelService, TopicService
+    AuthenticationBasicService, LoggedInGuard, StudentService, QuestionService, LevelService, TopicService,TheoryService
   ],
   bootstrap: [AppComponent]
 })

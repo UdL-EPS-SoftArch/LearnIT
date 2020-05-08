@@ -1,0 +1,36 @@
+<div class="card">
+  <div class="card-body">
+    <h4 class="card-title text-center" >Theory numéro {{theory._links.self.href.split('/')[4]}}</h4>
+        <h1 class="card-title text-center">{{theory.name}}</h1>
+          <p class="card-text">{{theory.text}} </p>
+    <div *ngIf="theory.contentLink!=''">
+    <div class="text-center">
+          <youtube-player
+            *ngIf="theory.contentLink.split('/')[2]=='www.youtube.com'"
+            videoId="{{theory.contentLink.split('=')[1]}}"
+            suggestedQuality="highres"
+            [height]="250"
+            [width]="550"
+            [startSeconds]="'4'"
+            [endSeconds]="8">
+          </youtube-player>
+    </div>
+    <div class="text-center">
+      <iframe *ngIf="theory.contentLink.split('/')[2]!='www.youtube.com'"  [height]="250"
+              [width]="550" [src]="theory.contentLink"></iframe>
+    </div>
+      </div>
+  </div>
+    </div>
+    <div class="card-footer text-right">
+      <button id="listBtn" type="button" [routerLink]="['/theories']"
+              class="btn m-1 btn-outline-primary">Recipes List
+      </button>
+      <button id="editBtn" type="button"  [routerLink]="['edit']"
+              class="btn m-1 btn-outline-success">Edit
+      </button>
+      <button id="deleteBtn" type="button"  [routerLink]="['delete']"
+              class="btn m-1 btn-outline-danger">Delete
+      </button>
+    </div>
+

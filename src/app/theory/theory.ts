@@ -1,14 +1,18 @@
 import { Resource } from '@lagoshny/ngx-hal-client';
 
-export class Topic extends Resource {
+export class Theory extends Resource {
   id: any;
-  name: string;
-  description: string;
-  questions: any;
-  theory: any;
+  contentLink: string;
   level: any;
+  name: string;
+
   uri: string;
+  text: string;
+
   _links: any;
+  topic: any;
+
+
 
   constructor(values: object = {}) {
     super();

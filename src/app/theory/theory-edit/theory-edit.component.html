@@ -1,0 +1,57 @@
+<form id="theory-edit-form" (ngSubmit)="onSubmit()" #form="ngForm">
+  <fieldset>
+
+    <!-- Theory ID read only -->
+    <div class="form-group">
+      <label class="control-label" for="theoryid">ID</label>
+      <input id="theoryid" name="theoryid" type="text" class="form-control" readonly [ngModel]="theory._links.self.href.split('/')[4]">
+    </div>
+
+    <!-- Change name -->
+    <div class="form-group" [class.was-validated]="name.dirty || name.touched">
+      <label class="control-label" for="name">Name</label>
+      <input id="name" name="name" type="text" class="form-control" required
+             [(ngModel)]="theory.name" #name="ngModel">
+      <span class="invalid-feedback">Name field is required</span>
+    </div>
+
+    <!-- Change text -->
+    <div class="form-group" >
+      <label class="control-label" for="text">Text</label>
+      <textarea id="text" name="text" type="text" class="form-control"
+                [(ngModel)]="theory.text" #text="ngModel"></textarea>
+    </div>
+    <!-- Change url -->
+    <div class="form-group" >
+      <label class="control-label" for="contentLink">Youtube video  link</label>
+      <input id="contentLink" name="contentLink" type="text" class="form-control"
+             [(ngModel)]="theory.contentLink" #contentLink="ngModel">
+    </div>
+
+    <!-- Change level -->
+    <div class="form-group">
+      <label class="control-label" for="level">Level</label>
+      <select id="level" name="level" type="text" class="form-control"
+              [(ngModel)]="theory.level" #level="ngModel">
+        <option *ngFor="let level of levels" [value]="level.uri" >{{level.name}}</option>
+      </select>
+    </div>
+    <!-- Change topic -->
+    <div class="form-group">
+      <label class="control-label" for="topic">Topic:</label>
+      <select id="topic" name="topic" type="text" class="form-control"
+              [(ngModel)]="theory.topic" #topic="ngModel">
+        <option *ngFor="let topic of topics" [value]="topic.uri" >{{topic.name}}</option>
+      </select>
+    </div>
+
+    <!-- Button -->
+    <div class="form-group">
+      <button id="submit" type="submit" class="btn m-1 btn-success pull-right"
+              [disabled]="form.invalid">Submit</button>
+      <button id="theoryDetail" type="button" [routerLink]="['/theories', theory._links.self.href.split('/')[4]]"
+              class="btn m-1 btn-outline-primary pull-right">Back</button>
+    </div>
+
+  </fieldset>
+</form>
