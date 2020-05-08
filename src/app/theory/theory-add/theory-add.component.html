@@ -12,22 +12,20 @@
         <div class="form-group" [class.was-validated]="name.dirty || name.touched">
           <label class="control-label" for="name">Name*</label>
           <input id="name" name="name" type="text" class="form-control"
-                 [(ngModel)]="theory.name" #name="ngModel">
-          <div class="invalid-feedback"></div>
+                 [(ngModel)]="theory.name" #name="ngModel" required>
+          <div class="invalid-feedback">Name field is required</div>
         </div>
         <!-- text input -->
-        <div class="form-group" [class.was-validated]="text.dirty || text.touched">
-          <label class="control-label" for="text">Text*</label>
+        <div class="form-group" >
+          <label class="control-label" for="text">Text</label>
           <textarea id="text" name="text" type="text" class="form-control" rows=3
                     [(ngModel)]="theory.text" #text="ngModel"></textarea>
-          <div class="invalid-feedback"></div>
         </div>
         <!-- url input -->
-        <div class="form-group" [class.was-validated]="contentLink.dirty || contentLink.touched">
+        <div class="form-group" >
           <label class="control-label" for="contentLink">Youtube video  link</label>
           <input id="contentLink" name="contentLink" type="text" class="form-control"
                  [(ngModel)]="theory.contentLink" #contentLink="ngModel">
-          <div class="invalid-feedback"></div>
         </div>
         <!-- topic input -->
         <div class="form-group" [class.was-validated]="topic.dirty || topic.touched">
@@ -36,7 +34,7 @@
                   [(ngModel)]="theory.topic" #topic="ngModel" required>
             <option *ngFor="let topic of topics" [value]="topic.uri" >{{topic.name}}</option>
           </select>
-          <div class="invalid-feedback"></div>
+          <span class="invalid-feedback">Topic field is required</span>
         </div>
         <!-- level input -->
         <div class="form-group" [class.was-validated]="level.dirty || level.touched" >
@@ -45,7 +43,7 @@
                   [(ngModel)]="theory.level" #level="ngModel" required>
             <option *ngFor="let level of levels" [value]="level.uri" >{{level.name}}</option>
           </select>
-          <div class="invalid-feedback"></div>
+          <span class="invalid-feedback">Level field is required</span>
         </div>
 
 
@@ -53,7 +51,7 @@
 
         <!-- Button -->
         <div class="form-group">
-          <button id="submit" type="submit" class="btn m-1 btn-success pull-right" [disabled]="!form.form.valid">Submit</button>
+          <button id="submit" type="submit" class="btn m-1 btn-success pull-right" [disabled]="form.invalid">Submit</button>
         </div>
       </div>
     </fieldset>

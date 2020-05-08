@@ -35,7 +35,7 @@
 
       </div>
       <div class="col-md-4 p-3">
-        <iframe *ngIf="theory.contentLink.split('/')[2]!='www.youtube.com'"></iframe>
+        <iframe *ngIf="theory.contentLink.split('/')[2]!='www.youtube.com'" [src]="theory.contentLink"></iframe>
       </div>
 
 

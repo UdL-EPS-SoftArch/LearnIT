@@ -4,47 +4,47 @@
     <!-- Username read only -->
     <div class="form-group">
       <label class="control-label" for="username">ID</label>
-      <input id="username" name="username" type="text" class="form-control" readonly [ngModel]="question._links.self.href.split('/')[4]">
+      <input id="username" name="username" type="text" class="form-control" readonly [ngModel]="question._links.self.href.split('/')[4]" >
+
     </div>
 
+
     <!-- Change statement -->
-    <div class="form-group" [class.was-validated]="statement.dirty || statement.touched">
+    <div class="form-group" [class.was-validated]="statement.dirty || statement.touched" >
       <label class="control-label" for="statement">Statement</label>
       <input id="statement" name="statement" type="text" class="form-control" required
              [(ngModel)]="question.statement" #statement="ngModel">
-      <div class="invalid-feedback">An e-mail is required</div>
+      <span class="invalid-feedback">Statement field is required</span>
     </div>
 
     <!-- Change answer -->
-    <div class="form-group" [class.was-validated]="answer.dirty || answer.touched">
+    <div class="form-group" [class.was-validated]="answer.dirty || answer.touched" >
       <label class="control-label" for="answer">Answer</label>
       <input id="answer" name="answer" type="text" class="form-control" required
              [(ngModel)]="question.answer" #answer="ngModel">
-      <div class="invalid-feedback">An e-mail is required</div>
+      <span class="invalid-feedback">Answer field is required</span>
     </div>
     <!-- Change level -->
-    <div class="form-group" [class.was-validated]="levelId.dirty || levelId.touched" >
+    <div class="form-group"  >
       <label class="control-label" for="levelId">Level</label>
       <select id="levelId" name="levelId" type="text" class="form-control"
               [(ngModel)]="question.levelId" #levelId="ngModel">
         <option *ngFor="let level of levels" [value]="level.uri" >{{level.name}}</option>
       </select>
-      <div class="invalid-feedback"></div>
     </div>
     <!-- Change topic -->
-    <div class="form-group" [class.was-validated]="topicId.dirty || topicId.touched">
+    <div class="form-group" >
       <label class="control-label" for="topicId">In the topic:</label>
       <select id="topicId" name="topicId" type="text" class="form-control"
               [(ngModel)]="question.topicId" #topicId="ngModel">
         <option *ngFor="let topic of topics" [value]="topic.uri" >{{topic.name}}</option>
       </select>
-      <div class="invalid-feedback"></div>
     </div>
 
     <!-- Button -->
     <div class="form-group">
       <button id="submit" type="submit" class="btn m-1 btn-success pull-right"
-              [disabled]="!form.form.valid">Submit</button>
+              [disabled]="form.invalid">Submit</button>
       <button id="userDetail" type="button" [routerLink]="['/questions', question._links.self.href.split('/')[4]]"
               class="btn m-1 btn-outline-primary pull-right">Back</button>
     </div>
