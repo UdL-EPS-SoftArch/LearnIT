@@ -64,7 +64,7 @@ import {YouTubePlayerModule} from '@angular/youtube-player';
     QuestionDetailComponent,
     QuestionEditComponent,
     LevelListComponent,
-    LevelDetailComponent
+    LevelDetailComponent,
     QuestionEditComponent,
     NewTheoryComponent,
     TheoryListComponent,
