@@ -3,6 +3,7 @@
     <h4 class="card-title text-center" >Theory numéro {{theory._links.self.href.split('/')[4]}}</h4>
         <h1 class="card-title text-center">{{theory.name}}</h1>
           <p class="card-text">{{theory.text}} </p>
+    <div *ngIf="theory.contentLink!=''">
     <div class="text-center">
           <youtube-player
             *ngIf="theory.contentLink.split('/')[2]=='www.youtube.com'"
@@ -19,6 +20,7 @@
               [width]="550" [src]="theory.contentLink"></iframe>
     </div>
       </div>
+  </div>
     </div>
     <div class="card-footer text-right">
       <button id="listBtn" type="button" [routerLink]="['/theories']"

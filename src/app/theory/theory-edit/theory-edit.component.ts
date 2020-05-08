@@ -53,7 +53,7 @@ export class TheoryEditComponent implements OnInit {
 
   onSubmit(): void {
     this.theoryService.patch(this.theory).subscribe(
-      (theory: Theory) => { this.router.navigate(['/theoris', theory._links.self.href.split('/')[4]]);
+      (theory: Theory) => { this.router.navigate(['/theories', theory._links.self.href.split('/')[4]]);
       });
   }
 
