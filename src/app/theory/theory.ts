@@ -7,7 +7,7 @@ export class Theory extends Resource {
   name: string;
 
   uri: string;
-  text: string;
+  text: any;
 
   _links: any;
   topic: any;
