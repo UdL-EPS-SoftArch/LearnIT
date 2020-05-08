@@ -31,6 +31,9 @@
         </div>
 
       </li>
+      <li class="nav-item" [routerLinkActive]="'level'" [routerLinkActiveOptions]="{ exact: true }">
+        <a class="nav-link" [routerLink]="['/levels']">Levels</a>
+      </li>
       <li class="nav-item" *ngIf="isLogged()" ngbDropdown>
         <a class="nav-link dropdown-toggle" id="playDropdown" role="button"
            aria-haspopup="true" aria-expanded="false" ngbDropdownToggle>Students</a>
