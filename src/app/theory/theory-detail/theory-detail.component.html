@@ -27,10 +27,10 @@
               class="btn m-1 btn-outline-primary">Recipes List
       </button>
       <button id="editBtn" type="button"  [routerLink]="['edit']"
-              class="btn m-1 btn-outline-success">Edit
+              class="btn m-1 btn-outline-success" *ngIf="authenticationService.isRole('TEACHER')">Edit
       </button>
       <button id="deleteBtn" type="button"  [routerLink]="['delete']"
-              class="btn m-1 btn-outline-danger">Delete
+              class="btn m-1 btn-outline-danger" *ngIf="authenticationService.isRole('TEACHER')">Delete
       </button>
     </div>
 
