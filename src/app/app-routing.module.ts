@@ -17,7 +17,9 @@ import {NewTheoryComponent} from './theory/theory-add/theory-add.component';
 import {TheoryListComponent} from './theory/theory-list/theory-list.component';
 import {TheoryDetailComponent} from './theory/theory-detail/theory-detail.component';
 import {TheoryDeleteComponent} from './theory/theory-delete/theory-delete.component';
-import {TheoryEditComponent} from './theory/theory-edit/theory-edit.component'
+import {TheoryEditComponent} from './theory/theory-edit/theory-edit.component';
+import {NewFinalLevelExamComponent} from './FinalLevelExam/FinalLevelExam-add/FinalLevelExam-add.component';
+
 
 const routes: Routes = [
   { path: 'register', component: StudentRegisterComponent},
@@ -38,6 +40,7 @@ const routes: Routes = [
   { path: 'about', component: AboutComponent },
   { path: '404', component: NotFoundComponent},
   { path: '', redirectTo: 'about', pathMatch: 'full' },
+  { path: 'newFinalLevelExam', component: NewFinalLevelExamComponent, canActivate: [LoggedInGuard] },
 ];
 
 @NgModule({

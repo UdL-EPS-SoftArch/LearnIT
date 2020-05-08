@@ -1,11 +1,11 @@
 
 import {Injectable, Injector} from '@angular/core';
 import {RestService} from '@lagoshny/ngx-hal-client';
-import {FinalLevelExam} from './FinalLevelExam';
+import {Exam} from './Exam';
 import {Observable} from 'rxjs';
 
 @Injectable()
-export class ExamService extends RestService<Exam>{
+export class FinalLevelExamService extends RestService<Exam>{
 
   constructor(injector: Injector) {
     super(FinalLevelExam, 'FinalLevelExams', injector);
