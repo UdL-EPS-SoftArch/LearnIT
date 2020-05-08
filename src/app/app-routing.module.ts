@@ -17,6 +17,10 @@ import {QuestionDeleteComponent} from './question/question-delete/question-delet
 import {QuestionDetailComponent} from './question/question-detail/question-detail.component';
 import {QuestionEditComponent} from './question/question-edit/question-edit.component'
 
+import {QuestionEditComponent} from './question/question-edit/question-edit.component';
+import {LevelListComponent} from './level/level-list/level-list.component';
+import {LevelDetailComponent} from './level/level-detail/level-detail.component';
+
 import {NewTheoryComponent} from './theory/theory-add/theory-add.component';
 import {TheoryListComponent} from './theory/theory-list/theory-list.component';
 import {TheoryDetailComponent} from './theory/theory-detail/theory-detail.component';
@@ -61,10 +65,12 @@ const routes: Routes = [
   { path: 'about', component: AboutComponent },
   { path: '404', component: NotFoundComponent},
   { path: '', redirectTo: 'about', pathMatch: 'full' },
+  { path: 'levels', component: LevelListComponent, canActivate: [LoggedInGuard],},
+  { path: 'levels/:id', component: LevelDetailComponent, canActivate: [LoggedInGuard] },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes), RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
