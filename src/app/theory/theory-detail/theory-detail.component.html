@@ -1,50 +1,25 @@
-<div class="card mb-4">
-  <div class="card-block">
-    <h4 class="card-title col-md-12 p-3">Theory numéro {{theory._links.self.href.split('/')[4]}}</h4>
-    <div class="card-body row m-1">
-      <div class="col-md-4 p-3">
-        <h6 class="card-subtitle text-muted">Id</h6>
-        <p class="card-text">{{theory._links.self.href.split('/')[4]}}</p>
-      </div>
-      <div class="col-md-4 p-3">
-        <h6 class="card-subtitle text-muted">Name</h6>
-        <p class="card-text">{{theory.name}}</p>
-      </div>
-      <div class="col-md-4 p-3">
-        <h6 class="card-subtitle text-muted">level</h6>
-        <p class="card-text">{{theory.level.name}}</p>
-      </div>
-      <div class="col-md-4 p-3">
-        <h6 class="card-subtitle text-muted">topic</h6>
-        <p class="card-text">{{theory.topic.name}}</p>
-      </div>
-      <div class="col-md-4 p-3">
-        <h6 class="card-subtitle text-muted">Text</h6>
-        <p class="card-text">{{theory.text}} </p>
-      </div>
-      <div class="col-md-4 p-3">
-        <youtube-player
-          *ngIf="theory.contentLink.split('/')[2]=='www.youtube.com'"
-          videoId="{{theory.contentLink.split('=')[1]}}"
-          suggestedQuality="highres"
-          [height]="250"
-          [width]="500"
-          [startSeconds]="'4'"
-          [endSeconds]="8">
-        </youtube-player>
-
-      </div>
-      <div class="col-md-4 p-3">
-        <iframe *ngIf="theory.contentLink.split('/')[2]!='www.youtube.com'" [src]="theory.contentLink"></iframe>
-      </div>
-
-
-
-
+<div class="card">
+  <div class="card-body">
+    <h4 class="card-title text-center" >Theory numéro {{theory._links.self.href.split('/')[4]}}</h4>
+        <h1 class="card-title text-center">{{theory.name}}</h1>
+          <p class="card-text">{{theory.text}} </p>
+    <div class="text-center">
+          <youtube-player
+            *ngIf="theory.contentLink.split('/')[2]=='www.youtube.com'"
+            videoId="{{theory.contentLink.split('=')[1]}}"
+            suggestedQuality="highres"
+            [height]="250"
+            [width]="550"
+            [startSeconds]="'4'"
+            [endSeconds]="8">
+          </youtube-player>
     </div>
-
-
-
+    <div class="text-center">
+      <iframe *ngIf="theory.contentLink.split('/')[2]!='www.youtube.com'"  [height]="250"
+              [width]="550" [src]="theory.contentLink"></iframe>
+    </div>
+      </div>
+    </div>
     <div class="card-footer text-right">
       <button id="listBtn" type="button" [routerLink]="['/theories']"
               class="btn m-1 btn-outline-primary">Recipes List
@@ -56,5 +31,4 @@
               class="btn m-1 btn-outline-danger">Delete
       </button>
     </div>
-  </div>
-</div>
+

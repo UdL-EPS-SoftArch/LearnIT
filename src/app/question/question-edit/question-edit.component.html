@@ -38,6 +38,7 @@
       <select id="topicId" name="topicId" type="text" class="form-control"
               [(ngModel)]="question.topicId" #topicId="ngModel">
         <option *ngFor="let topic of topics" [value]="topic.uri" >{{topic.name}}</option>
+
       </select>
     </div>
 

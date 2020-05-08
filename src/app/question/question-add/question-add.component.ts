@@ -34,6 +34,7 @@ export class NewQuestionComponent implements OnInit {
 
   ngOnInit(): void {
     this.question = new Question();
+  this.question.getRelation(Topic,'topicId').subscribe(topic=>this.question.topicId=topic);
     this.levelService.getAll({sort: this.sorting}).subscribe(
       (levels: Level[]) => {
         this.levels = levels;
@@ -43,7 +44,7 @@ export class NewQuestionComponent implements OnInit {
     this.topicService.getAll({sort: this.sorting}).subscribe(
       (topics: Topic[]) => {
         this.topics = topics;
-        this.totalRecipes = this.levelService.totalElement();
+        this.totalRecipes = this.topicService.totalElement();
         console.log(this.topics)
       });
   }

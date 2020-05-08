@@ -37,6 +37,7 @@ export class QuestionEditComponent implements OnInit {
         this.question.getRelation(Level,'levelId').subscribe(level=>this.question.levelId=level);
         this.question.getRelation(Topic,'topicId').subscribe(topic=>this.question.topicId=topic);
       });
+
     this.levelService.getAll({sort: this.sorting}).subscribe(
       (levels: Level[]) => {
         this.levels = levels;
@@ -46,7 +47,7 @@ export class QuestionEditComponent implements OnInit {
     this.topicService.getAll({sort: this.sorting}).subscribe(
       (topics: Topic[]) => {
         this.topics = topics;
-        this.totalRecipes = this.levelService.totalElement();
+        this.totalRecipes = this.topicService.totalElement();
         console.log(this.topics)
       });
   }

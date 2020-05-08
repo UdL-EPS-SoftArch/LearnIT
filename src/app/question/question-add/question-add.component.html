@@ -31,6 +31,7 @@
                   [(ngModel)]="question.levelId" #levelId="ngModel" required>
             <option *ngFor="let level of levels" [value]="level.uri" >{{level.name}}</option>
           </select>
+
           <span class="invalid-feedback" >Level field is required</span>
         </div>
 
@@ -38,8 +39,8 @@
         <div class="form-group" [class.was-validated]="topicId.dirty || topicId.touched" >
           <label class="control-label" for="topicId">In the topic:*</label>
           <select id="topicId" name="topicId" type="text" class="form-control"
-                  [(ngModel)]="question.topicId" #topicId="ngModel" required>
-            <option *ngFor="let topic of topics" [value]="topic.uri" >{{topic.name}}</option>
+                  [(ngModel)]="question.topicId" #topicId="ngModel"  required>
+            <option   *ngFor="let topic of topics" [value]="topic.uri">{{topic.name}}</option>
           </select>
           <span class="invalid-feedback" >Topic field is required</span>
         </div>

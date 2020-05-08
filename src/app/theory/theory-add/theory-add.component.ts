@@ -40,7 +40,7 @@ export class NewTheoryComponent implements OnInit {
     this.topicService.getAll({sort: this.sorting}).subscribe(
       (topics: Topic[]) => {
         this.topics = topics;
-        this.totalRecipes = this.levelService.totalElement();
+        this.totalRecipes = this.topicService.totalElement();
         console.log(this.topics)
       });
   }
