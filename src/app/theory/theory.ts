@@ -1,12 +1,18 @@
 import { Resource } from '@lagoshny/ngx-hal-client';
 
-export class Level extends Resource {
+export class Theory extends Resource {
   id: any;
+  contentLink: string;
+  level: any;
   name: string;
-  description: string;
-  topics: any;
+
   uri: string;
+  text: string;
+
   _links: any;
+  topic: any;
+
+
 
   constructor(values: object = {}) {
     super();

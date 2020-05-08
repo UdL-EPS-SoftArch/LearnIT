@@ -1,18 +1,17 @@
 import {Injectable, Injector} from '@angular/core';
 import {RestService} from '@lagoshny/ngx-hal-client';
-import {Topic} from './topic';
+import {Theory} from './theory';
 import {Observable} from 'rxjs';
 
 @Injectable()
-export class TopicService extends RestService<Topic>{
+export class TheoryService extends RestService<Theory>{
 
   constructor(injector: Injector) {
-    super(Topic, 'topics', injector);
+    super(Theory, 'theories', injector);
   }
 
-  public findByNameContaining(text: string): Observable<Topic[]> {
+  public findByStatementContaining(text: string): Observable<Theory[]> {
     const options: any = {params: [{key: 'text', value: text}]};
-    return this.search('findByNameContaining', options);
+    return this.search('findByStatementContaining', options);
   }
 }
-

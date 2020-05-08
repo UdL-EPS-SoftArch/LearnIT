@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {Question} from '../question';
+import {Theory} from '../theory';
 import {AuthenticationBasicService} from '../../login-basic/authentication-basic.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {User} from '../../login-basic/user';
-import {QuestionService} from '../question.service';
+import {TheoryService} from '../theory.service';
 import {Level} from '../../level/level';
 import {LevelService} from '../../level/level.service';
 import {Sort} from '@lagoshny/ngx-hal-client';
@@ -11,11 +11,11 @@ import {Topic} from '../../topic/topic';
 import {TopicService} from '../../topic/topic.service';
 
 @Component({
-  selector: 'app-question-edit',
-  templateUrl: './question-edit.component.html',
+  selector: 'app-theory-edit',
+  templateUrl: './theory-edit.component.html',
 })
-export class QuestionEditComponent implements OnInit {
-  public question: Question = new Question();
+export class TheoryEditComponent implements OnInit {
+  public theory: Theory = new Theory();
   public levels: Level[] = [];
   public topics: Topic[] = [];
   public totalRecipes = 0;
@@ -23,7 +23,7 @@ export class QuestionEditComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
               private router: Router,
-              private questionService: QuestionService,
+              private theoryService: TheoryService,
               private authenticationService: AuthenticationBasicService,
               private levelService: LevelService,
               private topicService: TopicService) {
@@ -31,13 +31,12 @@ export class QuestionEditComponent implements OnInit {
 
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get('id');
-    this.questionService.get(id).subscribe(
-      (question: Question) => {
-        this.question = question
-        this.question.getRelation(Level,'levelId').subscribe(level=>this.question.levelId=level);
-        this.question.getRelation(Topic,'topicId').subscribe(topic=>this.question.topicId=topic);
+    this.theoryService.get(id).subscribe(
+      (theory: Theory) => {
+        this.theory = theory
+        this.theory.getRelation(Level,'level').subscribe(level=>this.theory.level=level);
+        this.theory.getRelation(Topic,'topic').subscribe(topic=>this.theory.topic=topic);
       });
-
     this.levelService.getAll({sort: this.sorting}).subscribe(
       (levels: Level[]) => {
         this.levels = levels;
@@ -53,8 +52,8 @@ export class QuestionEditComponent implements OnInit {
   }
 
   onSubmit(): void {
-    this.questionService.patch(this.question).subscribe(
-      (question: Question) => { this.router.navigate(['/questions', question._links.self.href.split('/')[4]]);
+    this.theoryService.patch(this.theory).subscribe(
+      (theory: Theory) => { this.router.navigate(['/theories', theory._links.self.href.split('/')[4]]);
       });
   }
 
