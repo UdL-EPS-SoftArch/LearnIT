@@ -4,6 +4,7 @@ import {LevelService} from '../level.service';
 import {Level} from '../level';
 import {Topic} from '../../topic/topic';
 import {TopicService} from '../../topic/topic.service';
+import {AuthenticationBasicService} from '../../login-basic/authentication-basic.service';
 
 @Component(
   {
@@ -24,7 +25,7 @@ export class LevelDetailComponent implements OnInit {
   selectedId: number;
   public totalRecipes = 0;
   constructor(private route: ActivatedRoute, private router: Router, private levelService: LevelService,
-              private topicService: TopicService){}
+              private topicService: TopicService, private authenticationService: AuthenticationBasicService){}
 
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get('id');
@@ -40,9 +41,11 @@ export class LevelDetailComponent implements OnInit {
         console.log(this.topics)
       });
   }
-
   onSelect(topic) {
     this.selectedId = topic.topicId;
     this.selectedTopic = topic;
+  }
+  isRole(role: string): boolean {
+    return this.authenticationService.isRole(role);
   }
 }

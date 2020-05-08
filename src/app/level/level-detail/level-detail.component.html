@@ -1,5 +1,27 @@
-<div class="imglist">
-  <ol *ngFor="let topic of topics" [class.selected]="topic.topicId === selectedId" (click)="onSelect(topic)">
-    <li><a><p>{{topic.name}}:</p> {{topic.description}}</a></li>
-  </ol>
+<div class="imglist" *ngIf="level">
+    <h1>Level {{level.id}}: {{level.name}}</h1>
+  <img src="https://cdn.dribbble.com/users/449007/screenshots/9006351/media/7fae26bea19390a7cea7cfc104aaac87.jpg"
+       height="600" width="600" align="right" alt="Template img">
+    <ol *ngFor="let topic of topics" [class.selected]="topic.topicId === selectedId" (click)="onSelect(topic)">
+      <li>
+        <p>
+          {{topic.name}}:
+        </p>
+          {{topic.description}}
+        <p *ngIf="isRole('Teacher')">
+          <button [routerLink]="['/newQuestion']" class="btn m-1 btn-outline-success" id="createTopicsBtn"
+                  type="button">Create questions for this topic</button>
+        </p>
+
+        <p *ngIf="isRole('Student')">
+          <button [routerLink]="['/questions']" class="btn m-1 btn-outline-primary" id="goToTopicBtn"
+                  type="button">See questions for this topic</button>
+        </p>
+      </li>
+    </ol>
+    <p>
+      <br>
+      <button id="backBtn" type="button" class="btn m-1 btn-outline-secondary" [routerLink]="['/levels'] ">Back</button>
+    </p>
 </div>
+
