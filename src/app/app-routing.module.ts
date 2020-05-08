@@ -14,7 +14,6 @@ import {QuestionDeleteComponent} from './question/question-delete/question-delet
 import {QuestionDetailComponent} from './question/question-detail/question-detail.component';
 import {QuestionEditComponent} from './question/question-edit/question-edit.component';
 import {LevelListComponent} from './level/level-list/level-list.component';
-import {TopicListComponent} from './topic/topic-list/topic-list.component';
 import {LevelDetailComponent} from './level/level-detail/level-detail.component';
 
 const routes: Routes = [
@@ -33,7 +32,6 @@ const routes: Routes = [
   { path: '', redirectTo: 'about', pathMatch: 'full' },
   { path: 'levels', component: LevelListComponent, canActivate: [LoggedInGuard],},
   { path: 'levels/:id', component: LevelDetailComponent, canActivate: [LoggedInGuard] },
-  { path: 'topics', component: TopicListComponent, canActivate: [LoggedInGuard],}
 ];
 
 @NgModule({

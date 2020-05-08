@@ -36,7 +36,6 @@ import {LevelService} from './level/level.service';
 import {LevelListComponent} from './level/level-list/level-list.component';
 import {LevelDetailComponent} from './level/level-detail/level-detail.component';
 import {TopicService} from './topic/topic.service';
-import {TopicListComponent} from './topic/topic-list/topic-list.component';
 
 @NgModule({
   declarations: [
@@ -56,8 +55,7 @@ import {TopicListComponent} from './topic/topic-list/topic-list.component';
     QuestionDetailComponent,
     QuestionEditComponent,
     LevelListComponent,
-    LevelDetailComponent,
-    TopicListComponent
+    LevelDetailComponent
   ],
   imports: [
     BrowserModule,
