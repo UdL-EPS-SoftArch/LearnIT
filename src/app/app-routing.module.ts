@@ -14,6 +14,7 @@ import {QuestionDeleteComponent} from './question/question-delete/question-delet
 import {QuestionDetailComponent} from './question/question-detail/question-detail.component';
 import {QuestionEditComponent} from './question/question-edit/question-edit.component';
 import {FinalLevelExamListComponent} from './FinalLevelExam/FinalLevelExam-list/FinalLevelExam-list.component';
+import {FinalLevelExamDetailComponent} from './FinalLevelExam/FinalLevelExam-detail/FinalLevelExam-detail.component';
 
 const routes: Routes = [
   { path: 'register', component: StudentRegisterComponent},
@@ -30,6 +31,7 @@ const routes: Routes = [
   { path: '404', component: NotFoundComponent},
   { path: '', redirectTo: 'about', pathMatch: 'full' },
   { path: 'FinalLevelExam', component: FinalLevelExamListComponent, canActivate: [LoggedInGuard],},
+  { path: 'FinalLevelExams/:id', component: FinalLevelExamDetailComponent, canActivate: [LoggedInGuard] },
 ];
 
 @NgModule({

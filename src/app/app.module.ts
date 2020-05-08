@@ -36,6 +36,7 @@ import {LevelService} from './level/level.service';
 import {TopicService} from './topic/topic.service';
 import {FinalLevelExamService} from './FinalLevelExam/FinalLevelExam.service';
 import {FinalLevelExamListComponent} from './FinalLevelExam/FinalLevelExam-list/FinalLevelExam-list.component';
+import {FinalLevelExamDetailComponent} from './FinalLevelExam/FinalLevelExam-detail/FinalLevelExam-detail.component';
 
 
 @NgModule({
@@ -55,7 +56,8 @@ import {FinalLevelExamListComponent} from './FinalLevelExam/FinalLevelExam-list/
     QuestionDeleteComponent,
     QuestionDetailComponent,
     QuestionEditComponent,
-    FinalLevelExamListComponent
+    FinalLevelExamListComponent,
+    FinalLevelExamDetailComponent
   ],
   imports: [
     BrowserModule,
