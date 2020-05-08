@@ -17,7 +17,6 @@ import {QuestionDeleteComponent} from './question/question-delete/question-delet
 import {QuestionDetailComponent} from './question/question-detail/question-detail.component';
 import {QuestionEditComponent} from './question/question-edit/question-edit.component'
 
-import {QuestionEditComponent} from './question/question-edit/question-edit.component';
 import {LevelListComponent} from './level/level-list/level-list.component';
 import {LevelDetailComponent} from './level/level-detail/level-detail.component';
 

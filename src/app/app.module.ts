@@ -74,7 +74,6 @@ import { ExamListComponent } from './exam/exam-list/exam-list.component';
     QuestionEditComponent,
     LevelListComponent,
     LevelDetailComponent,
-    QuestionEditComponent,
     NewTheoryComponent,
     TheoryListComponent,
     TheoryDetailComponent,
