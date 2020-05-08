@@ -15,9 +15,9 @@
            aria-haspopup="true" aria-expanded="false" ngbDropdownToggle *ngIf="authenticationService.isRole('TEACHER')">Questions</a>
         <div class="dropdown-menu" aria-labelledby="questionDropdown" ngbDropdownMenu>
           <a  class="dropdown-item" [routerLinkActive]="'question'" [routerLinkActiveOptions]="{ exact: true }"
-             [routerLink]="['/questions']"><span class="fa fa-user"></span> Questions List</a>
+              [routerLink]="['/questions']"><span class="fa fa-question"></span> Questions List</a>
           <a class="dropdown-item" [routerLinkActive]="'question'"  [routerLinkActiveOptions]="{ exact: true }"
-             [routerLink]="['/newQuestion']"><span class="fa fa-user"></span> New question</a>
+             [routerLink]="['/newQuestion']"><span class="fa fa-question"></span> New question</a>
         </div>
       </li>
       <li class="nav-item" *ngIf="isLogged()" ngbDropdown>
@@ -25,12 +25,17 @@
            aria-haspopup="true" aria-expanded="false" ngbDropdownToggle >Theory</a>
         <div class="dropdown-menu" aria-labelledby="theoryDropdown" ngbDropdownMenu>
           <a class="dropdown-item" [routerLinkActive]="'theory'"  [routerLinkActiveOptions]="{ exact: true }"
-             [routerLink]="['/newTheory']"><span class="fa fa-user" ></span> New theory</a>
+             [routerLink]="['/newTheory']"><span class="fas fa-book" ></span> New theory</a>
           <a class="dropdown-item" [routerLinkActive]="'theory'"  [routerLinkActiveOptions]="{ exact: true }"
-             [routerLink]="['/theories']"><span class="fa fa-user"></span> Theory list</a>
+             [routerLink]="['/theories']"><span class="fas fa-book"></span> Theory list</a>
         </div>
 
       </li>
+
+      <li class="nav-item" [routerLinkActive]="'level'" [routerLinkActiveOptions]="{ exact: true }">
+        <a class="nav-link" [routerLink]="['/levels']">Levels</a>
+      </li>
+
       <li class="nav-item" *ngIf="isLogged()" ngbDropdown>
         <a class="nav-link dropdown-toggle" id="playDropdown" role="button"
            aria-haspopup="true" aria-expanded="false" ngbDropdownToggle>Students</a>
@@ -39,6 +44,17 @@
              [routerLink]="['/students']"><span class="fa fa-user"></span> List</a>
         </div>
       </li>
+
+      <li class="nav-item" *ngIf="isLogged()" ngbDropdown>
+        <a class="nav-link dropdown-toggle" id="FinalLevelExamDropdown" role="button"
+           aria-haspopup="true" aria-expanded="false" ngbDropdownToggle >Final Level Exam</a>
+        <div class="dropdown-menu" aria-labelledby="examDropdown" ngbDropdownMenu>
+          <a class="dropdown-item" [routerLinkActive]="'FinalLevelExam'"  [routerLinkActiveOptions]="{ exact: true }"
+             [routerLink]="['/newFinalLevelExam']"><span class="fa fa-file" ></span> New Final Level Exam</a>
+          <a class="dropdown-item" [routerLinkActive]="'FinalLevelExam'"  [routerLinkActiveOptions]="{ exact: true }"
+             [routerLink]="['/navbar.component.htmlFinalLevelExam']"><span class="fa fa-file"></span> Final Level Exam list</a>
+        </div>
+
     </ul>
     <ul class="navbar-nav" app-login-navbar></ul>
   </div>

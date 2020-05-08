@@ -15,8 +15,7 @@ export class FinalLevelExam extends Exam {
   //topic: any;
   //student: Student;
   //finished: boolean;
-  question: any;
-  nbOfQuestions: any;
+ // question: any;
   //correctAnswers: number;
   //incorrectAnswers: number;
 
