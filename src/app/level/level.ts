@@ -1,7 +1,7 @@
 import { Resource } from '@lagoshny/ngx-hal-client';
 
 export class Level extends Resource {
-  levelId: any;
+  id: any;
   name: string;
   description: string;
   topics: any;

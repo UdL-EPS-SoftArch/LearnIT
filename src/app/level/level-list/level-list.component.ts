@@ -30,7 +30,7 @@ export class LevelListComponent implements OnInit {
   }
 
   onSelect(level) {
-    this.selectedId = level.levelId;
+    this.selectedId = level.id;
     this.selectedLevel = level;
   }
 }

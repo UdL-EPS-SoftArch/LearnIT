@@ -1,5 +1,5 @@
 <div class="imglist">
-  <ol *ngFor="let topic of topics; let i = index" [class.selected]="topic.topicId === selectedId" (click)="onSelect(topic)">
-    <li><a [routerLink]="['/levels', level.levelId, '/questions', i+1]"><p>{{topic.name}}:</p> {{topic.description}}</a></li>
+  <ol *ngFor="let topic of topics" [class.selected]="topic.topicId === selectedId" (click)="onSelect(topic)">
+    <li><a><p>{{topic.name}}:</p> {{topic.description}}</a></li>
   </ol>
 </div>
