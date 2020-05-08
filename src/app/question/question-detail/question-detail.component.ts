@@ -14,9 +14,9 @@ import {Topic} from '../../topic/topic';
 export class QuestionDetailComponent implements OnInit {
   public question: Question = new Question();
 
-  constructor(private route: ActivatedRoute,
-              private questionService: QuestionService,
-              private authenticationService: AuthenticationBasicService) {
+  constructor(public route: ActivatedRoute,
+              public questionService: QuestionService,
+              public authenticationService: AuthenticationBasicService) {
   }
 
   ngOnInit() {
