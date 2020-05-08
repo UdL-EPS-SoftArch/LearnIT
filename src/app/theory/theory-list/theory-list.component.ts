@@ -1,3 +1,4 @@
+
 import { Component, OnInit } from '@angular/core';
 import {Theory} from '../theory';
 import {Sort} from '@lagoshny/ngx-hal-client';

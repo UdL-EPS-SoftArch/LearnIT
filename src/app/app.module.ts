@@ -42,6 +42,15 @@ import {TheoryDeleteComponent} from './theory/theory-delete/theory-delete.compon
 import {TheoryEditComponent} from './theory/theory-edit/theory-edit.component';
 import {YouTubePlayerModule} from '@angular/youtube-player';
 
+import { ExamService } from './exam/exam.service';
+
+import { NewExamComponent } from './exam/exam-add/exam-add.component';
+import { ExamListComponent } from './exam/exam-list/exam-list.component';
+//import {TheoryDetailComponent} from './theory/theory-detail/theory-detail.component';
+//import {TheoryDeleteComponent} from './theory/theory-delete/theory-delete.component';
+//import {TheoryEditComponent} from './theory/theory-edit/theory-edit.component';
+//import {YouTubePlayerModule} from '@angular/youtube-player';
+
 
 
 @NgModule({
@@ -65,7 +74,10 @@ import {YouTubePlayerModule} from '@angular/youtube-player';
     TheoryListComponent,
     TheoryDetailComponent,
     TheoryDeleteComponent,
-    TheoryEditComponent
+    TheoryEditComponent,
+
+    NewExamComponent,
+    ExamListComponent
   ],
   imports: [
     BrowserModule,
@@ -89,7 +101,7 @@ import {YouTubePlayerModule} from '@angular/youtube-player';
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: HttpErrorInterceptor, multi: true },
     { provide: 'ExternalConfigurationService', useClass: ExternalConfigurationService },
-    AuthenticationBasicService, LoggedInGuard, StudentService, QuestionService, LevelService, TopicService,TheoryService
+    AuthenticationBasicService, LoggedInGuard, StudentService, QuestionService, LevelService, TopicService,TheoryService, ExamService
   ],
   bootstrap: [AppComponent]
 })

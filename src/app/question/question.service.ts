@@ -11,7 +11,14 @@ export class QuestionService extends RestService<Question>{
   }
 
   public findByStatementContaining(text: string): Observable<Question[]> {
-    const options: any = {params: [{key: 'text', value: text}]};
+    const options: any = {
+      params: [
+        {
+          key: 'text',
+          value: text
+        }
+      ]
+    };
     return this.search('findByStatementContaining', options);
   }
 }
