@@ -19,7 +19,7 @@ import {TopicService} from '../../topic/topic.service';
 
 export class NewFinalLevelExamComponent implements OnInit {
 
-  public FinalLevelExam: FinalLevelExam;
+  public finalLevelExam: FinalLevelExam;
   public name: string = '';
   public levels: Level[] = [];
   public topics: Topic[] = [];
@@ -30,14 +30,14 @@ export class NewFinalLevelExamComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private FinalLevelExamService: FinalLevelExamService,
+    private finalLevelExamService: FinalLevelExamService,
     private levelService: LevelService,
     private topicService: TopicService,
     private questionService: QuestionService) {
   }
 
   ngOnInit(): void {
-    this.FinalLevelExam = new FinalLevelExam();
+    this.finalLevelExam = new FinalLevelExam();
     this.questionService.getAll({sort: this.sorting}).subscribe(
       (questions: Question[]) => {
         this.questions = questions;
@@ -61,9 +61,9 @@ export class NewFinalLevelExamComponent implements OnInit {
 
   onSubmit(): void {
     //this.FinalLevelExam.nbOfQuestions = this.number_of_questions;
-    console.log(this.FinalLevelExam);
-
-    this.FinalLevelExamService.create(this.FinalLevelExam).subscribe(
-      (FinalLevelExam: FinalLevelExam) => this.router.navigate(['FinalLevelExams']));
+    console.log(this.finalLevelExam);
+    console.log(this.finalLevelExamService);
+    this.finalLevelExamService.create(this.finalLevelExam).subscribe(
+      (FinalLevelExam: FinalLevelExam) => this.router.navigate(['finalLevelExams']));
   }
 }

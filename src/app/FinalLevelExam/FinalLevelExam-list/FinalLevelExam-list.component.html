@@ -1,0 +1,16 @@
+<div class="card mb-1" *ngFor="let FinalLevelExam of finalLevelExam">
+  <div class="card-block row m-1 col-12">
+    <div class="card-body row align-items-center">
+      <div class="col-6 mt-1">
+        <h6 class="card-subtitle text-muted">Name</h6>
+        <a class="card-text" [routerLink]="['/FinalLevelExam', FinalLevelExam._links.self.href.split('/')[4]]">{{FinalLevelExam.name}}</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ngb-pagination class="d-flex justify-content-center"
+                [(page)]="page" [pageSize]="pageSize" [collectionSize]="totalRecipes"
+                (pageChange)="changePage()"></ngb-pagination>
+
+

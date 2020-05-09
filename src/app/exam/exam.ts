@@ -1,26 +1,29 @@
 
-import { Exam } from '../exam/exam';
+import { Resource } from '@lagoshny/ngx-hal-client';
 
-export class FinalLevelExam extends Exam {
+export class Exam extends Resource {
 
   id: any;
- // name:string;
   //contentLink: string;
-  name: string;
-  //uri: string;
+  //name: string;
+  uri: string;
   _links: any;
-  mark: any;
-  level: any;
-  topic:string;
   //topic: any;
   //student: Student;
   //finished: boolean;
- // question: any;
+  question: any;
+  nbOfQuestions: any;
   //correctAnswers: number;
   //incorrectAnswers: number;
 
   constructor(values: object = {}) {
     super();
     Object.assign(this as any, values);
+
   }
 }
+
+
+
+
+

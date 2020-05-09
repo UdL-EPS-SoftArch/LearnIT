@@ -43,7 +43,8 @@ import {TheoryEditComponent} from './theory/theory-edit/theory-edit.component';
 import {YouTubePlayerModule} from '@angular/youtube-player';
 import {FinalLevelExamService} from './FinalLevelExam/FinalLevelExam.service';
 import {NewFinalLevelExamComponent} from './FinalLevelExam/FinalLevelExam-add/FinalLevelExam-add.component';
-
+import {FinalLevelExamListComponent} from './FinalLevelExam/FinalLevelExam-list/FinalLevelExam-list.component';
+import {ExamService} from './exam/exam.service';
 
 
 @NgModule({
@@ -68,7 +69,8 @@ import {NewFinalLevelExamComponent} from './FinalLevelExam/FinalLevelExam-add/Fi
     TheoryDetailComponent,
     TheoryDeleteComponent,
     TheoryEditComponent,
-    NewFinalLevelExamComponent
+    NewFinalLevelExamComponent,
+    FinalLevelExamListComponent
   ],
   imports: [
     BrowserModule,
@@ -92,7 +94,7 @@ import {NewFinalLevelExamComponent} from './FinalLevelExam/FinalLevelExam-add/Fi
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: HttpErrorInterceptor, multi: true },
     { provide: 'ExternalConfigurationService', useClass: ExternalConfigurationService },
-    AuthenticationBasicService, LoggedInGuard, StudentService, QuestionService, LevelService, FinalLevelExamService, TopicService,TheoryService
+    AuthenticationBasicService, LoggedInGuard, StudentService, QuestionService, LevelService, ExamService,FinalLevelExamService, TopicService,TheoryService
   ],
   bootstrap: [AppComponent]
 })
