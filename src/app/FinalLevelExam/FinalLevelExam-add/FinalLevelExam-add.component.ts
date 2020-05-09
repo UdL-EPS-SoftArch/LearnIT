@@ -30,7 +30,7 @@ export class NewFinalLevelExamComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private finalLevelExamService: FinalLevelExamService,
+    private NewFinalLevelExamService: FinalLevelExamService,
     private levelService: LevelService,
     private topicService: TopicService,
     private questionService: QuestionService) {
@@ -62,8 +62,8 @@ export class NewFinalLevelExamComponent implements OnInit {
   onSubmit(): void {
     //this.FinalLevelExam.nbOfQuestions = this.number_of_questions;
     console.log(this.finalLevelExam);
-    console.log(this.finalLevelExamService);
-    this.finalLevelExamService.create(this.finalLevelExam).subscribe(
-      (FinalLevelExam: FinalLevelExam) => this.router.navigate(['finalLevelExams']));
+
+    this.NewFinalLevelExamService.create(this.finalLevelExam).subscribe(
+      (FinalLevelExam: FinalLevelExam) => this.router.navigate(['FinalLevelExams']));
   }
 }

@@ -11,7 +11,7 @@ export class FinalLevelExam extends Exam {
   _links: any;
   mark: any;
   level: any;
-  topic:string;
+  topic:any;
   //topic: any;
   //student: Student;
   //finished: boolean;

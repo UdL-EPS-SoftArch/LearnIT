@@ -20,6 +20,8 @@ import {TheoryDeleteComponent} from './theory/theory-delete/theory-delete.compon
 import {TheoryEditComponent} from './theory/theory-edit/theory-edit.component';
 import {NewFinalLevelExamComponent} from './FinalLevelExam/FinalLevelExam-add/FinalLevelExam-add.component';
 import {FinalLevelExamListComponent} from './FinalLevelExam/FinalLevelExam-list/FinalLevelExam-list.component';
+import {FinalLevelExamDeleteComponent} from './FinalLevelExam/FinalLevelExam-delete/FinalLevelExam-delete.component';
+import {FinalLevelExamEditComponent} from './FinalLevelExam/FinalLevelExam-edit/FinalLevelExam-edit.component';
 
 
 const routes: Routes = [
@@ -41,8 +43,10 @@ const routes: Routes = [
   { path: 'about', component: AboutComponent },
   { path: '404', component: NotFoundComponent},
   { path: '', redirectTo: 'about', pathMatch: 'full' },
+  { path: 'FinalLevelExams', component: FinalLevelExamListComponent, canActivate: [LoggedInGuard] },
   { path: 'newFinalLevelExam', component: NewFinalLevelExamComponent, canActivate: [LoggedInGuard] },
-  { path: 'finalLevelExams', component: FinalLevelExamListComponent, canActivate: [LoggedInGuard] },
+  { path: 'FinalLevelExams/:id/delete', component: FinalLevelExamDeleteComponent, canActivate: [LoggedInGuard] },
+  { path: 'FinalLevelExams/:id/edit', component: FinalLevelExamEditComponent, canActivate: [LoggedInGuard] },
 ];
 
 @NgModule({

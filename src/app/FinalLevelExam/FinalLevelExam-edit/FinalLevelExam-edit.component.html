@@ -1,0 +1,54 @@
+<form id="question-edit-form" (ngSubmit)="onSubmit()" #form="ngForm">
+  <fieldset>
+
+    <!-- Username read only -->
+    <div class="form-group">
+      <label class="control-label" for="username">ID</label>
+      <input id="username" name="username" type="text" class="form-control" readonly [ngModel]="finalExam._links.self.href.split('/')[4]" >
+
+    </div>
+
+    <!-- Change name -->
+    <div class="form-group" [class.was-validated]="name.dirty || name.touched">
+      <label class="control-label" for="name">Name</label>
+      <input id="name" name="name" type="text" class="form-control" required
+             [(ngModel)]="finalExam.name" #name="ngModel">
+      <span class="invalid-feedback">Name field is required</span>
+    </div>
+
+    <!-- Change question -->
+    <div class="form-group" [class.was-validated]="statement.dirty || statement.touched" >
+      <label class="control-label" for="statement">Statement</label>
+      <input id="statement" name="statement" type="text" class="form-control" required
+             [(ngModel)]="finalExam.question" #statement="ngModel">
+      <span class="invalid-feedback">Statement field is required</span>
+    </div>
+
+    <!-- Change level -->
+    <div class="form-group"  >
+      <label class="control-label" for="levelId">Level</label>
+      <select id="levelId" name="levelId" type="text" class="form-control"
+              [(ngModel)]="finalExam.level" #levelId="ngModel">
+        <option *ngFor="let level of levels" [value]="level.uri" >{{level.name}}</option>
+      </select>
+    </div>
+    <!-- Change topic -->
+    <div class="form-group" >
+      <label class="control-label" for="topicId">In the topic:</label>
+      <select id="topicId" name="topicId" type="text" class="form-control"
+              [(ngModel)]="finalExam.topic" #topicId="ngModel">
+        <option *ngFor="let topic of topics" [value]="topic.uri" >{{topic.name}}</option>
+
+      </select>
+    </div>
+
+    <!-- Button -->
+    <div class="form-group">
+      <button id="submit" type="submit" class="btn m-1 btn-success pull-right"
+              [disabled]="form.invalid">Submit</button>
+      <button id="userDetail" type="button" [routerLink]="['/questions', finalExam._links.self.href.split('/')[4]]"
+              class="btn m-1 btn-outline-primary pull-right">Back</button>
+    </div>
+
+  </fieldset>
+</form>
