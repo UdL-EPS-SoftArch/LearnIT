@@ -45,8 +45,7 @@ import {FinalLevelExamService} from './FinalLevelExam/FinalLevelExam.service';
 import {NewFinalLevelExamComponent} from './FinalLevelExam/FinalLevelExam-add/FinalLevelExam-add.component';
 import {FinalLevelExamListComponent} from './FinalLevelExam/FinalLevelExam-list/FinalLevelExam-list.component';
 import {ExamService} from './exam/exam.service';
-import {FinalLevelExamDeleteComponent} from './FinalLevelExam/FinalLevelExam-delete/FinalLevelExam-delete.component';
-import {FinalLevelExamEditComponent} from './FinalLevelExam/FinalLevelExam-edit/FinalLevelExam-edit.component'
+
 
 @NgModule({
   declarations: [
@@ -71,9 +70,7 @@ import {FinalLevelExamEditComponent} from './FinalLevelExam/FinalLevelExam-edit/
     TheoryDeleteComponent,
     TheoryEditComponent,
     NewFinalLevelExamComponent,
-    FinalLevelExamListComponent,
-    FinalLevelExamDeleteComponent,
-    FinalLevelExamEditComponent,
+    FinalLevelExamListComponent
   ],
   imports: [
     BrowserModule,
