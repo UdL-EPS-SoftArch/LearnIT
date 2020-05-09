@@ -1,9 +1,9 @@
 
 import { Component, OnInit } from '@angular/core';
-import { Exam } from '../exam';
 import {Sort} from '@lagoshny/ngx-hal-client';
 import {Router} from '@angular/router';
 
+import { Exam } from '../exam';
 import { ExamService } from '../exam.service';
 
 @Component({

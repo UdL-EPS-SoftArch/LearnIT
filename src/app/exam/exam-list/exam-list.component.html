@@ -3,7 +3,7 @@
     <div class="card-body row align-items-center">
       <div class="col-6 mt-1">
         <h6 class="card-subtitle text-muted">Name</h6>
-        <a class="card-text" [routerLink]="['/exams', exam._links.self.href.split('/')[4]]">{{exam.id}}</a>
+        <a class="card-text" [routerLink]="['/exams', exam._links.self.href.split('/')[4]]">{{exam.name}}</a>
       </div>
     </div>
   </div>

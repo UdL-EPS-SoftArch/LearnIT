@@ -48,7 +48,7 @@ import { ExamService } from './exam/exam.service';
 
 import { NewExamComponent } from './exam/exam-add/exam-add.component';
 import { ExamListComponent } from './exam/exam-list/exam-list.component';
-//import {TheoryDetailComponent} from './theory/theory-detail/theory-detail.component';
+import { ExamDetailComponent} from './exam/exam-detail/exam-detail.component';
 //import {TheoryDeleteComponent} from './theory/theory-delete/theory-delete.component';
 //import {TheoryEditComponent} from './theory/theory-edit/theory-edit.component';
 //import {YouTubePlayerModule} from '@angular/youtube-player';
@@ -81,7 +81,8 @@ import { ExamListComponent } from './exam/exam-list/exam-list.component';
     TheoryEditComponent,
 
     NewExamComponent,
-    ExamListComponent
+    ExamListComponent,
+    ExamDetailComponent
   ],
   imports: [
     BrowserModule,

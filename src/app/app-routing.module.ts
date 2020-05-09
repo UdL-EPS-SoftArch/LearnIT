@@ -28,7 +28,7 @@ import {TheoryEditComponent} from './theory/theory-edit/theory-edit.component'
 
 import { NewExamComponent } from './exam/exam-add/exam-add.component';
 import { ExamListComponent } from './exam/exam-list/exam-list.component';
-//import {ExamDetailComponent} from './exam/exam-detail/theory-detail.component';
+import {ExamDetailComponent} from './exam/exam-detail/exam-detail.component';
 //import {ExamDeleteComponent} from './exam/exam-delete/theory-delete.component';
 //import {ExamEditComponent} from './exam/exam-edit/theory-edit.component'
 
@@ -57,7 +57,7 @@ const routes: Routes = [
 
   { path: 'newExam', component: NewExamComponent, canActivate: [LoggedInGuard] },
   { path: 'exams', component: ExamListComponent, canActivate: [LoggedInGuard] },
-  //{ path: 'exams/:id', component: ExamDetailComponent, canActivate: [LoggedInGuard] },
+  { path: 'exams/:id', component: ExamDetailComponent, canActivate: [LoggedInGuard] },
   //{ path: 'exams/:id/delete', component: ExamDeleteComponent, canActivate: [LoggedInGuard] },
   //{ path: 'exams/:id/edit', component: ExamEditComponent, canActivate: [LoggedInGuard] },
 

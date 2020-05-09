@@ -21,4 +21,17 @@ export class QuestionService extends RestService<Question>{
     };
     return this.search('findByStatementContaining', options);
   }
+  /*
+  public findQuestionByLevelId(id: number): Observable<Question[]> {
+    const options: any = {
+      params: [
+        {
+          key: 'examId',
+          value: id
+        }
+      ]
+    };
+    return this.search('findQuestionByLevelId', options);
+  }
+  */
 }

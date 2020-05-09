@@ -1,0 +1,28 @@
+<div class="card">
+  <div class="card-body">
+    <h4 class="card-title text-center" >Exam número {{exam._links.self.href.split('/')[4]}}</h4>
+    <h1 class="card-title text-center">{{exam.name}}</h1>
+    <p class="card-text">{{exam.nbOfQuestions}} </p>
+
+    <div class="container">
+      <div class="row">
+        <div class="col" *ngFor="let question of questions">
+          <p>{{question.statement}}</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="card-footer text-right">
+  <button id="listBtn" type="button" [routerLink]="['/exams']"
+          class="btn m-1 btn-outline-primary">Recipes List
+  </button>
+  <button *ngIf="authenticationService.isRole('TEACHER')" id="editBtn" type="button"  [routerLink]="['edit']"
+          class="btn m-1 btn-outline-success">Edit
+  </button>
+  <button *ngIf="authenticationService.isRole('TEACHER')" id="deleteBtn" type="button"  [routerLink]="['delete']"
+          class="btn m-1 btn-outline-danger">Delete
+  </button>
+</div>
