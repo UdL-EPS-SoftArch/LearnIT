@@ -44,6 +44,7 @@ import {YouTubePlayerModule} from '@angular/youtube-player';
 import {FinalLevelExamService} from './FinalLevelExam/FinalLevelExam.service';
 import {NewFinalLevelExamComponent} from './FinalLevelExam/FinalLevelExam-add/FinalLevelExam-add.component';
 import {FinalLevelExamListComponent} from './FinalLevelExam/FinalLevelExam-list/FinalLevelExam-list.component';
+import {FinalLevelExamDetailComponent} from './FinalLevelExam/FinalLevelExam-detail/FinalLevelExam-detail.component';
 import {ExamService} from './exam/exam.service';
 
 
@@ -70,7 +71,8 @@ import {ExamService} from './exam/exam.service';
     TheoryDeleteComponent,
     TheoryEditComponent,
     NewFinalLevelExamComponent,
-    FinalLevelExamListComponent
+    FinalLevelExamListComponent,
+    FinalLevelExamDetailComponent
   ],
   imports: [
     BrowserModule,

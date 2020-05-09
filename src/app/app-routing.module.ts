@@ -20,6 +20,7 @@ import {TheoryDeleteComponent} from './theory/theory-delete/theory-delete.compon
 import {TheoryEditComponent} from './theory/theory-edit/theory-edit.component';
 import {NewFinalLevelExamComponent} from './FinalLevelExam/FinalLevelExam-add/FinalLevelExam-add.component';
 import {FinalLevelExamListComponent} from './FinalLevelExam/FinalLevelExam-list/FinalLevelExam-list.component';
+import {FinalLevelExamDetailComponent} from './FinalLevelExam/FinalLevelExam-detail/FinalLevelExam-detail.component';
 
 
 const routes: Routes = [
@@ -43,6 +44,7 @@ const routes: Routes = [
   { path: '', redirectTo: 'about', pathMatch: 'full' },
   { path: 'newFinalLevelExam', component: NewFinalLevelExamComponent, canActivate: [LoggedInGuard] },
   { path: 'finalLevelExams', component: FinalLevelExamListComponent, canActivate: [LoggedInGuard] },
+  { path: 'finalLevelExams/:id', component: FinalLevelExamDetailComponent, canActivate: [LoggedInGuard] },
 ];
 
 @NgModule({
