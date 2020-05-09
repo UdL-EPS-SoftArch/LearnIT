@@ -9,7 +9,7 @@ import {FinalLevelExamService} from '../FinalLevelExam.service';
   selector: 'app-FinalLevelExam-detail',
   templateUrl: './FinalLevelExam-detail.component.html',
 })
-export class FinalLevelExamDetailComponent implements OnInit {
+  export class FinalLevelExamDetailComponent implements OnInit {
   public finalLevelExam: FinalLevelExam = new FinalLevelExam();
 
   constructor(private route: ActivatedRoute,

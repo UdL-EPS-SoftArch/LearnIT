@@ -27,7 +27,7 @@ export class FinalLevelExamDeleteComponent implements OnInit {
   delete() {
     this.finalLevelExamService.delete(this.finalLevelExam).subscribe(
       () => {
-        this.router.navigate(['FinalLevelExam']);
+        this.router.navigate(['finalLevelExams']);
       });
   }
 }
