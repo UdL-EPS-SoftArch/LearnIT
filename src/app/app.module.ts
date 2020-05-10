@@ -44,7 +44,6 @@ import {YouTubePlayerModule} from '@angular/youtube-player';
 import {FinalLevelExamService} from './FinalLevelExam/FinalLevelExam.service';
 import {NewFinalLevelExamComponent} from './FinalLevelExam/FinalLevelExam-add/FinalLevelExam-add.component';
 import {FinalLevelExamListComponent} from './FinalLevelExam/FinalLevelExam-list/FinalLevelExam-list.component';
-import {ExamService} from './exam/exam.service';
 import {FinalLevelExamDetailComponent} from './FinalLevelExam/FinalLevelExam-detail/FinalLevelExam-detail.component';
 import {FinalLevelExamDeleteComponent} from './FinalLevelExam/FinalLevelExam-delete/FinalLevelExam-delete.component';
 import {FinalLevelExamEditComponent} from './FinalLevelExam/FinalLevelExam-edit/FinalLevelExam-edit.component';
@@ -99,7 +98,7 @@ import {FinalLevelExamEditComponent} from './FinalLevelExam/FinalLevelExam-edit/
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: HttpErrorInterceptor, multi: true },
     { provide: 'ExternalConfigurationService', useClass: ExternalConfigurationService },
-    AuthenticationBasicService, LoggedInGuard, StudentService, QuestionService, LevelService, ExamService,FinalLevelExamService, TopicService,TheoryService
+    AuthenticationBasicService, LoggedInGuard, StudentService, QuestionService, LevelService,FinalLevelExamService, TopicService,TheoryService
   ],
   bootstrap: [AppComponent]
 })
