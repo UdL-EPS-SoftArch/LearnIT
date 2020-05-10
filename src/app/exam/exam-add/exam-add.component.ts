@@ -21,7 +21,7 @@ export class NewExamComponent implements OnInit {
   public exam: Exam;
   public name: string = '';
   public questions: Question[] = [];
-  public number_of_questions = 1;
+  public number_of_questions = "1";
 
   //public totalRecipes = 0;
   private sorting: Sort[] = [{ path: 'statement', order: 'ASC' }];
@@ -53,8 +53,11 @@ export class NewExamComponent implements OnInit {
     this.exam.nbOfQuestions = this.number_of_questions;
     console.log(this.exam);
 
+
+
     this.examService.create(this.exam).subscribe(
       (exam: Exam) => this.router.navigate(['exams']));
+
   }
 }
 

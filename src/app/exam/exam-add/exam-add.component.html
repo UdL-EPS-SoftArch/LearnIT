@@ -18,10 +18,10 @@
 
         <!-- question input -->
         <div class="form-group" [class.was-validated]="question.dirty || question.touched">
-          <label class="control-label" for="topicId">Questions:*</label>
+          <label class="control-label" for="questionId">Questions:*</label>
           <select id="questionId" name="questionId" type="text" class="form-control"
                   [(ngModel)]="exam.question" #question="ngModel" required multiple>
-            <option *ngFor="let question of questions" [value]="question.uri" >{{question.statement}}</option>
+            <option *ngFor="let question of questions" [value]="question.id" >{{question.statement}}</option>
           </select>
           <span class="invalid-feedback">Question field is required</span>
         </div>
