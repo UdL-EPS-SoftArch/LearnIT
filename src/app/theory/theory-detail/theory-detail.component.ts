@@ -16,9 +16,9 @@ export class TheoryDetailComponent implements OnInit {
 
   public theory: Theory = new Theory();
   GenuineUrl: SafeResourceUrl;
-  constructor(private route: ActivatedRoute,
-              private theoryService: TheoryService,
-              private authenticationService: AuthenticationBasicService,
+  constructor(public route: ActivatedRoute,
+              public theoryService: TheoryService,
+              public authenticationService: AuthenticationBasicService,
               ) {
   }
   ngOnInit() {

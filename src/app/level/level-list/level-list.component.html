@@ -1,0 +1,9 @@
+<body>
+<h1>Levels</h1>
+<ul *ngIf="levels" class="my-div">
+  <li *ngFor ="let level of levels; let i = index" [class.selected]="level.id === selectedId" (click)="onSelect(level)">
+    <a [routerLink]="['/levels', level.id] " class="fill-div"> Level {{i+1}}: {{ level.name }}</a>
+    <p class="description">{{ level.description }}</p>
+  </li>
+</ul>
+</body>

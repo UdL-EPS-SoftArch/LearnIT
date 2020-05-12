@@ -33,6 +33,8 @@ import {QuestionDeleteComponent} from './question/question-delete/question-delet
 import {QuestionDetailComponent} from './question/question-detail/question-detail.component';
 import {QuestionEditComponent} from './question/question-edit/question-edit.component';
 import {LevelService} from './level/level.service';
+import {LevelListComponent} from './level/level-list/level-list.component';
+import {LevelDetailComponent} from './level/level-detail/level-detail.component';
 import {TopicService} from './topic/topic.service';
 import {TheoryService} from './theory/theory.service';
 import {NewTheoryComponent} from './theory/theory-add/theory-add.component';
@@ -64,6 +66,9 @@ import {FinalLevelExamEditComponent} from './FinalLevelExam/FinalLevelExam-edit/
     QuestionListComponent,
     QuestionDeleteComponent,
     QuestionDetailComponent,
+    QuestionEditComponent,
+    LevelListComponent,
+    LevelDetailComponent,
     QuestionEditComponent,
     NewTheoryComponent,
     TheoryListComponent,
