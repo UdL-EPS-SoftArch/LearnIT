@@ -64,6 +64,8 @@ export class NewExamComponent implements OnInit {
 
     console.log(this.exam);
 
+
+
     this.examService.create(this.exam).subscribe(
       (exam: Exam) => this.router.navigate(['exams']));
 
