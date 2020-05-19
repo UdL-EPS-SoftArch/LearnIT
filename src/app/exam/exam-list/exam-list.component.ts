@@ -5,6 +5,17 @@ import {Router} from '@angular/router';
 
 import { Exam } from '../exam';
 import { ExamService } from '../exam.service';
+import {Level} from '../../level/level';
+import {LevelService} from '../../level/level.service';
+import { Topic } from '../../topic/topic';
+import { TopicService } from '../../topic/topic.service';
+import { Student } from '../../student/student';
+import { StudentService } from '../../student/student.service';
+import { StudentExam } from '../../manytomany/students_exams';
+import { StudentExamService } from '../../manytomany/students_exams.service';
+
+import { AuthenticationBasicService } from '../../login-basic/authentication-basic.service';
+
 
 @Component({
   selector: 'app-exam-list',
@@ -14,26 +25,66 @@ import { ExamService } from '../exam.service';
 export class ExamListComponent implements OnInit {
 
   public exams: Exam[] = [];
+
+  public student: Student;
+
+  public students_exams: StudentExam[] = [];
+
+  public levels: Level[] = [];
+  public level: Level;
+
+  public topics: Topic[] = [];
+  public topic: Topic;
+
   public pageSize = 10;
   public page = 1;
   public totalRecipes = 0;
+
   private sorting: Sort[] = [{ path: 'statement', order: 'ASC' }];
 
   constructor(
     public router: Router,
-    private examService: ExamService) {
+    private examService: ExamService,
+    private studentExamService: StudentExamService,
+    private authenticationService: AuthenticationBasicService) {
       console.log("list exam constructor");
   }
 
   ngOnInit() {
-    console.log("list exam ngoninit");
+    console.log("list exam init");
 
-    this.examService.getAll({size: this.pageSize, sort: this.sorting}).subscribe(
-      (exams: Exam[]) => {
-        this.exams = exams;
-        this.totalRecipes = this.examService.totalElement();
-        console.log(this.exams)
-      });
+    if (this.isRole('Student')) {
+
+      this.student = this.authenticationService.getCurrentUser();
+      //console.log(this.student);
+
+      this.studentExamService.findByStudent(this.student).subscribe(
+        (students_exams: StudentExam[]) => {
+          //this.students_exams = students_exams;
+          //console.log(this.students_exams)
+
+          for (let student_exam of students_exams) {
+            //console.log(student_exam);
+            //console.log(student_exam._embedded.exam);
+
+            student_exam._embedded.exam.pendent = student_exam.pendent;
+            student_exam._embedded.exam.mark = student_exam.mark;
+            student_exam._embedded.exam._links = student_exam._links;
+            student_exam._embedded.exam.uri = student_exam._embedded.exam.uri;
+
+            this.exams.push(student_exam._embedded.exam);
+          }
+          console.log(this.exams);
+        });
+    }
+    else {
+      this.examService.getAll({size: this.pageSize, sort: this.sorting}).subscribe(
+        (exams: Exam[]) => {
+          this.exams = exams;
+          this.totalRecipes = this.examService.totalElement();
+          console.log(this.exams)
+        });
+      }
   }
 
   changePage() {
@@ -42,4 +93,20 @@ export class ExamListComponent implements OnInit {
     this.examService.page(this.page - 1).subscribe(
       (exams: Exam[]) => this.exams = exams);
   }
+
+  isRole(role: string): boolean {
+    return this.authenticationService.isRole(role);
+  }
+
+  changeLevel(value: any) {
+    console.log("change theory filter level");
+  }
+
+  changeTopic(value: any) {
+      console.log("change theory filter topic");
+  }
 }
+
+
+
+//

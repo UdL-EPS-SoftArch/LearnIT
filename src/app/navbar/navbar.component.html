@@ -1,64 +1,90 @@
+
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
+
   <a class="navbar-brand" [routerLink]="['/about']">Learn<b>IT</b></a>
-  <button class="navbar-toggler" type="button" (click)="isCollapsed = !isCollapsed"
-          [attr.aria-expanded]="!isCollapsed" aria-controls="navbarContent" aria-label="Toggle navigation">
+
+  <button class="navbar-toggler" type="button" (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed" aria-controls="navbarContent" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
   <div class="collapse navbar-collapse" id="navbarContent" [ngbCollapse]="isCollapsed">
     <ul class="navbar-nav mr-auto">
+
+      <!-- About -->
       <li class="nav-item" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{ exact: true }">
         <a class="nav-link" [routerLink]="['/about']">About</a>
       </li>
-      <li class="nav-item" *ngIf="isLogged()" ngbDropdown>
-        <a class="nav-link dropdown-toggle" id="questionDropdown" role="button"
-           aria-haspopup="true" aria-expanded="false" ngbDropdownToggle >Questions</a>
+
+      <!-- Question -->
+      <li class="nav-item" *ngIf="isRole('Teacher')" ngbDropdown>
+        <a class="nav-link dropdown-toggle" id="questionDropdown" role="button" aria-haspopup="true" aria-expanded="false" ngbDropdownToggle>
+          Questions
+        </a>
         <div class="dropdown-menu" aria-labelledby="questionDropdown" ngbDropdownMenu>
-          <a  class="dropdown-item" [routerLinkActive]="'question'" [routerLinkActiveOptions]="{ exact: true }"
-             [routerLink]="['/questions']"><span class="fa fa-question"></span> Questions List</a>
-          <a class="dropdown-item" [routerLinkActive]="'question'"  [routerLinkActiveOptions]="{ exact: true }"
-             [routerLink]="['/newQuestion']"><span class="fa fa-question"></span> New question</a>
+          <a class="dropdown-item" [routerLinkActive]="'question'" [routerLinkActiveOptions]="{ exact: true }" [routerLink]="['/questions']">
+            <span class="fa fa-question"></span>
+            Questions List
+          </a>
+          <a class="dropdown-item" *ngIf="isRole('Teacher')" [routerLinkActive]="'question'"  [routerLinkActiveOptions]="{ exact: true }" [routerLink]="['/newQuestion']">
+            <span class="fa fa-question"></span>
+            New Question
+          </a>
         </div>
       </li>
-      <li class="nav-item" *ngIf="isLogged()" ngbDropdown>
-        <a class="nav-link dropdown-toggle" id="theoryDropdown" role="button"
-           aria-haspopup="true" aria-expanded="false" ngbDropdownToggle >Theory</a>
-        <div class="dropdown-menu" aria-labelledby="theoryDropdown" ngbDropdownMenu>
-          <a class="dropdown-item" [routerLinkActive]="'theory'"  [routerLinkActiveOptions]="{ exact: true }"
-             [routerLink]="['/newTheory']"><span class="fa fa-book"></span> New theory</a>
-          <a class="dropdown-item" [routerLinkActive]="'theory'"  [routerLinkActiveOptions]="{ exact: true }"
-             [routerLink]="['/theories']"><span class="fa fa-book"></span> Theory list</a>
-        </div>
 
+      <!-- Theory -->
+      <li class="nav-item" *ngIf="isLogged()" ngbDropdown>
+        <a class="nav-link dropdown-toggle" id="theoryDropdown" role="button" aria-haspopup="true" aria-expanded="false" ngbDropdownToggle >
+          Theory
+        </a>
+        <div class="dropdown-menu" aria-labelledby="theoryDropdown" ngbDropdownMenu>
+          <a class="dropdown-item" [routerLinkActive]="'theory'"  [routerLinkActiveOptions]="{ exact: true }" [routerLink]="['/theories']">
+            <span class="fa fa-book"></span>
+            Theory list
+          </a>
+          <a class="dropdown-item" *ngIf="isRole('Teacher')" [routerLinkActive]="'theory'"  [routerLinkActiveOptions]="{ exact: true }" [routerLink]="['/newTheory']">
+            <span class="fa fa-book"></span>
+            New Theory
+          </a>
+        </div>
       </li>
 
       <!-- Exam -->
       <li class="nav-item" *ngIf="isLogged()" ngbDropdown>
-        <a class="nav-link dropdown-toggle" id="examDropdown" role="button"
-           aria-haspopup="true" aria-expanded="false" ngbDropdownToggle >Exam</a>
+        <a class="nav-link dropdown-toggle" id="examDropdown" role="button" aria-haspopup="true" aria-expanded="false" ngbDropdownToggle >
+          Exam
+        </a>
         <div class="dropdown-menu" aria-labelledby="examDropdown" ngbDropdownMenu>
-          <a class="dropdown-item" [routerLinkActive]="'exam'"  [routerLinkActiveOptions]="{ exact: true }"
-             [routerLink]="['/newExam']"><span class="fa fa-file" ></span> New Exam</a>
-          <a class="dropdown-item" [routerLinkActive]="'exam'"  [routerLinkActiveOptions]="{ exact: true }"
-             [routerLink]="['/exams']"><span class="fa fa-file"></span> Exam list</a>
+          <a class="dropdown-item" [routerLinkActive]="'exam'"  [routerLinkActiveOptions]="{ exact: true }" [routerLink]="['/exams']">
+            <span class="fa fa-file"></span>
+            Exam list
+          </a>
+          <a class="dropdown-item" *ngIf="isRole('Teacher')" [routerLinkActive]="'exam'"  [routerLinkActiveOptions]="{ exact: true }" [routerLink]="['/newExam']">
+            <span class="fa fa-file" ></span>
+            New Exam
+          </a>
         </div>
-
       </li>
 
-
+      <!-- Level -->
       <li class="nav-item" [routerLinkActive]="'level'" [routerLinkActiveOptions]="{ exact: true }">
         <a class="nav-link" [routerLink]="['/levels']">Levels</a>
       </li>
 
-      <li class="nav-item" *ngIf="isLogged()" ngbDropdown>
-        <a class="nav-link dropdown-toggle" id="playDropdown" role="button"
-           aria-haspopup="true" aria-expanded="false" ngbDropdownToggle>Students</a>
+      <li class="nav-item" *ngIf="isLogged() && isRole('Teacher')" ngbDropdown>
+        <a class="nav-link dropdown-toggle" id="playDropdown" role="button" aria-haspopup="true" aria-expanded="false" ngbDropdownToggle>Students</a>
         <div class="dropdown-menu" aria-labelledby="playDropdown" ngbDropdownMenu>
-          <a class="dropdown-item" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{ exact: true }"
-             [routerLink]="['/students']"><span class="fa fa-user"></span> List</a>
+          <a class="dropdown-item" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{ exact: true }" [routerLink]="['/students']">
+            <span class="fa fa-user"></span>
+            Student list
+          </a>
         </div>
       </li>
+
     </ul>
+
     <ul class="navbar-nav" app-login-navbar></ul>
+
   </div>
+
 </nav>

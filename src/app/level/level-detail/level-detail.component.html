@@ -8,12 +8,13 @@
           {{topic.name}}:
         </p>
           {{topic.description}}
-        <p *ngIf="isRole('Teacher')">
+        <p *ngIf="!isRole('Student')">
           <button [routerLink]="['/newQuestion']" class="btn m-1 btn-outline-success" id="createTopicsBtn"
                   type="button">Create questions for this topic</button>
         </p>
 
-        <p *ngIf="isRole('Student')">
+        <!--<p *ngIf="isRole('Student')">-->
+        <p>
           <button [routerLink]="['/questions']" class="btn m-1 btn-outline-primary" id="goToTopicBtn"
                   type="button">See questions for this topic</button>
         </p>
@@ -24,4 +25,3 @@
       <button id="backBtn" type="button" class="btn m-1 btn-outline-secondary" [routerLink]="['/levels'] ">Back</button>
     </p>
 </div>
-

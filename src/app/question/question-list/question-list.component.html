@@ -1,4 +1,54 @@
-<div class="card mb-1" *ngFor="let question of questions">
+
+
+<div class="container card" style="margin-bottom: 40px !important;">
+
+  <div class="row card-header">
+    <div class="col align-items-center">
+      <div class="col-6 mt-1">
+        <h4>Filters</h4>
+      </div>
+    </div>
+  </div>
+
+  <div class="row card-body">
+
+    <!-- Level Filter -->
+    <div class="col-6">
+      <div class="form-group">
+        <label class="control-label" for="levels">Level:</label>
+        <select id="levels" name="levels" type="text" class="form-control" [(ngModel)]="level" (change)="changeLevel($event)">
+          <option *ngFor="let level of levels" [value]="level.uri" >{{ level.name }}</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Topic Filter -->
+    <!--
+    <div class="col-6">
+      <div class="form-group">
+        <label class="control-label" for="topics">Topic:</label>
+        <select id="topics" name="topics" type="text" class="form-control" [(ngModel)]="topic" (change)="changeTopic($event)">
+          <option *ngFor="let topic of topics" [value]="topic.uri" >{{ topic.name }}</option>
+        </select>
+      </div>
+    </div>
+    -->
+
+  </div>
+
+</div>
+
+<div class="container card" style="margin-bottom: 0px !important; border-bottom-width: 0px;">
+  <div class="row card-header">
+    <div class="col align-items-center">
+      <div class="col-6 mt-1">
+        <h4>Questions</h4>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="card mb-1" style="border-top-width: 0px;" *ngFor="let question of questions">
   <div class="card-block row m-1 col-12">
     <div class="card-body row align-items-center">
       <div class="col-6 mt-1">
@@ -16,5 +66,3 @@
 <ngb-pagination class="d-flex justify-content-center"
                 [(page)]="page" [pageSize]="pageSize" [collectionSize]="totalRecipes"
                 (pageChange)="changePage()"></ngb-pagination>
-
-

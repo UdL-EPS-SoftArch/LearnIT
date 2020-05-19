@@ -1,7 +1,8 @@
 import {Router, ActivatedRoute} from '@angular/router';
 import {Component, OnInit, Input} from '@angular/core';
-import {LevelService} from '../level.service';
+
 import {Level} from '../level';
+import {LevelService} from '../level.service';
 import {Topic} from '../../topic/topic';
 import {TopicService} from '../../topic/topic.service';
 import {AuthenticationBasicService} from '../../login-basic/authentication-basic.service';
@@ -41,10 +42,12 @@ export class LevelDetailComponent implements OnInit {
         console.log(this.topics)
       });
   }
+
   onSelect(topic) {
     this.selectedId = topic.topicId;
     this.selectedTopic = topic;
   }
+
   isRole(role: string): boolean {
     return this.authenticationService.isRole(role);
   }

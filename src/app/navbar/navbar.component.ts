@@ -1,4 +1,6 @@
+
 import { Component, OnInit } from '@angular/core';
+
 import { AuthenticationBasicService } from '../login-basic/authentication-basic.service';
 
 @Component({
@@ -18,5 +20,9 @@ export class NavbarComponent implements OnInit {
 
   isLogged() {
     return this.authenticationService.isLoggedIn();
+  }
+
+  isRole(role: string): boolean {
+    return this.authenticationService.isRole(role);
   }
 }

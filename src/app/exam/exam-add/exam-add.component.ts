@@ -1,11 +1,12 @@
 
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
-
 import {Sort} from '@lagoshny/ngx-hal-client';
+import {NgForm} from '@angular/forms';
 
-import {ExamService} from '../exam.service';
+import {User} from '../../login-basic/user';
 import {Exam} from '../exam';
+import {ExamService} from '../exam.service';
 import {Question} from '../../question/question';
 import {QuestionService} from '../../question/question.service';
 
@@ -20,10 +21,13 @@ export class NewExamComponent implements OnInit {
 
   public exam: Exam;
   public name: string = '';
-  public questions: Question[] = [];
+
+  public exams_questions: Question[] = [];
+  //public questions: any;
+
   public number_of_questions = 1;
 
-  //public totalRecipes = 0;
+  public totalRecipes = 0;
   private sorting: Sort[] = [{ path: 'statement', order: 'ASC' }];
 
   constructor(
@@ -35,14 +39,20 @@ export class NewExamComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log("new exam ngoninit");
+    console.log("new exam init");
 
     this.exam = new Exam();
+
     this.questionService.getAll({sort: this.sorting}).subscribe(
       (questions: Question[]) => {
-        this.questions = questions;
-        //this.number_of_questions = this.questionService.totalElement();
-        console.log(this.questions);
+        console.log(questions);
+        console.log(typeof(questions));
+
+        this.totalRecipes = this.questionService.totalElement();
+
+        this.exams_questions = questions;
+        console.log(this.exams_questions);
+        console.log(typeof(this.exams_questions));
       });
   }
 
@@ -50,11 +60,13 @@ export class NewExamComponent implements OnInit {
   onSubmit(): void {
     console.log("new exam submit");
 
-    this.exam.nbOfQuestions = this.number_of_questions;
+    this.exam.nbOfQuestions = 1;
+
     console.log(this.exam);
 
     this.examService.create(this.exam).subscribe(
       (exam: Exam) => this.router.navigate(['exams']));
+
   }
 }
 

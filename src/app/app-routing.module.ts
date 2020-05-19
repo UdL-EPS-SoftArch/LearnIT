@@ -29,15 +29,18 @@ import {TheoryEditComponent} from './theory/theory-edit/theory-edit.component'
 import { NewExamComponent } from './exam/exam-add/exam-add.component';
 import { ExamListComponent } from './exam/exam-list/exam-list.component';
 import {ExamDetailComponent} from './exam/exam-detail/exam-detail.component';
+import { EvalExamComponent } from './exam/exam-eval/exam-eval.component';
 //import {ExamDeleteComponent} from './exam/exam-delete/theory-delete.component';
 //import {ExamEditComponent} from './exam/exam-edit/theory-edit.component'
 
 const routes: Routes = [
   { path: 'register', component: StudentRegisterComponent},
+
   { path: 'students/:id/edit', component: StudentEditComponent, canActivate: [LoggedInGuard] },
   { path: 'students/:id/delete', component: StudentDeleteComponent, canActivate: [LoggedInGuard] },
   { path: 'students/:id', component: StudentDetailComponent, canActivate: [LoggedInGuard] },
   { path: 'students', component: StudentListComponent, canActivate: [LoggedInGuard] },
+
   { path: 'questions', component: QuestionListComponent, canActivate: [LoggedInGuard] },
   { path: 'questions/:id/delete', component: QuestionDeleteComponent, canActivate: [LoggedInGuard] },
   { path: 'questions/:id', component: QuestionDetailComponent, canActivate: [LoggedInGuard] },
@@ -58,6 +61,7 @@ const routes: Routes = [
   { path: 'newExam', component: NewExamComponent, canActivate: [LoggedInGuard] },
   { path: 'exams', component: ExamListComponent, canActivate: [LoggedInGuard] },
   { path: 'exams/:id', component: ExamDetailComponent, canActivate: [LoggedInGuard] },
+  { path: 'exams/:id/evaluate', component: EvalExamComponent, canActivate: [LoggedInGuard], pathMatch: 'full'},
   //{ path: 'exams/:id/delete', component: ExamDeleteComponent, canActivate: [LoggedInGuard] },
   //{ path: 'exams/:id/edit', component: ExamEditComponent, canActivate: [LoggedInGuard] },
 

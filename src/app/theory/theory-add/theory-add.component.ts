@@ -30,13 +30,17 @@ export class NewTheoryComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    console.log("new theory init");
+
     this.theory = new Theory();
+
     this.levelService.getAll({sort: this.sorting}).subscribe(
       (levels: Level[]) => {
         this.levels = levels;
         this.totalRecipes = this.levelService.totalElement();
         console.log(this.levels)
       });
+
     this.topicService.getAll({sort: this.sorting}).subscribe(
       (topics: Topic[]) => {
         this.topics = topics;

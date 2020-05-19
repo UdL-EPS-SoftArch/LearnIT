@@ -49,10 +49,14 @@ import { ExamService } from './exam/exam.service';
 import { NewExamComponent } from './exam/exam-add/exam-add.component';
 import { ExamListComponent } from './exam/exam-list/exam-list.component';
 import { ExamDetailComponent} from './exam/exam-detail/exam-detail.component';
+import { EvalExamComponent} from './exam/exam-eval/exam-eval.component';
 //import {TheoryDeleteComponent} from './theory/theory-delete/theory-delete.component';
 //import {TheoryEditComponent} from './theory/theory-edit/theory-edit.component';
+
 //import {YouTubePlayerModule} from '@angular/youtube-player';
 
+import { ExamQuestionService } from './manytomany/exams_questions.service';
+import { StudentExamService } from './manytomany/students_exams.service';
 
 
 @NgModule({
@@ -67,14 +71,17 @@ import { ExamDetailComponent} from './exam/exam-detail/exam-detail.component';
     StudentEditComponent,
     StudentDetailComponent,
     StudentDeleteComponent,
+
     NewQuestionComponent,
     QuestionListComponent,
     QuestionDeleteComponent,
     QuestionDetailComponent,
     QuestionEditComponent,
+
     LevelListComponent,
     LevelDetailComponent,
     NewTheoryComponent,
+
     TheoryListComponent,
     TheoryDetailComponent,
     TheoryDeleteComponent,
@@ -82,7 +89,8 @@ import { ExamDetailComponent} from './exam/exam-detail/exam-detail.component';
 
     NewExamComponent,
     ExamListComponent,
-    ExamDetailComponent
+    ExamDetailComponent,
+    EvalExamComponent
   ],
   imports: [
     BrowserModule,
@@ -106,7 +114,16 @@ import { ExamDetailComponent} from './exam/exam-detail/exam-detail.component';
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: HttpErrorInterceptor, multi: true },
     { provide: 'ExternalConfigurationService', useClass: ExternalConfigurationService },
-    AuthenticationBasicService, LoggedInGuard, StudentService, QuestionService, LevelService, TopicService,TheoryService, ExamService
+    AuthenticationBasicService,
+    LoggedInGuard,
+    StudentService,
+    QuestionService,
+    LevelService,
+    TopicService,
+    TheoryService,
+    ExamService,
+    ExamQuestionService,
+    StudentExamService
   ],
   bootstrap: [AppComponent]
 })

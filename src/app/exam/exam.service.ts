@@ -22,7 +22,7 @@ export class ExamService extends RestService<Exam>{
     };
     return this.search('findById', options);
   }
-
+  /*
   public findByStatementContaining(text: string): Observable<Exam[]> {
     const options: any = {
       params: [
@@ -34,4 +34,5 @@ export class ExamService extends RestService<Exam>{
     };
     return this.search('findByStatementContaining', options);
   }
+  */
 }

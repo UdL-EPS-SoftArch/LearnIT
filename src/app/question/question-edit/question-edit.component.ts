@@ -16,7 +16,7 @@ import {TopicService} from '../../topic/topic.service';
 })
 export class QuestionEditComponent implements OnInit {
   public question: Question = new Question();
-  public levels: Level[] = [];
+  //public levels: Level[] = [];
   public topics: Topic[] = [];
   public totalRecipes = 0;
   private sorting: Sort[] = [{ path: 'name', order: 'ASC' }];
@@ -34,22 +34,27 @@ export class QuestionEditComponent implements OnInit {
     this.questionService.get(id).subscribe(
       (question: Question) => {
         this.question = question
-        this.question.getRelation(Level,'levelId').subscribe(level=>this.question.levelId=level);
-        this.question.getRelation(Topic,'topicId').subscribe(topic=>this.question.topicId=topic);
+
+        //this.question.getRelation(Level,'levelId').subscribe(level=>this.question.levelId=level);
+        //this.question.getRelation(Topic,'topicId').subscribe(topic=>this.question.topicId=topic);
       });
 
+    /*
     this.levelService.getAll({sort: this.sorting}).subscribe(
       (levels: Level[]) => {
         this.levels = levels;
         this.totalRecipes = this.levelService.totalElement();
         console.log(this.levels)
       });
+    */
+    /*
     this.topicService.getAll({sort: this.sorting}).subscribe(
       (topics: Topic[]) => {
         this.topics = topics;
         this.totalRecipes = this.topicService.totalElement();
         console.log(this.topics)
       });
+    */
   }
 
   onSubmit(): void {
