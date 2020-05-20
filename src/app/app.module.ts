@@ -51,6 +51,7 @@ import { ExamListComponent } from './exam/exam-list/exam-list.component';
 import { ExamDetailComponent} from './exam/exam-detail/exam-detail.component';
 import { EvalExamComponent} from './exam/exam-eval/exam-eval.component';
 import {ExamDeleteComponent} from './exam/exam-delete/exam-delete.component';
+import {ExamEditComponent} from './exam/exam-edit/exam-edit.component';
 //import {TheoryEditComponent} from './theory/theory-edit/theory-edit.component';
 
 //import {YouTubePlayerModule} from '@angular/youtube-player';
@@ -91,7 +92,8 @@ import { StudentExamService } from './manytomany/students_exams.service';
     ExamListComponent,
     ExamDetailComponent,
     EvalExamComponent,
-    ExamDeleteComponent
+    ExamDeleteComponent,
+    ExamEditComponent
   ],
   imports: [
     BrowserModule,

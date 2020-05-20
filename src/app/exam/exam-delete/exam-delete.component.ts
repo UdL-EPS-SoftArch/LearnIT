@@ -14,7 +14,7 @@ import {AuthenticationBasicService} from "../../login-basic/authentication-basic
 
 
 @Component({
-  selector: 'app-exam-add',
+  selector: 'app-exam-delete',
   templateUrl: './exam-delete.component.html'
 })
 
