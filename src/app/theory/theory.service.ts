@@ -7,6 +7,7 @@ import {Theory} from './theory';
 import { Topic } from '../topic/topic';
 import { Level } from '../level/level';
 
+
 @Injectable()
 export class TheoryService extends RestService<Theory>{
 
@@ -17,6 +18,30 @@ export class TheoryService extends RestService<Theory>{
   public findByStatementContaining(text: string): Observable<Theory[]> {
     const options: any = {params: [{key: 'text', value: text}]};
     return this.search('findByStatementContaining', options);
+  }
+
+  public findByLevel(level: Level): Observable<Theory[]> {
+    const options: any = {
+      params: [
+        {
+          key: 'level',
+          value: level
+        }
+      ]};
+
+    return this.search('findByLevel', options);
+  }
+
+  public findByTopic(topic: Topic): Observable<Theory[]> {
+    const options: any = {
+      params: [
+        {
+          key: 'topic',
+          value: topic
+        }
+      ]};
+
+    return this.search('findByTopic', options);
   }
 
   public findByLevelAndTopic(level: Level, topic: Topic): Observable<Theory[]> {
@@ -32,6 +57,6 @@ export class TheoryService extends RestService<Theory>{
         }
       ]};
 
-    return this.search('findTheoriesByLevelAndTopic', options);
+    return this.search('findByLevelAndTopic', options);
   }
 }

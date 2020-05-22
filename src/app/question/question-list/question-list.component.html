@@ -1,5 +1,4 @@
 
-
 <div class="container card" style="margin-bottom: 40px !important;">
 
   <div class="row card-header">
@@ -23,7 +22,6 @@
     </div>
 
     <!-- Topic Filter -->
-    <!--
     <div class="col-6">
       <div class="form-group">
         <label class="control-label" for="topics">Topic:</label>
@@ -32,8 +30,17 @@
         </select>
       </div>
     </div>
-    -->
 
+  </div>
+
+  <div class="row card-footer" *ngIf="!isEmpty(level) || !isEmpty(topic)">
+    <button *ngIf="!isEmpty(level)" type="button" class="btn btn-secondary" (click)="clearLevel()" style="margin: 2px;">
+      Level: {{ level.name }}
+      <!--<span class="badge badge-light">x</span>-->
+    </button>
+    <button *ngIf="!isEmpty(topic)" type="button" class="btn btn-secondary" (click)="clearTopic()" style="margin: 2px;">
+      Topic: {{ topic.name }}
+    </button>
   </div>
 
 </div>

@@ -11,6 +11,8 @@ export class Question extends Resource {
 
   tmp: any;
 
+  //exams_questions: any;
+
   //topicId: any;
   //levelId: any;
 

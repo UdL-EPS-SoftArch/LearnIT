@@ -16,8 +16,23 @@
       <div class="form-group">
         <label class="control-label" for="levels">Level:</label>
         <select id="levels" name="levels" type="text" class="form-control" [(ngModel)]="level" (change)="changeLevel($event)">
-          <option *ngFor="let level of levels" [value]="level.uri">{{ level.name }}</option>
+
+            <ng-container *ngFor="let level of levels">
+              <!--
+              <option *ngIf="level.name == level_name; else no_selected;" [value]="level.uri" selected="selected">{{ level.name }}</option>
+              <ng-template #no_selected>
+                <option [value]="level.uri">{{ level.name }}</option>
+              </ng-template>
+              -->
+              <option ng-selected="level.name == level_name" [value]="level.uri">{{ level.name }}</option>
+            </ng-container>
+
         </select>
+        <!--
+        <select name="ngvalueselect" ng-model="level">
+          <option ng-repeat="option in levels" ng-value="option.uri">{{ option.uri }}</option>
+        </select>
+        -->
       </div>
     </div>
 
@@ -31,6 +46,17 @@
       </div>
     </div>
 
+  </div>
+
+  <div class="row card-footer" *ngIf="!isEmpty(level) || !isEmpty(topic)">
+    <button *ngIf="!isEmpty(level)" type="button" class="btn btn-secondary" (click)="clearLevel()" style="margin: 2px;">
+      Level: {{ level.name }}
+      <!--<span class="badge badge-light">x</span>-->
+    </button>
+    <button *ngIf="!isEmpty(topic)" type="button" class="btn btn-secondary" (click)="clearTopic()" style="margin: 2px;">
+      Topic: {{ topic.name }}
+      <!--<span class="badge badge-light">x</span>-->
+    </button>
   </div>
 
 </div>

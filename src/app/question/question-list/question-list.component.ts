@@ -34,6 +34,8 @@ export class QuestionListComponent implements OnInit {
 
   constructor(
     public router: Router,
+    private levelService: LevelService,
+    private topicService: TopicService,
     private questionService: QuestionService) {
   }
 
@@ -45,6 +47,20 @@ export class QuestionListComponent implements OnInit {
         this.totalRecipes = this.questionService.totalElement();
         console.log(this.questions)
       });
+
+    this.levelService.getAll({sort: this.sorting}).subscribe(
+      (levels: Level[]) => {
+        this.levels = levels;
+        //console.log(this.levels)
+      });
+
+    this.topicService.getAll({sort: this.sorting}).subscribe(
+      (topics: Topic[]) => {
+        this.topics = topics;
+        //console.log(this.topics)
+      });
+
+    //this.filtereQuestion();
   }
 
   changePage() {
@@ -53,13 +69,80 @@ export class QuestionListComponent implements OnInit {
   }
 
   changeLevel(value: any) {
-    console.log("change theory filter level");
+    console.log("change question filter level");
+
+    this.level = new Level();
+
+    let level_uri = value.target.value;
+
+    let level_array = level_uri.split("/");
+
+    let level_id = Number(level_array[level_array.length-1]);
+
+    this.levelService.get(level_id).subscribe(
+      level => {
+        this.level = level;
+
+        this.topicService.findByLevel(level_uri).subscribe(
+          (topics: Topic[]) => {
+            this.topics = topics;
+
+            //this.filterQuestion();
+          });
+      });
   }
 
   changeTopic(value: any) {
-      console.log("change theory filter topic");
+      console.log("change question filter topic");
+      console.log(value);
+
+      this.topic = new Topic();
+
+      let topic_uri = value.target.value;
+      console.log(topic_uri);
+      let topic_array = topic_uri.split("/");
+      console.log(topic_array);
+      let topic_id = Number(topic_array[topic_array.length-1]);
+      console.log(topic_id);
+
+      this.topicService.get(topic_id).subscribe(
+        topic => {
+          this.topic = topic;
+          //console.log(this.topic);
+
+          this.filterQuestion();
+        });
   }
 
+  filterQuestion() {
+    console.log("filter question");
+
+    this.questionService.findByTopic(this.topic).subscribe(
+      (questions: Question[]) => {
+        this.questions = questions;
+        this.totalRecipes = this.questionService.totalElement();
+
+      });
+  }
+
+  isEmpty(obj) {
+    for (var key in obj) {
+      if (obj.hasOwnProperty(key)) {
+        return false;
+      }
+    }
+    return true;
+  }
+
+  clearTopic() {
+    this.topic = new Topic();
+    this.filterQuestion();
+  }
+
+  clearLevel() {
+    this.level = new Level();
+    this.filterQuestion();
+  }
 }
 
 

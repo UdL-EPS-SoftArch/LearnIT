@@ -1,0 +1,63 @@
+<h2 align="center">Edit an existing Exam</h2>
+
+<div class="jumbotron">
+  <h4 class="display-4">Edit Exam</h4>
+  <p class="lead">Please, provide your selections</p>
+
+  <form id="user-form" (ngSubmit)="onSubmit()" #form="ngForm">
+    <fieldset>
+      <div id="formulaire">
+
+        <!-- Username read only -->
+        <div class="form-group">
+          <label class="control-label" for="username">ID</label>
+          <input id="username" name="username" type="text" class="form-control" readonly [ngModel]="exam._links.self.href.split('/')[4]" >
+
+        </div>
+
+        <!-- name input -->
+        <div class="form-group" [class.was-validated]="name.dirty || name.touched">
+          <label class="control-label" for="name">Name*</label>
+          <input id="name" name="name" type="text" class="form-control"
+                 [(ngModel)]="exam.name" #name="ngModel" required>
+          <div class="invalid-feedback">Name field is required</div>
+        </div>
+
+        <!-- question input -->
+        <div class="form-group" [class.was-validated]="question.dirty || question.touched">
+          <label class="control-label" for="questions">Questions:*</label>
+          <select id="questions" name="questions" type="text" class="form-control" [(ngModel)]="exam.exams_questions" #question="ngModel" required multiple>
+
+            <option *ngFor="let question of exams_questions" [value]="question.uri" >{{ question.statement }}</option>
+            <!--<option *ngFor="let exam_question of exam_questions" [value]="exam_question._links.self.href" >{{ exam_question.statement }}</option>-->
+
+          </select>
+          <span class="invalid-feedback">Question field is required</span>
+        </div>
+        <!--
+        <div class="" ngFor="let question of questions">
+          <p>{{ question.uri }}</p>
+          <p>{{ question._links.self.href }}</p>
+        </div>
+        -->
+
+        <!-- Button -->
+        <div class="form-group">
+          <button id="submit" type="submit" class="btn m-1 btn-success pull-right" [disabled]="form.invalid">Submit</button>
+          <button id="userDetail" type="button" [routerLink]="['/exams', exam._links.self.href.split('/')[4]]"
+                  class="btn m-1 btn-outline-primary pull-right">Back</button>
+        </div>
+      </div>
+    </fieldset>
+  </form>
+
+</div>
+
+<!--Footer-->
+<footer class="modal-footer">
+  <div class="container">
+    <div class="text-center">
+      <small>Footer...</small>
+    </div>
+  </div>
+</footer>

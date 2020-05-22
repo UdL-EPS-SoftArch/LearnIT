@@ -28,6 +28,7 @@ export class TheoryListComponent implements OnInit {
   public pageSize = 10;
   public page = 1;
   public totalRecipes = 0;
+  public level_name: string = "Master";
 
   private sorting: Sort[] = [{ path: 'name', order: 'ASC' }];
 
@@ -41,8 +42,10 @@ export class TheoryListComponent implements OnInit {
   ngOnInit() {
     console.log("new theory init");
 
-    //this.level = new Level();
-    //this.topic = new Topic();
+    console.log(this.level_name);
+
+    this.level = new Level();
+    this.topic = new Topic();
 
     this.theoryService.getAll({size: this.pageSize, sort: this.sorting}).subscribe(
       (theories: Theory[]) => {
@@ -62,6 +65,8 @@ export class TheoryListComponent implements OnInit {
         this.topics = topics;
         //console.log(this.topics)
       });
+
+    //this.filtereTheory();
   }
 
   changePage() {
@@ -72,6 +77,8 @@ export class TheoryListComponent implements OnInit {
   changeLevel(value: any) {
     console.log("change theory filter level");
 
+    this.level = new Level();
+
     let level_uri = value.target.value;
     //console.log(theory_uri);
 
@@ -80,30 +87,32 @@ export class TheoryListComponent implements OnInit {
     //console.log(typeof(theory_array));
 
     let level_id = Number(level_array[level_array.length-1]);
-    //console.log(theory_id);
-    //console.log(typeof(theory_id));
+    //console.log(level_id);
+    //console.log(typeof(level_id));
 
     // get selected level
     this.levelService.get(level_id).subscribe(
       level => {
         this.level = level;
-        console.log(this.level);
+        //console.log(this.level);
+        //this.level_name = level.name;
+        //console.log(this.level);
+
+        // get filtered topics
+        this.topicService.findByLevel(level_uri).subscribe(
+          (topics: Topic[]) => {
+            this.topics = topics;
+            //console.log(this.topics)
+
+            this.filtereTheory();
+          });
       });
-
-    // get filtered topics
-    this.topicService.findByLevel(level_uri).subscribe(
-      (topics: Topic[]) => {
-        this.topics = topics;
-        console.log(this.topics)
-      });
-
-    // get filtered theories
-    //this.filtereTheory();
-
   }
 
   changeTopic(value: any) {
     console.log("change theory filter topic");
+
+    this.topic = new Topic();
 
     let topic_uri = value.target.value;
     //console.log(topic_uri);
@@ -116,26 +125,77 @@ export class TheoryListComponent implements OnInit {
     this.topicService.get(topic_id).subscribe(
       topic => {
         this.topic = topic;
-        console.log(this.topic);
-      });
+        //console.log(this.topic);
 
-    // get filtered theories
-    this.filtereTheory();
+        this.filtereTheory();
+      });
   }
 
   filtereTheory() {
     console.log("filter theory");
 
     //console.log(this.level);
+    //console.log(this.isEmpty(this.level));
     //console.log(this.topic);
+    //console.log(this.isEmpty(this.topic));
 
-    this.theoryService.findByLevelAndTopic(this.level, this.topic).subscribe(
-      (theories: Theory[]) => {
-        this.theories = theories;
-        this.totalRecipes = this.theoryService.totalElement();
-        console.log(this.theories)
-      });
+    if (!this.isEmpty(this.topic) && !this.isEmpty(this.level)) {
+      console.log("level and topic");
+      this.theoryService.findByLevelAndTopic(this.level, this.topic).subscribe(
+        (theories: Theory[]) => {
+          this.theories = theories;
+          this.totalRecipes = this.theoryService.totalElement();
+          //console.log(this.theories)
+        });
+    }
+    else {
+      if (!this.isEmpty(this.level)) {
+        console.log("level");
+        this.theoryService.findByLevel(this.level).subscribe(
+          (theories: Theory[]) => {
+            this.theories = theories;
+            this.totalRecipes = this.theoryService.totalElement();
+            //console.log(this.theories)
+          });
+      }
+      else if (!this.isEmpty(this.topic)){
+        console.log("topic");
+        this.theoryService.findByTopic(this.topic).subscribe(
+          (theories: Theory[]) => {
+            this.theories = theories;
+            this.totalRecipes = this.theoryService.totalElement();
+            console.log(this.theories)
+          });
+      }
+      else {
+        console.log("ninguno");
+        this.theoryService.getAll({size: this.pageSize, sort: this.sorting}).subscribe(
+          (theories: Theory[]) => {
+            this.theories = theories;
+            this.totalRecipes = this.theoryService.totalElement();
+            //console.log(this.theories)
+          });
+      }
+    }
+  }
 
+  isEmpty(obj) {
+    for (var key in obj) {
+      if (obj.hasOwnProperty(key)) {
+        return false;
+      }
+    }
+    return true;
+  }
+
+  clearTopic() {
+    this.topic = new Topic();
+    this.filtereTheory();
+  }
+
+  clearLevel() {
+    this.level = new Level();
+    this.filtereTheory();
   }
 }
 

@@ -1,7 +1,11 @@
 import {Injectable, Injector} from '@angular/core';
 import {RestService} from '@lagoshny/ngx-hal-client';
-import {Question} from './question';
 import {Observable} from 'rxjs';
+
+import { Topic } from '../topic/topic';
+import { Level } from '../level/level';
+import {Question} from './question';
+
 
 @Injectable()
 export class QuestionService extends RestService<Question>{
@@ -21,17 +25,29 @@ export class QuestionService extends RestService<Question>{
     };
     return this.search('findByStatementContaining', options);
   }
-  /*
-  public findQuestionByLevelId(id: number): Observable<Question[]> {
+
+  public findByTopic(topic: Topic): Observable<Question[]> {
     const options: any = {
       params: [
         {
-          key: 'examId',
-          value: id
+          key: 'topic',
+          value: topic
         }
-      ]
-    };
-    return this.search('findQuestionByLevelId', options);
+      ]};
+
+    return this.search('findByTopic', options);
+  }
+  /*
+  public findByTopic(topic: Topic): Observable<Question[]> {
+    const options: any = {
+      params: [
+        {
+          key: 'topic',
+          value: topic
+        }
+      ]};
+
+    return this.search('findByTopic', options);
   }
   */
 }

@@ -4,7 +4,7 @@
   <h4 class="display-4">New Exam</h4>
   <p class="lead">Please, provide your theory</p>
 
-  <form id="user-form" (ngSubmit)="onSubmit()" #form="ngForm">
+  <form id="exam-form" (ngSubmit)="onSubmit(form)" #form="ngForm">
     <fieldset>
       <div id="formulaire">
 
@@ -17,26 +17,33 @@
         </div>
 
         <!-- question input -->
-        <div class="form-group" [class.was-validated]="question.dirty || question.touched">
+        <!--<div class="form-group" [class.was-validated]="question.dirty || question.touched">-->
+        <div class="form-group">
           <label class="control-label" for="questions">Questions:*</label>
-          <select id="questions" name="questions" type="text" class="form-control" [(ngModel)]="exam.exams_questions" #question="ngModel" required multiple>
+          <select id="questions" name="questions" type="text" class="form-control" [(ngModel)]="questions_selected" required="required" multiple="multiple">
+          <!--<select id="questions" name="questions" type="text" class="form-control" required multiple>-->
 
-            <option *ngFor="let question of exams_questions" [value]="question.uri" >{{ question.statement }}</option>
-            <!--<option *ngFor="let exam_question of exam_questions" [value]="exam_question._links.self.href" >{{ exam_question.statement }}</option>-->
+            <!--<option *ngFor="let question of questions" [value]="question.uri" >{{ question.statement }}</option>-->
+            <option *ngFor="let question of questions" [value]="question.uri" >{{ question.statement }}</option>
 
           </select>
           <span class="invalid-feedback">Question field is required</span>
         </div>
-        <!--
-        <div class="" ngFor="let question of questions">
-          <p>{{ question.uri }}</p>
-          <p>{{ question._links.self.href }}</p>
+
+        <!-- student input -->
+        <!--<div class="form-group" [class.was-validated]="student.dirty || student.touched">-->
+        <div class="form-group">
+          <label class="control-label" for="students">Users:*</label>
+          <select id="students" name="questions" type="text" class="form-control" [(ngModel)]="students_selected" required multiple>
+            <option *ngFor="let student of students" [value]="student.uri" >{{ student.uri }}</option>
+          </select>
+          <span class="invalid-feedback">Question field is required</span>
         </div>
-        -->
 
         <!-- Button -->
         <div class="form-group">
-          <button id="submit" type="submit" class="btn m-1 btn-success pull-right" [disabled]="form.invalid">Submit</button>
+          <!--<button id="submit" type="submit" class="btn m-1 btn-success pull-right" [disabled]="form.invalid">Submit</button>-->
+          <button id="submit" type="submit" class="btn m-1 btn-success pull-right">Submit</button>
         </div>
       </div>
     </fieldset>
