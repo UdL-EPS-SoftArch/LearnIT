@@ -20,7 +20,7 @@
         <!--<div class="form-group" [class.was-validated]="question.dirty || question.touched">-->
         <div class="form-group">
           <label class="control-label" for="questions">Questions:*</label>
-          <select id="questions" name="questions" type="text" class="form-control" [(ngModel)]="questions_selected" required="required" multiple="multiple">
+          <select id="questions" name="questions" type="text" class="form-control" [(ngModel)]="QuestionsSelected" required="required" multiple="multiple">
           <!--<select id="questions" name="questions" type="text" class="form-control" required multiple>-->
 
             <!--<option *ngFor="let question of questions" [value]="question.uri" >{{ question.statement }}</option>-->
@@ -34,7 +34,7 @@
         <!--<div class="form-group" [class.was-validated]="student.dirty || student.touched">-->
         <div class="form-group">
           <label class="control-label" for="students">Users:*</label>
-          <select id="students" name="questions" type="text" class="form-control" [(ngModel)]="students_selected" required multiple>
+          <select id="students" name="questions" type="text" class="form-control" [(ngModel)]="StudentsSelected" required multiple>
             <option *ngFor="let student of students" [value]="student.uri" >{{ student.uri }}</option>
           </select>
           <span class="invalid-feedback">Question field is required</span>

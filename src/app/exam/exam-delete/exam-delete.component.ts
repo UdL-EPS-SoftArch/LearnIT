@@ -9,7 +9,7 @@ import {Exam} from '../exam';
 import {ExamService} from '../exam.service';
 import {Question} from '../../question/question';
 import {QuestionService} from '../../question/question.service';
-import {AuthenticationBasicService} from "../../login-basic/authentication-basic.service";
+import {AuthenticationBasicService} from '../../login-basic/authentication-basic.service';
 
 
 
@@ -23,8 +23,8 @@ export class ExamDeleteComponent implements OnInit {
   public exam: Exam = new Exam();
   private id: string;
 
-  public exams_questions: Question[] = [];
-  //public questions: any;
+  public EXAMS_QUESTIONS: Question[] = [];
+   // public questions: any;
 
 
   constructor(
@@ -33,7 +33,7 @@ export class ExamDeleteComponent implements OnInit {
     private examService: ExamService,
     private authenticationService: AuthenticationBasicService) {
 
-      console.log("new exam constructor");
+      console.log('new exam constructor');
   }
 
   ngOnInit() {

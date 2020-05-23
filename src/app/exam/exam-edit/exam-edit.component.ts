@@ -8,7 +8,7 @@ import {Exam} from '../exam';
 import {ExamService} from '../exam.service';
 import {Question} from '../../question/question';
 import {QuestionService} from '../../question/question.service';
-import {AuthenticationBasicService} from "../../login-basic/authentication-basic.service";
+import {AuthenticationBasicService} from '../../login-basic/authentication-basic.service';
 
 
 
@@ -22,10 +22,10 @@ export class ExamEditComponent implements OnInit {
   public exam: Exam;
   public name: string = '';
 
-  public exams_questions: Question[] = [];
-  //public questions: any;
+  public examsQuestions: Question[] = [];
+   // public questions: any;
 
-  public number_of_questions = 1;
+  public numberOfQuestions = 1;
 
   public totalRecipes = 0;
   private sorting: Sort[] = [{ path: 'statement', order: 'ASC' }];
@@ -50,9 +50,9 @@ export class ExamEditComponent implements OnInit {
 
         this.totalRecipes = this.questionService.totalElement();
 
-        this.exams_questions = questions;
-        console.log(this.exams_questions);
-        console.log(typeof(this.exams_questions));
+        this.examsQuestions = questions;
+        console.log(this.examsQuestions);
+        console.log(typeof(this.examsQuestions));
       });
 
   }

@@ -32,23 +32,23 @@ export class NewExamComponent implements OnInit {
 
   public name: string = '';
 
-  public number_of_questions = 0;
+  public numberOfQuestions = 0;
   public mark = 1;
   public pendent: boolean = true;
 
   public questions: Question[] = [];
   public question: Question;
 
-  public questions_selected: string[] = [];
-  public students_selected: string[] = [];
+  public QuestionsSelected: string[] = [];
+  public StudentsSelected: string[] = [];
 
-  public exam_question: ExamQuestion;
-  public student_exam: StudentExam;
+  public EXAM_QUESTION: ExamQuestion;
+  public STUDENT_EXAM: StudentExam;
 
   public students: Student[] = [];
   public student: Student;
 
-  //public totalRecipes = 0;
+   // public totalRecipes = 0;
   private sorting: Sort[] = [{ path: 'statement', order: 'ASC' }];
 
   constructor(
@@ -59,11 +59,11 @@ export class NewExamComponent implements OnInit {
     private studentExamService: StudentExamService,
     private examQuestionService: ExamQuestionService) {
 
-      console.log("new exam constructor");
+      console.log('new exam constructor');
   }
 
   ngOnInit(): void {
-    console.log("new exam init");
+    console.log('new exam init');
 
     this.exam = new Exam();
 
@@ -71,7 +71,7 @@ export class NewExamComponent implements OnInit {
       (questions: Question[]) => {
         console.log(questions);
 
-        //this.totalRecipes = this.questionService.totalElement();
+         // this.totalRecipes = this.questionService.totalElement();
 
         this.questions = questions;
       });
@@ -86,14 +86,14 @@ export class NewExamComponent implements OnInit {
 
 
   onSubmit(form: NgForm): void {
-    console.log("new exam submit");
+    console.log('new exam submit');
     console.log(form);
 
-    this.exam.nbOfQuestions = this.questions_selected.length;
+    this.exam.nbOfQuestions = this.QuestionsSelected.length;
 
-    //console.log(this.exam);
-    //console.log(this.questions_selected);
-    //console.log(this.students_selected);
+     // console.log(this.exam);
+     // console.log(this.questions_selected);
+     // console.log(this.students_selected);
 
     this.examService.create(this.exam).subscribe(
       (exam: Exam) => {
@@ -101,48 +101,48 @@ export class NewExamComponent implements OnInit {
         console.log(this.exam);
         console.log(this.exam._links.self.href);
 
-        for (let q_selected of this.questions_selected) {
+        for (let Q_SELECTED of this.QuestionsSelected) {
 
-          let question_id = q_selected.split('/')[2];
+          let QUESTION_ID = Q_SELECTED.split('/')[2];
 
-          this.exam_question = new ExamQuestion();
+          this.EXAM_QUESTION = new ExamQuestion();
 
-          this.questionService.get(question_id).subscribe(
+          this.questionService.get(QUESTION_ID).subscribe(
             (question: Question) => {
               console.log(question);
               console.log(question._links.self.href);
 
-              this.exam_question.question = question;
-              //this.exam_question.question = question._links.self.href;
-              //this.exam_question.question_id = question_id;
+              this.EXAM_QUESTION.question = question;
+               // this.exam_question.question = question._links.self.href;
+               // this.exam_question.question_id = question_id;
 
-              this.exam_question.exam = this.exam;
-              //this.exam_question.exam = this.exam._links.self.href;
-              //this.exam_question.exam_id = this.exam.id;
-              console.log(this.exam_question);
+              this.EXAM_QUESTION.exam = this.exam;
+               // this.exam_question.exam = this.exam._links.self.href;
+               // this.exam_question.exam_id = this.exam.id;
+              console.log(this.EXAM_QUESTION);
 
-              this.examQuestionService.create(this.exam_question).subscribe(
-                (exam_question: ExamQuestion) => {
-                  console.log(exam_question);
+              this.examQuestionService.create(this.EXAM_QUESTION).subscribe(
+                (examQuestion: ExamQuestion) => {
+                  console.log(examQuestion);
                 });
 
             });
         }
 
-        for (let s_selected of this.students_selected) {
+        for (let sSelected of this.StudentsSelected) {
 
-          let student_id = s_selected.split('/')[2];
+          let studentId = sSelected.split('/')[2];
 
-          this.student_exam = new StudentExam();
+          this.STUDENT_EXAM = new StudentExam();
 
-          this.studentService.get(student_id).subscribe(
+          this.studentService.get(studentId).subscribe(
             (student: Student) => {
-              this.student_exam.exam = this.exam;
-              this.student_exam.student = student;
+              this.STUDENT_EXAM.exam = this.exam;
+              this.STUDENT_EXAM.student = student;
 
-              this.studentExamService.create(this.student_exam).subscribe(
-                (student_exam: StudentExam) => {
-                  console.log(student_exam);
+              this.studentExamService.create(this.STUDENT_EXAM).subscribe(
+                (studentExam: StudentExam) => {
+                  this.router.navigate(['exams']);
                 }
               );
             });
@@ -150,13 +150,8 @@ export class NewExamComponent implements OnInit {
 
       });
 
-
-    //this.router.navigate(['exams'])
   }
 
 }
 
 
-
-
-//

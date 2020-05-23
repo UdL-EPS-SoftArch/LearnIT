@@ -14,8 +14,8 @@ export class Exam extends Resource {
   mark: any;
   pendent: any;
 
-  exams_questions: any;
-  exams_students: any;
+  EXAMS_QUESTIONS: any;
+  EXAMS_STUDENTS: any;
 
   constructor(values: object = {}) {
     super();
