@@ -27,13 +27,11 @@ import {AuthenticationBasicService} from '../../login-basic/authentication-basic
 export class ExamDetailComponent implements OnInit {
 
   public exam: Exam = new Exam();
+
   public questions: Question[] = [];
-
   public students: Student[] = [];
-  //public student_exam: StudentExam = new StudentExam();
 
-  //GenuineUrl: SafeResourceUrl;
-  //private sorting: Sort[] = [{ path: 'statement', order: 'ASC' }];
+  private sorting: Sort[] = [{ path: 'statement', order: 'ASC' }];
 
   constructor(
     public route: ActivatedRoute,
@@ -42,39 +40,34 @@ export class ExamDetailComponent implements OnInit {
     private examQuestionService: ExamQuestionService,
     private studentExamService: StudentExamService,
     public authenticationService: AuthenticationBasicService) {
-      console.log("exam detail constructor");
+      console.log('exam detail constructor');
   }
 
   ngOnInit() {
-    console.log("exam detail init");
+    console.log('exam detail init');
 
     const id = this.route.snapshot.paramMap.get('id');
 
     this.examService.get(id).subscribe(
       exam => {
         this.exam = exam;
-        console.log(this.exam);
+        // console.log(this.exam);
 
         this.examQuestionService.findByExam(this.exam).subscribe(
-          exams_questions => {
+          resultExamQuestions => {
+            // console.log(resultExamQuestions);
 
-            for (let exam_question of exams_questions) {
-              //console.log(exam_question);
-              //console.log(exam_question._embedded.question);
-
-              this.questions.push(exam_question._embedded.question);
+            for (const resultExamQuestion of resultExamQuestions) {
+              this.questions.push(resultExamQuestion._embedded.question);
             }
           });
 
         this.studentExamService.findByExam(this.exam).subscribe(
-          students_exams => {
-            console.log(students_exams);
+          resultStudentsExams => {
+            // console.log(resultStudentsExams);
 
-            for (let student_exam of students_exams) {
-              console.log(student_exam);
-              console.log(student_exam._embedded.student);
-
-              this.students.push(student_exam._embedded.student);
+            for (const resultStudentsExam of resultStudentsExams) {
+              this.students.push(resultStudentsExam._embedded.student);
             }
           });
       });
