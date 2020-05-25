@@ -124,11 +124,10 @@ export class NewExamComponent implements OnInit {
               // console.log(resultStudent);
 
               this.studentExam.exam = this.exam;
-              this.studentExam.student = student;
+              this.studentExam.student = resultStudent;
 
               this.studentExamService.create(this.studentExam).subscribe(
-                (results
-                  resultStudentExam: StudentExam) => {
+                (resultStudentExam: StudentExam) => {
                   // console.log(resultStudentExam);
                 }
               );
@@ -142,8 +141,3 @@ export class NewExamComponent implements OnInit {
   }
 
 }
-
-
-
-
-//

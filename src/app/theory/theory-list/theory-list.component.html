@@ -19,12 +19,12 @@
 
             <ng-container *ngFor="let level of levels">
               <!--
-              <option *ngIf="level.name == level_name; else no_selected;" [value]="level.uri" selected="selected">{{ level.name }}</option>
+              <option *ngIf="level.name == levelName; else no_selected;" [value]="level.uri" selected="selected">{{ level.name }}</option>
               <ng-template #no_selected>
                 <option [value]="level.uri">{{ level.name }}</option>
               </ng-template>
               -->
-              <option ng-selected="level.name == level_name" [value]="level.uri">{{ level.name }}</option>
+              <option ng-selected="level.name == levelName" [value]="level.uri">{{ level.name }}</option>
             </ng-container>
 
         </select>

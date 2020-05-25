@@ -21,7 +21,7 @@ export class ExamEditComponent implements OnInit {
 
   public exam: Exam;
 
-  public examsSuestions: Question[] = [];
+  public examsQuestions: Question[] = [];
 
   public totalRecipes = 0;
   private sorting: Sort[] = [{ path: 'statement', order: 'ASC' }];
@@ -46,9 +46,9 @@ export class ExamEditComponent implements OnInit {
 
         this.totalRecipes = this.questionService.totalElement();
 
-        this.examsSuestions = questions;
-        console.log(this.examsSuestions);
-        console.log(typeof(this.examsSuestions));
+        this.examsQuestions = questions;
+        console.log(this.examsQuestions);
+        console.log(typeof(this.examsQuestions));
       });
 
   }

@@ -30,14 +30,13 @@ export class EvalExamComponent implements OnInit {
   public questions: Question[] = [];
 
   public student: Student;
-  public student_exam: StudentExam = new StudentExam();
-  //public students_exams: StudentExam[] = [];
+  public studentExam: StudentExam = new StudentExam();
 
-  public number_of_questions = 1;
-  public done: boolean = false;
+  public numberOfQuestions = 1;
+  public done = false;
 
-  //public totalRecipes = 0;
-  //private sorting: Sort[] = [{ path: 'statement', order: 'ASC' }];
+   // public totalRecipes = 0;
+   // private sorting: Sort[] = [{ path: 'statement', order: 'ASC' }];
 
   constructor(
     public router: Router,
@@ -48,11 +47,11 @@ export class EvalExamComponent implements OnInit {
     private studentExamService: StudentExamService,
     public authenticationService: AuthenticationBasicService) {
 
-      console.log("new eval exam constructor");
+      console.log('new eval exam constructor');
   }
 
   ngOnInit(): void {
-    console.log("new eval exam init");
+    console.log('new eval exam init');
 
     const id = this.activatedRoute.snapshot.paramMap.get('id');
 
@@ -61,57 +60,50 @@ export class EvalExamComponent implements OnInit {
     this.examService.get(id).subscribe(
       exam => {
         this.exam = exam;
-        console.log(this.exam);
+        // console.log(this.exam);
 
         this.examQuestionService.findByExam(this.exam).subscribe(
-          exams_questions => {
+          examsQuestions => {
 
-            for (let exam_question of exams_questions) {
-              //console.log(exam_question);
-              //console.log(exam_question._embedded.question);
-              exam_question._embedded.question.tmp = '';
-              this.questions.push(exam_question._embedded.question);
+            for (const examsQuestion of examsQuestions) {
+               // console.log(examsQuestion);
+
+              examsQuestion._embedded.question.tmp = '';
+              this.questions.push(examsQuestion._embedded.question);
             }
           });
-        //console.log(this.questions);
 
         this.studentExamService.findByStudentAndExam(this.student, this.exam).subscribe(
-          (students_exams: StudentExam[]) => {
-            //console.log(students_exams);
+          (studentsExams: StudentExam[]) => {
+             // console.log(studentsExams);
 
-            this.student_exam = students_exams[0];
-            console.log(this.student_exam);
+            this.studentExam = studentsExams[0];
+            console.log(this.studentExam);
           });
       });
   }
 
   onSubmit(data: NgForm): void {
-    console.log("eval exam evaluate");
+    console.log('eval exam evaluate');
 
-    console.log(this.questions);
-    console.log(this.questions.length);
-    //console.log(data);
-    //console.log(typeof(data));
+    const correct = 10 / Number(this.questions.length);
+    let mark = 0.00;
 
-
-    let correct = 10 / Number(this.questions.length);
-    let mark: number = 0.00;
-
-    for (let q of this.questions) {
-      if (q.tmp == q.answer) {
+    for (const q of this.questions) {
+      if (q.tmp === q.answer) {
         mark += correct;
       }
     }
     console.log(mark);
 
-    this.student_exam.pendent = false;
-    this.student_exam.mark = mark;
-    console.log(this.student_exam);
+    this.studentExam.pendent = false;
+    this.studentExam.mark = mark;
+    console.log(this.studentExam);
 
     // save
 
-    this.studentExamService.patch(this.student_exam).subscribe(
-      (student_exam: StudentExam) => this.router.navigate(['exams']));
+    this.studentExamService.patch(this.studentExam).subscribe(
+      (resultStudentExam: StudentExam) => this.router.navigate(['exams']));
 
   }
 }

@@ -30,7 +30,7 @@ export class NewTheoryComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log("new theory init");
+    console.log('new theory init');
 
     this.theory = new Theory();
 

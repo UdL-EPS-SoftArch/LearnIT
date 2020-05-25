@@ -15,9 +15,11 @@ import {TopicService} from '../../topic/topic.service';
   templateUrl: './question-edit.component.html',
 })
 export class QuestionEditComponent implements OnInit {
+
   public question: Question = new Question();
-  //public levels: Level[] = [];
+  // public levels: Level[] = [];
   public topics: Topic[] = [];
+
   public totalRecipes = 0;
   private sorting: Sort[] = [{ path: 'name', order: 'ASC' }];
 
@@ -35,8 +37,8 @@ export class QuestionEditComponent implements OnInit {
       (question: Question) => {
         this.question = question
 
-        //this.question.getRelation(Level,'levelId').subscribe(level=>this.question.levelId=level);
-        //this.question.getRelation(Topic,'topicId').subscribe(topic=>this.question.topicId=topic);
+        // this.question.getRelation(Level,'levelId').subscribe(level=>this.question.levelId=level);
+        // this.question.getRelation(Topic,'topicId').subscribe(topic=>this.question.topicId=topic);
       });
 
     /*

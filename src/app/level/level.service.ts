@@ -14,5 +14,4 @@ export class LevelService extends RestService<Level>{
     const options: any = {params: [{key: 'text', value: text}]};
     return this.search('findByNameContaining', options);
   }
-  
 }

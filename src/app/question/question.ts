@@ -11,11 +11,6 @@ export class Question extends Resource {
 
   tmp: any;
 
-  //exams_questions: any;
-
-  //topicId: any;
-  //levelId: any;
-
   constructor(values: object = {}) {
     super();
     Object.assign(this as any, values);

@@ -28,7 +28,7 @@ export class ExamListComponent implements OnInit {
 
   public student: Student;
 
-  public students_exams: StudentExam[] = [];
+  public studentsExams: StudentExam[] = [];
 
   public levels: Level[] = [];
   public level: Level;
@@ -47,32 +47,30 @@ export class ExamListComponent implements OnInit {
     private examService: ExamService,
     private studentExamService: StudentExamService,
     private authenticationService: AuthenticationBasicService) {
-      console.log("list exam constructor");
+      console.log('list exam constructor');
   }
 
   ngOnInit() {
-    console.log("list exam init");
+    console.log('list exam init');
 
     if (this.isRole('Student')) {
 
       this.student = this.authenticationService.getCurrentUser();
-      //console.log(this.student);
+       // console.log(this.student);
 
       this.studentExamService.findByStudent(this.student).subscribe(
-        (students_exams: StudentExam[]) => {
-          //this.students_exams = students_exams;
-          //console.log(this.students_exams)
+        (resultStudentsExams: StudentExam[]) => {
+           // console.log(resultStudentsExams)
 
-          for (let student_exam of students_exams) {
-            //console.log(student_exam);
-            //console.log(student_exam._embedded.exam);
+          for (const studentExam of resultStudentsExams) {
+             // console.log(student_exam);
 
-            student_exam._embedded.exam.pendent = student_exam.pendent;
-            student_exam._embedded.exam.mark = student_exam.mark;
-            student_exam._embedded.exam._links = student_exam._links;
-            student_exam._embedded.exam.uri = student_exam._embedded.exam.uri;
+            studentExam._embedded.exam.pendent = studentExam.pendent;
+            studentExam._embedded.exam.mark = studentExam.mark;
+            studentExam._embedded.exam._links = studentExam._links;
+            studentExam._embedded.exam.uri = studentExam._embedded.exam.uri;
 
-            this.exams.push(student_exam._embedded.exam);
+            this.exams.push(studentExam._embedded.exam);
           }
           console.log(this.exams);
         });
@@ -88,7 +86,7 @@ export class ExamListComponent implements OnInit {
   }
 
   changePage() {
-    console.log("list exam change page");
+    console.log('list exam change page');
 
     this.examService.page(this.page - 1).subscribe(
       (exams: Exam[]) => this.exams = exams);
@@ -99,11 +97,11 @@ export class ExamListComponent implements OnInit {
   }
 
   changeLevel(value: any) {
-    console.log("change theory filter level");
+    console.log('change theory filter level');
   }
 
   changeTopic(value: any) {
-      console.log("change theory filter topic");
+      console.log('change theory filter topic');
   }
 }
 

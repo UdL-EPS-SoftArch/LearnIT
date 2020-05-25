@@ -51,16 +51,15 @@ export class QuestionListComponent implements OnInit {
     this.levelService.getAll({sort: this.sorting}).subscribe(
       (levels: Level[]) => {
         this.levels = levels;
-        //console.log(this.levels)
+        // console.log(this.levels)
       });
 
     this.topicService.getAll({sort: this.sorting}).subscribe(
       (topics: Topic[]) => {
         this.topics = topics;
-        //console.log(this.topics)
+        // console.log(this.topics)
       });
 
-    //this.filtereQuestion();
   }
 
   changePage() {
@@ -69,64 +68,63 @@ export class QuestionListComponent implements OnInit {
   }
 
   changeLevel(value: any) {
-    console.log("change question filter level");
+    // console.log('change question filter level');
+    // console.log(value);
 
     this.level = new Level();
 
-    let level_uri = value.target.value;
+    const levelUri = value.target.value;
+    const levelArray = levelUri.split('/');
+    const levelId = Number(levelArray[levelArray.length-1]);
 
-    let level_array = level_uri.split("/");
-
-    let level_id = Number(level_array[level_array.length-1]);
-
-    this.levelService.get(level_id).subscribe(
+    this.levelService.get(levelId).subscribe(
       level => {
         this.level = level;
 
-        this.topicService.findByLevel(level_uri).subscribe(
+        this.topicService.findByLevel(levelUri).subscribe(
           (topics: Topic[]) => {
             this.topics = topics;
+            // console.log(this.topics);
 
-            //this.filterQuestion();
+            this.filterQuestion();
           });
       });
   }
 
   changeTopic(value: any) {
-      console.log("change question filter topic");
-      console.log(value);
+      // console.log('change question filter topic');
+      // console.log(value);
 
       this.topic = new Topic();
 
-      let topic_uri = value.target.value;
-      console.log(topic_uri);
-      let topic_array = topic_uri.split("/");
-      console.log(topic_array);
-      let topic_id = Number(topic_array[topic_array.length-1]);
-      console.log(topic_id);
+      const topicUri = value.target.value;
+      const topicArray = topicUri.split('/');
+      const topicId = Number(topicArray[topicArray.length-1]);
 
-      this.topicService.get(topic_id).subscribe(
+      this.topicService.get(topicId).subscribe(
         topic => {
           this.topic = topic;
-          //console.log(this.topic);
+          // console.log(this.topic);
 
           this.filterQuestion();
         });
   }
 
   filterQuestion() {
-    console.log("filter question");
+    console.log('filter question');
 
     this.questionService.findByTopic(this.topic).subscribe(
       (questions: Question[]) => {
+        // console.log(questions);
         this.questions = questions;
+
         this.totalRecipes = this.questionService.totalElement();
 
       });
   }
 
   isEmpty(obj) {
-    for (var key in obj) {
+    for (const key in obj) {
       if (obj.hasOwnProperty(key)) {
         return false;
       }

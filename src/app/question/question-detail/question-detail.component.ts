@@ -25,8 +25,8 @@ export class QuestionDetailComponent implements OnInit {
     this.questionService.get(id).subscribe(
       question => {
         this.question = question;
-        //this.question.getRelation(Level,'levelId').subscribe(level=>this.question.levelId=level);
-        //this.question.getRelation(Topic,'topicId').subscribe(topic=>this.question.topicId=topic);
+        // this.question.getRelation(Level,'levelId').subscribe(level=>this.question.levelId=level);
+        // this.question.getRelation(Topic,'topicId').subscribe(topic=>this.question.topicId=topic);
       });
   }
 

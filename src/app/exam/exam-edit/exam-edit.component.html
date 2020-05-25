@@ -26,9 +26,9 @@
         <!-- question input -->
         <div class="form-group" [class.was-validated]="question.dirty || question.touched">
           <label class="control-label" for="questions">Questions:*</label>
-          <select id="questions" name="questions" type="text" class="form-control" [(ngModel)]="exam.exams_questions" #question="ngModel" required multiple>
+          <select id="questions" name="questions" type="text" class="form-control" [(ngModel)]="exam.EXAMS_QUESTIONS" #question="ngModel" required multiple>
 
-            <option *ngFor="let question of exams_questions" [value]="question.uri" >{{ question.statement }}</option>
+            <option *ngFor="let question of examsQuestions" [value]="question.uri" >{{ question.statement }}</option>
             <!--<option *ngFor="let exam_question of exam_questions" [value]="exam_question._links.self.href" >{{ exam_question.statement }}</option>-->
 
           </select>

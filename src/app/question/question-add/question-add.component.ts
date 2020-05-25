@@ -22,19 +22,20 @@ import {TopicService} from '../../topic/topic.service';
 export class NewQuestionComponent implements OnInit {
 
   public question: Question;
-  //public levels: Level[] = [];
+  // public levels: Level[] = [];
   public topics: Topic[] = [];
+
   public totalRecipes = 0;
   private sorting: Sort[] = [{ path: 'name', order: 'ASC' }];
 
   constructor(private router: Router,
-              private NewQuestionService: QuestionService,
+              private newQuestionService: QuestionService,
               private levelService: LevelService,
               private topicService: TopicService) {
   }
 
   ngOnInit(): void {
-    console.log("new question init");
+    console.log('new question init');
 
     this.question = new Question();
 
@@ -49,18 +50,15 @@ export class NewQuestionComponent implements OnInit {
     this.topicService.getAll({sort: this.sorting}).subscribe(
       (topics: Topic[]) => {
         this.topics = topics;
-        //this.totalRecipes = this.topicService.totalElement();
+
         console.log(this.topics)
       });
   }
 
   onSubmit(): void {
-    console.log("new exam submit");
+    console.log('new exam submit');
 
-    //console.log(this.question);
-    //console.log(this.question.levelId);
-
-    this.NewQuestionService.create(this.question).subscribe(
+    this.newQuestionService.create(this.question).subscribe(
       (question: Question) => this.router.navigate(['questions']));
   }
 }

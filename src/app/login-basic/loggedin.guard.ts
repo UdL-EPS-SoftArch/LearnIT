@@ -15,9 +15,6 @@ export class LoggedInGuard implements CanActivate {
       this.errorMessageService.showErrorMessage('You should be logged in to perform this action');
     }
     else {
-
-      console.log(this.authentication);
-      //if () {}
       return this.authentication.isLoggedIn();
     }
   }
