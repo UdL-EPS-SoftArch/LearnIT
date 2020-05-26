@@ -2,7 +2,7 @@
 
 <div class="jumbotron">
   <h4 class="display-4">New Theory</h4>
-  <p class="lead">Please, provide your theory</p>
+  <!--<p class="lead">Please, provide your theory</p>-->
 
   <form id="addtheory-form" (ngSubmit)="onSubmit()" #form="ngForm">
     <fieldset>
@@ -30,17 +30,15 @@
         <!-- topic input -->
         <div class="form-group" [class.was-validated]="topic.dirty || topic.touched">
           <label class="control-label" for="topicId">In the topic*:</label>
-          <select id="topicId" name="topicId" type="text" class="form-control"
-                  [(ngModel)]="theory.topic" #topic="ngModel" required>
-            <option *ngFor="let topic of topics" [value]="topic.uri" >{{topic.name}}</option>
+          <select id="topicId" name="topicId" type="text" class="form-control" [(ngModel)]="theory.topic" #topic="ngModel" required> <option *ngFor="let topic of topics" [value]="topic.uri" >{{topic.name}}</option>
           </select>
           <span class="invalid-feedback">Topic field is required</span>
         </div>
+
         <!-- level input -->
         <div class="form-group" [class.was-validated]="level.dirty || level.touched" >
           <label class="control-label" for="levelId">Level associated with this theory*:</label>
-          <select id="levelId" name="levelId" type="text" class="form-control"
-                  [(ngModel)]="theory.level" #level="ngModel" required>
+          <select id="levelId" name="levelId" type="text" class="form-control" [(ngModel)]="theory.level" #level="ngModel" required>
             <option *ngFor="let level of levels" [value]="level.uri" >{{level.name}}</option>
           </select>
           <span class="invalid-feedback">Level field is required</span>
@@ -63,7 +61,7 @@
 <footer class="modal-footer">
   <div class="container">
     <div class="text-center">
-      <small>Footer...</small>
+      <p>Created by UdL GEIADE students </p>
     </div>
   </div>
 </footer>

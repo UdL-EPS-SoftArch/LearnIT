@@ -1,3 +1,76 @@
+
+<div class="container card" style="margin-bottom: 40px !important;">
+
+  <div class="row card-header">
+    <div class="col align-items-center">
+      <div class="col-6 mt-1">
+        <h4>Filters</h4>
+      </div>
+    </div>
+  </div>
+
+  <div class="row card-body">
+
+    <!-- Level Filter -->
+    <div class="col-6">
+      <div class="form-group">
+        <label class="control-label" for="levels">Level:</label>
+        <select id="levels" name="levels" type="text" class="form-control" [(ngModel)]="level" (change)="changeLevel($event)">
+
+            <ng-container *ngFor="let level of levels">
+              <!--
+              <option *ngIf="level.name == levelName; else no_selected;" [value]="level.uri" selected="selected">{{ level.name }}</option>
+              <ng-template #no_selected>
+                <option [value]="level.uri">{{ level.name }}</option>
+              </ng-template>
+              -->
+              <option ng-selected="level.name == levelName" [value]="level.uri">{{ level.name }}</option>
+            </ng-container>
+
+        </select>
+        <!--
+        <select name="ngvalueselect" ng-model="level">
+          <option ng-repeat="option in levels" ng-value="option.uri">{{ option.uri }}</option>
+        </select>
+        -->
+      </div>
+    </div>
+
+    <!-- Topic Filter -->
+    <div class="col-6">
+      <div class="form-group">
+        <label class="control-label" for="topics">Topic:</label>
+        <select id="topics" name="topics" type="text" class="form-control" [(ngModel)]="topic" (change)="changeTopic($event)">
+          <option *ngFor="let topic of topics" [value]="topic.uri" >{{ topic.name }}</option>
+        </select>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="row card-footer" *ngIf="!isEmpty(level) || !isEmpty(topic)">
+    <button *ngIf="!isEmpty(level)" type="button" class="btn btn-secondary" (click)="clearLevel()" style="margin: 2px;">
+      Level: {{ level.name }}
+      <!--<span class="badge badge-light">x</span>-->
+    </button>
+    <button *ngIf="!isEmpty(topic)" type="button" class="btn btn-secondary" (click)="clearTopic()" style="margin: 2px;">
+      Topic: {{ topic.name }}
+      <!--<span class="badge badge-light">x</span>-->
+    </button>
+  </div>
+
+</div>
+
+<div class="container card" style="margin-bottom: 0px !important; border-bottom-width: 0px;">
+  <div class="row card-header">
+    <div class="col align-items-center">
+      <div class="col-6 mt-1">
+        <h4>Theories</h4>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div class="card mb-1" *ngFor="let theory of theories">
   <div class="card-block row m-1 col-12">
     <div class="card-body row align-items-center">
@@ -9,8 +82,13 @@
   </div>
 </div>
 
-<ngb-pagination class="d-flex justify-content-center"
-                [(page)]="page" [pageSize]="pageSize" [collectionSize]="totalRecipes"
-                (pageChange)="changePage()"></ngb-pagination>
+<ngb-pagination class="d-flex justify-content-center" [(page)]="page" [pageSize]="pageSize" [collectionSize]="totalRecipes" (pageChange)="changePage()"></ngb-pagination>
 
-
+<!--Footer-->
+<footer class="modal-footer">
+  <div class="container">
+    <div class="text-center">
+      <p>Created by UdL GEIADE students </p>
+    </div>
+  </div>
+</footer>

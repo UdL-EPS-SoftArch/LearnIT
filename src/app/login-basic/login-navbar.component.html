@@ -1,3 +1,4 @@
+
 <li class="nav-item" *ngIf="isLoggedIn()" id="currentUser">
   <a class="nav-link" *ngIf="isRole('Student')" [routerLink]="[getCurrentUser().uri]">
     <span class="fa fa-user-circle-o"></span> {{getCurrentUser().id}}</a>

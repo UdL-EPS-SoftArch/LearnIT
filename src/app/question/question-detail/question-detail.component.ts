@@ -12,6 +12,7 @@ import {Topic} from '../../topic/topic';
   templateUrl: './question-detail.component.html'
 })
 export class QuestionDetailComponent implements OnInit {
+
   public question: Question = new Question();
 
   constructor(public route: ActivatedRoute,
@@ -24,8 +25,8 @@ export class QuestionDetailComponent implements OnInit {
     this.questionService.get(id).subscribe(
       question => {
         this.question = question;
-        this.question.getRelation(Level,'levelId').subscribe(level=>this.question.levelId=level);
-        this.question.getRelation(Topic,'topicId').subscribe(topic=>this.question.topicId=topic);
+        // this.question.getRelation(Level,'levelId').subscribe(level=>this.question.levelId=level);
+        // this.question.getRelation(Topic,'topicId').subscribe(topic=>this.question.topicId=topic);
       });
   }
 

@@ -1,15 +1,16 @@
+
 import { Resource } from '@lagoshny/ngx-hal-client';
 
-export class Question extends Resource {
+export class ExamQuestion extends Resource {
 
   uri: string;
   _links: any;
+  _embedded: any;
 
-  id: any
-  statement: string;
-  answer: string;
+  id: any;
 
-  tmp: any;
+  exam: any;
+  question: any;
 
   constructor(values: object = {}) {
     super();

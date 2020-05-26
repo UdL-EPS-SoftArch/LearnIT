@@ -1,0 +1,71 @@
+
+<div class="card mb-4">
+
+  <div class="card-block">
+
+    <div class="card-header row m-1" style="margin: 0px !important;">
+      <h4 class="card-title col-md-12 p-3">Exam Evaluation</h4>
+      <div class="col-md-4 p-3">
+        <h6 class="card-subtitle text-muted">Id</h6>
+
+        <p class="card-text">{{ exam.uri.split('/')[2] }}</p>
+
+      </div>
+      <div class="col-md-4 p-3">
+        <h6 class="card-subtitle text-muted">Name</h6>
+        <p class="card-text">{{exam.name}}</p>
+      </div>
+      <div class="col-md-4 p-3">
+        <h6 class="card-subtitle text-muted">Nº Questions</h6>
+        <p class="card-text">{{exam.nbOfQuestions}}</p>
+      </div>
+    </div>
+
+    <form (ngSubmit)="onSubmit(form)" #form="ngForm">
+
+      <!-- Body -->
+      <div class="card-body row m-1">
+        <h4>Questions List</h4>
+
+        <div class="col-md-12" style="padding: 0px;">
+          <ul class="list-group">
+
+            <li class="list-group-item" style="padding: 0px; border-style: none;" *ngFor="let question of questions; let i = index" [attr.data-index]="i">
+
+              <div class="card mb-4">
+                <div class="card-block">
+
+                  <div class="card-body row m-1">
+                    <div class="col-md-12 p-3">
+                      <div class="form-group" [class.was-validated]="question.dirty || question.touched">
+                        <label class="control-label" for="question_tmp_{{i}}">* {{ question.statement }}</label>
+
+                        <!--<input id="question_tmp_question.uri.split('/')[2]" name="question_tmp_question.uri.split('/')[2]" type="text" class="form-control" placeholder="Anser here..." [(ngModel)]="question.tmp" #question="ngModel" required>-->
+                        <input [(ngModel)]="question.tmp" id="question_tmp_{{i}}" name="question_tmp_{{i}}" type="text" class="form-control" placeholder="Anser here..." required>
+
+                        <div class="invalid-feedback">Answer field is required</div>
+                        <div class="invalid-feedback">Answer field is invalid</div>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+            </li>
+
+          </ul>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <div class="card-footer text-right">
+        <!--<button id="submit" type="submit" class="btn m-1 btn-success pull-right" [disabled]="form.invalid">Evaluate</button>-->
+        <button id="submit" type="submit" class="btn m-1 btn-success pull-right">Evaluate</button>
+      </div>
+
+    </form>
+
+  </div>
+
+</div>

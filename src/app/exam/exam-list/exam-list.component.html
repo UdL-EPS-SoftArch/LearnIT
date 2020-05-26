@@ -1,0 +1,130 @@
+
+<div class="container card" style="margin-bottom: 40px !important;">
+
+  <div class="row card-header">
+    <div class="col align-items-center">
+      <div class="col-6 mt-1">
+        <h4>Filters</h4>
+      </div>
+    </div>
+  </div>
+
+  <div class="row card-body">
+
+    <!-- Level Filter -->
+    <div class="col-6">
+      <div class="form-group">
+        <label class="control-label" for="levels">Level:</label>
+        <select id="levels" name="levels" type="text" class="form-control" [(ngModel)]="level" (change)="changeLevel($event)">
+          <option *ngFor="let level of levels" [value]="level.uri" >{{ level.name }}</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Topic Filter -->
+    <div class="col-6">
+      <div class="form-group">
+        <label class="control-label" for="topics">Topic:</label>
+        <select id="topics" name="topics" type="text" class="form-control" [(ngModel)]="topic" (change)="changeTopic($event)">
+          <option *ngFor="let topic of topics" [value]="topic.uri" >{{ topic.name }}</option>
+        </select>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<!-- All Exams -->
+<div class="container card" style="margin-bottom: 0px !important; border-bottom-width: 0px;">
+  <div class="row card-header">
+    <div class="col align-items-center">
+      <div class="col-6 mt-1">
+        <h4>Exams</h4>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ul class="list-group">
+
+  <li class="list-group-item" style="border-style: none; padding: 0px;" *ngIf="!isRole('Student')">
+    <div class="card mb-1" *ngFor="let exam of exams">
+      <div class="card-block row m-1 col-12">
+      <div class="card-body row align-items-center">
+        <div class="col-6 mt-1">
+          <h6 class="card-subtitle text-muted">Name</h6>
+          <a class="card-text" [routerLink]="['/exams', exam._links.self.href.split('/')[4]]">{{exam.name}}</a>
+          </div>
+          <div class="col-6 mt-1">
+            <h6 class="card-subtitle text-muted">Nº Questions</h6>
+            <p>{{exam.nbOfQuestions}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </li>
+
+  <!-- Pendent Exams -->
+  <li class="list-group-item" style="border-style: none; padding: 0px;" *ngIf="isRole('Student')">
+    <h6 class="">Pendientes</h6>
+    <div *ngFor="let exam of exams">
+    <div class="card mb-1" *ngIf="exam.pendent">
+      <div class="card-block row m-1 col-12">
+        <div class="card-body row align-items-center">
+          <div class="col-4 mt-1">
+            <h6 class="card-subtitle text-muted">Name</h6>
+
+            <!--<a class="card-text" [routerLink]="['/exams', exam._links.self.href.split('/')[4], 'evaluate']">{{exam.name}}</a>-->
+            <a class="card-text" [routerLink]="['/exams', exam.uri.split('/')[2], 'evaluate']">{{exam.name}}</a>
+
+          </div>
+          <div class="col-4 mt-1">
+            <h6 class="card-subtitle text-muted">Nº Questions</h6>
+            <p>{{exam.nbOfQuestions}}</p>
+          </div>
+          <div class="col-4 mt-1">
+            <h6 class="card-subtitle text-muted">Mark</h6>
+            <p>-</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </li>
+
+  <li class="list-group-item" style="border-style: none; padding: 0px;" *ngIf="isRole('Student')">
+    <h6 class="">Realizados</h6>
+    <div *ngFor="let exam of exams">
+    <div class="card mb-1" *ngIf="!exam.pendent">
+      <div class="card-block row m-1 col-12">
+        <div class="card-body row align-items-center">
+          <div class="col-4 mt-1">
+            <h6 class="card-subtitle text-muted">Name</h6>
+
+            <!--<a class="card-text" [routerLink]="['/exams', exam._links.self.href.split('/')[4]]">{{exam.name}}</a>-->
+            <a class="card-text">{{exam.name}}</a>
+
+          </div>
+          <div class="col-4 mt-1">
+            <h6 class="card-subtitle text-muted">Nº Questions</h6>
+            <p>{{exam.nbOfQuestions}}</p>
+          </div>
+          <div class="col-4 mt-1">
+            <h6 class="card-subtitle text-muted">Mark</h6>
+            <p>{{ exam.mark }}</p>
+          </div>
+        </div>
+      </div>
+      </div>
+    </div>
+  </li>
+
+</ul>
+
+<ngb-pagination class="d-flex justify-content-center"
+                [(page)]="page"
+                [pageSize]="pageSize"
+                [collectionSize]="totalRecipes"
+                (pageChange)="changePage()">
+</ngb-pagination>

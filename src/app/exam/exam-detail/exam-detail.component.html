@@ -1,0 +1,101 @@
+
+<div class="card mb-4">
+
+  <!-- Header -->
+  <div class="card-block">
+
+    <div class="card-header row m-1" style="margin: 0px !important;">
+      <h4 class="card-title col-md-12 p-3">Exam Detail</h4>
+      <div class="col-md-4 p-3">
+        <h6 class="card-subtitle text-muted">Id</h6>
+
+        <p class="card-text">{{exam._links.self.href.split('/')[4]}}</p>
+        <!--<p class="card-text">{{ exam.uri.split('/')[2] }}</p>-->
+      </div>
+      <div class="col-md-4 p-3">
+        <h6 class="card-subtitle text-muted">Name</h6>
+        <p class="card-text">{{exam.name}}</p>
+      </div>
+      <div class="col-md-4 p-3">
+        <h6 class="card-subtitle text-muted">Nº Questions</h6>
+        <p class="card-text">{{exam.nbOfQuestions}}</p>
+      </div>
+    </div>
+
+  <!-- Body -->
+  <div class="card-body row m-1">
+    <h4>Questions List</h4>
+
+    <div class="col-md-12" style="padding: 0px;">
+      <ul class="list-group">
+        <li class="list-group-item" style="padding: 0px; border-style: none;" *ngFor="let question of questions; let i = index" [attr.data-index]="i">
+
+          <div class="card mb-4">
+            <div class="card-block">
+              <!--<h6 class="card-title col-md-12">Question {{ index }}</h6>-->
+              <div class="card-body row m-1">
+                <div class="col-md-3 p-3">
+                  <h6 class="card-subtitle text-muted">Id</h6>
+                  <p class="card-text">{{ question.uri.split('/')[2] }}</p>
+                </div>
+                <div class="col-md-3 p-3">
+                  <h6 class="card-subtitle text-muted">Question</h6>
+                  <p class="card-text">{{ question.statement }}</p>
+                </div>
+                <div class="col-md-3 p-3">
+                  <h6 class="card-subtitle text-muted">Answer</h6>
+                  <p class="card-text">{{ question.answer }}</p>
+                </div>
+                <!--
+                <div class="col-md-3 p-3">
+                  <h6 class="card-subtitle text-muted">topic</h6>
+                  <p class="card-text">{{ question.topicId.name }}</p>
+                </div>
+                -->
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+
+    </div>
+
+  </div>
+
+  <div class="card-body row m-1">
+    <h4>Users List</h4>
+
+    <div class="col-md-12" style="padding: 0px;">
+      <li class="list-group-item" style="padding: 0px; border-style: none;" *ngFor="let student of students; let i = index" [attr.data-index]="i">
+
+        <div class="card mb-4">
+          <div class="card-block">
+            <div class="card-body row m-1">
+              <div class="col-md-6 p-3">
+                <h6 class="card-subtitle text-muted">Username</h6>
+                <p class="card-text">{{ student.uri.split('/')[2] }}</p>
+              </div>
+            </div>
+          </div>
+          </div>
+
+        </li>
+    </div>
+  </div>
+
+<!-- Footer -->
+<div class="card-footer text-right">
+  <button id="listBtn" type="button" [routerLink]="['/exams']"
+          class="btn m-1 btn-outline-primary">Exam List
+  </button>
+  <button *ngIf="authenticationService.isRole('TEACHER')" id="editBtn" type="button"  [routerLink]="['edit']"
+          class="btn m-1 btn-outline-success">Edit
+  </button>
+  <button *ngIf="authenticationService.isRole('TEACHER')" id="deleteBtn" type="button"  [routerLink]="['delete']"
+          class="btn m-1 btn-outline-danger">Delete
+  </button>
+</div>
+
+</div>
+
+</div>

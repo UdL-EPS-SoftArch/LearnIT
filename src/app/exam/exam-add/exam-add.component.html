@@ -1,0 +1,61 @@
+<h2 align="center">Add a new Exam</h2>
+
+<div class="jumbotron">
+  <h4 class="display-4">New Exam</h4>
+  <p class="lead">Please, provide your selections</p>
+
+  <form id="exam-form" (ngSubmit)="onSubmit(form)" #form="ngForm">
+    <fieldset>
+      <div id="formulaire">
+
+        <!-- name input -->
+        <div class="form-group" [class.was-validated]="name.dirty || name.touched">
+          <label class="control-label" for="name">Name*</label>
+          <input id="name" name="name" type="text" class="form-control"
+                 [(ngModel)]="exam.name" #name="ngModel" required>
+          <div class="invalid-feedback">Name field is required</div>
+        </div>
+
+        <!-- question input -->
+        <!--<div class="form-group" [class.was-validated]="question.dirty || question.touched">-->
+        <div class="form-group">
+          <label class="control-label" for="questions">Questions:*</label>
+          <select id="questions" name="questions" type="text" class="form-control" [(ngModel)]="questionsSelected" required multiple>
+          <!--<select id="questions" name="questions" type="text" class="form-control" required multiple>-->
+
+            <!--<option *ngFor="let question of questions" [value]="question.uri" >{{ question.statement }}</option>-->
+            <option *ngFor="let question of questions" [value]="question.uri" >{{ question.statement }}</option>
+
+          </select>
+          <span class="invalid-feedback">Question field is required</span>
+        </div>
+
+        <!-- student input -->
+        <!--<div class="form-group" [class.was-validated]="student.dirty || student.touched">-->
+        <div class="form-group">
+          <label class="control-label" for="students">Users:*</label>
+          <select id="students" name="questions" type="text" class="form-control" [(ngModel)]="studentsSelected" required multiple>
+            <option *ngFor="let student of students" [value]="student.uri" >{{ student.uri }}</option>
+          </select>
+          <span class="invalid-feedback">Question field is required</span>
+        </div>
+
+        <!-- Button -->
+        <div class="form-group">
+          <!--<button id="submit" type="submit" class="btn m-1 btn-success pull-right" [disabled]="form.invalid">Submit</button>-->
+          <button id="submit" type="submit" class="btn m-1 btn-success pull-right">Submit</button>
+        </div>
+      </div>
+    </fieldset>
+  </form>
+
+</div>
+
+<!--Footer-->
+<footer class="modal-footer">
+  <div class="container">
+    <div class="text-center">
+      <small>Footer...</small>
+    </div>
+  </div>
+</footer>
